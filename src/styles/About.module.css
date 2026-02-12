@@ -1,0 +1,85 @@
+.introSection {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-top: 120px;
+}
+
+.introText {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.missionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.imagePlaceholder {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+}
+
+.stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.statItem {
+  text-align: left;
+}
+
+.statNumber {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  display: block;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.valueCard {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.valueCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-secondary);
+}
+
+.valueIcon {
+  color: var(--accent-primary);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .missionGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .imagePlaceholder {
+    order: -1;
+    height: 300px;
+  }
+}
