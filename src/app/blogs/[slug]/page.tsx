@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!blog) return { title: 'Article Not Found' };
   
   return {
-    title: `${blog.title} | Premium Digital Agency Blog`,
-    description: `Read about ${blog.title}`,
+    title: `${blog.title} | Mera Digital Insights`,
+    description: blog.excerpt,
   };
 }
 

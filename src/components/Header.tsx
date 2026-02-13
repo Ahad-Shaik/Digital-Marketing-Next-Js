@@ -51,7 +51,7 @@ export default function Header() {
       <div className={styles.nav}>
         <Link href="/" className={styles.logo}>
           <Rocket className="text-gradient" size={32} style={{ color: 'var(--accent-primary)' }} />
-          <span className="text-gradient">Mera Digitals</span>
+          <span className="text-gradient">Mera Digital</span>
         </Link>
 
         {/* Desktop Nav */}
