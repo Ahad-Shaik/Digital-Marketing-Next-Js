@@ -6,41 +6,41 @@ import Link from 'next/link';
 import styles from '@/styles/Home.module.css';
 
 const services = [
-  { 
-    title: 'SEO Mastery', 
-    desc: 'Top rankings that drive organic traffic and qualified leads.', 
-    icon: Search, 
-    href: '/services/seo' 
+  {
+    title: 'SEO Mastery',
+    desc: 'Top rankings that drive organic traffic and qualified leads.',
+    icon: Search,
+    href: '/services/seo'
   },
-  { 
-    title: 'Media Buying', 
-    desc: 'Strategic ad placement for maximum ROI across all channels.', 
-    icon: Volume2, 
-    href: '/services/media-buying' 
+  {
+    title: 'Media Buying',
+    desc: 'Strategic ad placement for maximum ROI across all channels.',
+    icon: Volume2,
+    href: '/services/media-buying'
   },
-  { 
-    title: 'Web Development', 
-    desc: 'Blazing fast, secure, and scalable Next.js applications.', 
-    icon: Globe, 
-    href: '/services/website-development' 
+  {
+    title: 'Web Development',
+    desc: 'Blazing fast, secure, and scalable Next.js applications.',
+    icon: Globe,
+    href: '/services/website-development'
   },
-  { 
-    title: 'Performance Marketing', 
-    desc: 'Data-driven campaigns that scale revenue predictably.', 
-    icon: TrendingUp, 
-    href: '/services/performance-marketing' 
+  {
+    title: 'Performance Marketing',
+    desc: 'Data-driven campaigns that scale revenue predictably.',
+    icon: TrendingUp,
+    href: '/services/performance-marketing'
   },
-  { 
-    title: 'Branding & Design', 
-    desc: 'Memorable brand identities that resonate with your audience.', 
-    icon: Sparkles, 
-    href: '/services/branding' 
+  {
+    title: 'Branding & Design',
+    desc: 'Memorable brand identities that resonate with your audience.',
+    icon: Sparkles,
+    href: '/services/branding'
   },
-  { 
-    title: 'Content Strategy', 
-    desc: 'Compelling narratives that engage and convert users.', 
-    icon: PenTool, 
-    href: '/blogs' 
+  {
+    title: 'Content Strategy',
+    desc: 'Compelling narratives that engage and convert users.',
+    icon: PenTool,
+    href: '/blogs'
   },
 ];
 
@@ -64,20 +64,20 @@ const itemVariants = {
 
 export default function Services() {
   return (
-    <section className="section container">
-      <motion.div 
-        className="text-center mb-16"
+    <section className={`${styles.reducedSection} container`}>
+      <motion.div
+        className="text-center mb-8"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-gradient">Our Expertise</h2>
+        <h2 className="text-gradient">Services We Offer</h2>
         <p style={{ maxWidth: '600px', margin: '0 auto' }}>
           We combine creativity and technology to deliver exceptional digital experiences.
         </p>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className={styles.servicesGrid}
         variants={containerVariants}
         initial="hidden"
@@ -85,8 +85,8 @@ export default function Services() {
         viewport={{ once: true }}
       >
         {services.map((service, index) => (
-          <motion.div 
-            key={index} 
+          <motion.div
+            key={index}
             variants={itemVariants}
             className={styles.serviceCard}
           >
@@ -95,8 +95,8 @@ export default function Services() {
             </div>
             <h3>{service.title}</h3>
             <p>{service.desc}</p>
-            <Link 
-              href={service.href} 
+            <Link
+              href={service.href}
               className="mt-4 inline-block text-accent-secondary font-semibold hover:underline"
               style={{ color: 'var(--accent-secondary)' }}
             >

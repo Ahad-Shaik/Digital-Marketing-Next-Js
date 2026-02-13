@@ -1,33 +1,81 @@
 :root {
-  /* Premium Dark Mode Palette */
+  /* Premium Dark Mode Palette (Default) */
   --bg-primary: #0a0a0f;
   --bg-secondary: #12121a;
   --bg-tertiary: #1a1a24;
-  
-  --accent-primary: #6366f1; /* Indigo 500 */
-  --accent-secondary: #06b6d4; /* Cyan 500 */
-  --accent-glow: rgba(99, 102, 241, 0.4);
-  
+
+  --accent-primary: #f97316;
+  /* Brand Orange */
+  --accent-secondary: #ea580c;
+  /* Darker Orange */
+  --accent-glow: rgba(249, 115, 22, 0.4);
+
   --text-primary: #ffffff;
-  --text-secondary: #94a3b8; /* Slate 400 */
-  --text-muted: #64748b; /* Slate 500 */
-  
+  --text-secondary: #94a3b8;
+  /* Slate 400 */
+  --text-muted: #64748b;
+  /* Slate 500 */
+
   /* Glassmorphism Variables */
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   --glass-backdrop: blur(16px);
-  
+
   /* Spacing System */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 8rem;
-  
+
   /* Container Max Width */
   --container-width: 1280px;
   --nav-height: 80px;
+
+  --menu-bg: rgba(18, 18, 26, 0.95);
+}
+
+[data-theme='light'] {
+  /* Premium Light Mode Palette - Brand Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+
+  --accent-primary: #f97316;
+  /* Brand Orange */
+  --accent-secondary: #1f2937;
+  /* Brand Dark Grey */
+  --accent-glow: rgba(249, 115, 22, 0.2);
+
+  --text-primary: #1f2937;
+  /* Dark Grey */
+  --text-secondary: #4b5563;
+  /* Medium Grey */
+  --text-muted: #6b7280;
+
+  /* Glassmorphism Variables - Modified for Light Mode */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+
+  --menu-bg: rgba(255, 255, 255, 0.98);
+}
+
+[data-theme='light'] .text-gradient {
+  background: linear-gradient(135deg, #1f2937 0%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Ensure body uses the variables */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
@@ -53,7 +101,12 @@ a {
 }
 
 /* Typography Utility Classes */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-outfit), sans-serif;
   line-height: 1.2;
   font-weight: 700;
@@ -61,10 +114,24 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--space-sm);
 }
 
-h1 { font-size: 3.5rem;      letter-spacing: -0.02em; }
-h2 { font-size: 2.5rem;      letter-spacing: -0.01em; }
-h3 { font-size: 1.75rem; }
-p { margin-bottom: var(--space-sm); color: var(--text-secondary); }
+h1 {
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+p {
+  margin-bottom: var(--space-sm);
+  color: var(--text-secondary);
+}
 
 /* Layout Utilities */
 .container {
@@ -117,7 +184,7 @@ p { margin-bottom: var(--space-sm); color: var(--text-secondary); }
   position: absolute;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
   border-radius: 50%;
   z-index: -1;
   pointer-events: none;
@@ -161,9 +228,17 @@ p { margin-bottom: var(--space-sm); color: var(--text-secondary); }
 
 /* Utility Animations */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .animate-float {

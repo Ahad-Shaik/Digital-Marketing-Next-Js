@@ -4,16 +4,17 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Rocket, Search, DollarSign, Code, ShieldCheck, Award, TrendingUp, Megaphone } from 'lucide-react';
+import { Menu, X, ChevronDown, Rocket, Search, DollarSign, Code, ShieldCheck, Award, TrendingUp, Megaphone, Sun, Moon } from 'lucide-react';
 import styles from '@/styles/Header.module.css';
+import { useTheme } from '@/components/ThemeProvider';
 
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about-us', label: 'About Us' },
-  { 
-    href: '#', 
-    label: 'Services', 
-    isMega: true, 
+  {
+    href: '#',
+    label: 'Services',
+    isMega: true,
     subItems: [
       { href: '/services/seo', label: 'SEO Services', icon: Search, desc: 'Rank #1 on Google' },
       { href: '/services/google-ads', label: 'Google Ads', icon: DollarSign, desc: 'High ROI Campaigns' },
@@ -32,6 +33,10 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
+  // Prevent hydration mismatch for icon
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,9 +51,9 @@ export default function Header() {
       <div className={styles.nav}>
         <Link href="/" className={styles.logo}>
           <Rocket className="text-gradient" size={32} style={{ color: 'var(--accent-primary)' }} />
-          <span className="text-gradient">AGENCY.</span>
+          <span className="text-gradient">Mera Digitals</span>
         </Link>
-        
+
         {/* Desktop Nav */}
         <nav className={styles.navLinks}>
           {navLinks.map((link) => (
@@ -58,7 +63,7 @@ export default function Header() {
                   <span className={styles.flexCenter} style={{ cursor: 'pointer' }}>
                     {link.label} <ChevronDown size={14} />
                   </span>
-                  
+
                   <div className={styles.megaMenu}>
                     {link.subItems?.map((sub) => (
                       <Link key={sub.href} href={sub.href} className={styles.megaLink}>
@@ -83,10 +88,30 @@ export default function Header() {
               )}
             </div>
           ))}
+          {/* Theme Toggle Desktop */}
+          <button
+            onClick={toggleTheme}
+            className={styles.themeToggle}
+            aria-label="Toggle theme"
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: 'var(--text-primary)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '0.5rem',
+              borderRadius: '50%',
+              transition: 'background 0.3s'
+            }}
+          >
+            {mounted && theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
         </nav>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className={styles.mobileBtn}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
@@ -108,12 +133,12 @@ export default function Header() {
               <div key={link.label}>
                 {link.isMega ? (
                   <div style={{ marginTop: '1rem' }}>
-                    <h3 style={{ color: 'var(--text-secondary)', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>Services</h3>
+                    <h3 style={{ color: 'var(--text-secondary)', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>Services</h3>
                     <div style={{ display: 'grid', gap: '1rem', paddingLeft: '1rem' }}>
                       {link.subItems?.map(sub => (
-                        <Link 
-                          key={sub.href} 
-                          href={sub.href} 
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
                           onClick={() => setMobileOpen(false)}
                           className={styles.mobileSubLink}
                         >
@@ -134,9 +159,31 @@ export default function Header() {
                 )}
               </div>
             ))}
+
+            {/* Mobile Theme Toggle */}
+            <div style={{ padding: '1rem 0', borderTop: '1px solid var(--glass-border)', marginTop: 'auto' }}>
+              <button
+                onClick={toggleTheme}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: 'var(--text-primary)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  fontSize: '1.2rem',
+                  fontWeight: 600,
+                  width: '100%'
+                }}
+              >
+                {mounted && theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+                <span>{mounted && theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </header >
   );
 }

@@ -1,23 +1,25 @@
 import Hero from '@/components/home/Hero';
+import TrustedBy from '@/components/home/TrustedBy';
+import Expertise from '@/components/home/Expertise';
 import Services from '@/components/home/Services';
-import Stats from '@/components/home/Stats';
+
 import WhyChooseUs from '@/components/home/WhyChooseUs';
 import CaseStudies from '@/components/home/CaseStudies';
-import Testimonials from '@/components/home/Testimonials';
 import LatestBlogs from '@/components/home/LatestBlogs';
-import CTA from '@/components/home/CTA';
+import FAQ from '@/components/home/FAQ';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Stats />
+      <TrustedBy />
+
+      <Expertise />
       <Services />
       <WhyChooseUs />
       <CaseStudies />
-      <Testimonials />
       <LatestBlogs />
-      <CTA />
+      <FAQ />
     </>
   );
 }
