@@ -1,44 +1,44 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Search, Volume2, Globe, TrendingUp, Sparkles, PenTool } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
+import { Search, Volume2, Globe, TrendingUp, Sparkles, PenTool, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import styles from '@/styles/Home.module.css';
 
 const services = [
   {
     title: 'SEO Mastery',
-    desc: 'Top rankings that drive organic traffic and qualified leads.',
+    desc: 'Dominate search rankings with data-driven strategies that drive organic traffic and qualified leads to your business.',
     icon: Search,
     href: '/services/seo'
   },
   {
     title: 'Media Buying',
-    desc: 'Strategic ad placement for maximum ROI across all channels.',
+    desc: 'Strategic ad placement and budget management for maximum ROI across Facebook, Google, and emerging channels.',
     icon: Volume2,
     href: '/services/media-buying'
   },
   {
     title: 'Web Development',
-    desc: 'Blazing fast, secure, and scalable Next.js applications.',
+    desc: 'Blazing fast, secure, and scalable Next.js applications custom-built to convert visitors into loyal customers.',
     icon: Globe,
     href: '/services/website-development'
   },
   {
     title: 'Performance Marketing',
-    desc: 'Data-driven campaigns that scale revenue predictably.',
+    desc: 'Results-oriented campaigns that scale revenue predictably through rigorous testing and optimization.',
     icon: TrendingUp,
     href: '/services/performance-marketing'
   },
   {
     title: 'Branding & Design',
-    desc: 'Memorable brand identities that resonate with your audience.',
+    desc: 'Crafting memorable brand identities and visual systems that resonate deeply with your target audience.',
     icon: Sparkles,
     href: '/services/branding'
   },
   {
     title: 'Content Strategy',
-    desc: 'Compelling narratives that engage and convert users.',
+    desc: 'Compelling narratives and valuable content that engage users and build long-term authority in your niche.',
     icon: PenTool,
     href: '/blogs'
   },
@@ -54,26 +54,54 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+const itemVariants: Variants = {
+  hidden: { y: 30, opacity: 0 },
   visible: {
     y: 0,
-    opacity: 1
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 50,
+      damping: 20
+    }
   }
 };
 
 export default function Services() {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { currentTarget: target, clientX, clientY } = e;
+    const { left, top } = target.getBoundingClientRect();
+    const x = clientX - left;
+    const y = clientY - top;
+    target.style.setProperty('--mouse-x', `${x}px`);
+    target.style.setProperty('--mouse-y', `${y}px`);
+  };
+
   return (
-    <section className={`${styles.reducedSection} container`}>
+    <section className={`${styles.section} container`} style={{ position: 'relative' }}>
+      {/* Background Decorators */}
+      <div className={styles.servicesSectionBg}>
+        <div className={`${styles.servicesOrb} ${styles.orb1}`} />
+        <div className={`${styles.servicesOrb} ${styles.orb2}`} />
+      </div>
+
       <motion.div
-        className="text-center mb-8"
-        initial={{ opacity: 0, y: 20 }}
+        className={styles.sectionHeader}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
       >
-        <h2 className="text-gradient">Services We Offer</h2>
-        <p style={{ maxWidth: '600px', margin: '0 auto' }}>
-          We combine creativity and technology to deliver exceptional digital experiences.
+        <div className={styles.pillBadge}>
+          <Sparkles size={14} />
+          <span>Our Expertise</span>
+        </div>
+        <h2 className={styles.sectionTitle}>
+          <span className="text-gradient">Services We Offer</span>
+        </h2>
+        <p className={styles.sectionSubtitle}>
+          We combine data-driven insights with creative excellence to deliver
+          digital experiences that transform businesses.
         </p>
       </motion.div>
 
@@ -82,26 +110,28 @@ export default function Services() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-100px" }}
       >
         {services.map((service, index) => (
           <motion.div
             key={index}
             variants={itemVariants}
             className={styles.serviceCard}
+            onMouseMove={handleMouseMove}
           >
-            <div className={styles.serviceIcon}>
-              <service.icon size={28} />
+            <div className={styles.serviceCardContent}>
+              <div className={styles.serviceIconWrapper}>
+                <service.icon size={32} className={styles.serviceIcon} />
+              </div>
+
+              <h3 className={styles.serviceTitle}>{service.title}</h3>
+              <p className={styles.serviceDesc}>{service.desc}</p>
+
+              <Link href={service.href} className={styles.serviceLink}>
+                <span>Learn More</span>
+                <ArrowRight size={16} className={styles.serviceLinkIcon} />
+              </Link>
             </div>
-            <h3>{service.title}</h3>
-            <p>{service.desc}</p>
-            <Link
-              href={service.href}
-              className="mt-4 inline-block text-accent-secondary font-semibold hover:underline"
-              style={{ color: 'var(--accent-secondary)' }}
-            >
-              Learn More →
-            </Link>
           </motion.div>
         ))}
       </motion.div>

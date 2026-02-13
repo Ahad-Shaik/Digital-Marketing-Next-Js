@@ -28,7 +28,12 @@ const projects = [
 
 export default function CaseStudies() {
   return (
-    <section className="section container">
+    <section className={`${styles.section} container`}>
+      {/* Background Decorators */}
+      <div className={styles.bgDecor}>
+        <div className={`${styles.orb} ${styles.orb1}`} />
+      </div>
+
       <div className={styles.header}>
         <div>
           <h2 className="text-gradient">Featured Work</h2>
@@ -48,18 +53,19 @@ export default function CaseStudies() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.2 }}
             viewport={{ once: true }}
-            whileHover={{ y: -10 }}
+            whileHover={{ y: -5 }}
           >
-            <div className={styles.imageWrapper}>
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                className={styles.image} 
-              />
-              <div className={styles.overlay}>
-                <span className={styles.category}>{project.category}</span>
-                <h3 className={styles.title}>{project.title}</h3>
-                <p className={styles.client}>{project.client}</p>
+            <img
+              src={project.image}
+              alt={project.title}
+              className={styles.image}
+            />
+            <div className={styles.content}>
+              <span className={styles.category}>{project.category}</span>
+              <h3 className={styles.title}>{project.title}</h3>
+              <div className={styles.client}>
+                {project.client}
+                <ArrowUpRight size={16} className={styles.arrowIcon} />
               </div>
             </div>
           </motion.div>

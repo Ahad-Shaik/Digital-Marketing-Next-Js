@@ -20,7 +20,7 @@ const expertiseData = [
     {
         title: 'Brand Identity',
         description: 'Create a memorable brand that resonates with your audience through stunning design and storytelling.',
-        image: 'https://images.unsplash.com/photo-1586717791821-3f44a5638d48?q=80&w=1000&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop',
         link: '/services/branding',
     },
 ];
@@ -28,6 +28,12 @@ const expertiseData = [
 export default function Expertise() {
     return (
         <section className={styles.section}>
+            {/* Background Decorators */}
+            <div className={styles.bgDecor}>
+                <div className={`${styles.orb} ${styles.orb1}`} />
+                <div className={`${styles.orb} ${styles.orb2}`} />
+            </div>
+
             <div className={styles.container}>
                 <div className={styles.heading}>
                     <h2 className="text-gradient">Our Expertise</h2>
@@ -37,7 +43,7 @@ export default function Expertise() {
                 <div className={styles.grid}>
                     {expertiseData.map((item, index) => (
                         <CardContainer key={index} className="inter-var">
-                            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                            <CardBody className={`${styles.glassCard} relative group/card w-auto sm:w-[30rem] h-auto rounded-xl p-6`}>
                                 <CardItem
                                     translateZ="50"
                                     className={styles.cardTitle}

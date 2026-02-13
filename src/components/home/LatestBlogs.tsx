@@ -24,47 +24,80 @@ const blogs = [
     title: 'Why Minimalist Design Converts Better',
     date: 'Sep 15, 2025',
     category: 'Design',
-    image: 'https://images.unsplash.com/photo-1545665277-5937a59539fc?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&q=80&w=600',
     slug: 'minimalist-design-converts'
   }
 ];
 
 export default function LatestBlogs() {
   return (
-    <section className="section container">
-      <div className="flex justify-between items-end mb-12">
-        <div>
-          <h2 className="text-gradient">Latest Insights</h2>
-          <p className="subtitle">Expert analysis and industry trends.</p>
-        </div>
-        <Link href="/blogs" className="btn btn-outline">
-          Read All <ArrowRight size={18} className="ml-2" />
-        </Link>
+    <section className={styles.section}>
+      {/* Background Decorators */}
+      <div className={styles.bgDecor}>
+        <div className={`${styles.orb} ${styles.orb1}`} />
+        <div className={`${styles.orb} ${styles.orb2}`} />
       </div>
 
-      <div className={styles.grid}>
-        {blogs.map((blog, i) => (
-          <motion.div
-            key={i}
-            className={styles.card}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-            viewport={{ once: true }}
-          >
-            <Link href={`/blogs/${blog.slug}`}>
-              <img src={blog.image} alt={blog.title} className={styles.image} />
-              <div className={styles.content}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                  <Calendar size={14} className="text-accent-secondary" />
-                  <span className={styles.date}>{blog.date}</span>
+      <div className="container relative z-10">
+        <motion.div
+          className={styles.sectionHeader}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className={styles.pillBadge}>
+            <Calendar size={14} />
+            <span>Latest Insights</span>
+          </div>
+          <h2 className={styles.sectionTitle}>
+            <span className="text-gradient">Trends & Analysis</span>
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            Stay ahead of the curve with our expert analysis on digital marketing, design, and technology.
+          </p>
+        </motion.div>
+
+        <div className={styles.grid}>
+          {blogs.map((blog, i) => (
+            <motion.div
+              key={i}
+              className={styles.card}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Link href={`/blogs/${blog.slug}`} className="h-full flex flex-col">
+                <div className={styles.imageWrapper}>
+                  <img src={blog.image} alt={blog.title} className={styles.image} />
+                  <span className={styles.categoryBadge}>{blog.category}</span>
                 </div>
-                <h3 className={styles.title}>{blog.title}</h3>
-                <span className={styles.readMore}>Read Article <ArrowRight size={16} /></span>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
+
+                <div className={styles.content}>
+                  <div className={styles.meta}>
+                    <Calendar size={14} />
+                    <span>{blog.date}</span>
+                  </div>
+
+                  <h3 className={styles.title}>{blog.title}</h3>
+
+                  <div className={styles.footer}>
+                    <span className={styles.readMore}>
+                      Read Article <ArrowRight size={16} />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-12">
+          <Link href="/blogs" className="btn btn-primary">
+            View All Articles <ArrowRight size={18} className="ml-2" />
+          </Link>
+        </div>
       </div>
     </section>
   );
