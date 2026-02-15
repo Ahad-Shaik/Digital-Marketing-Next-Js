@@ -7,6 +7,7 @@ import WhyChooseUs from '@/components/home/WhyChooseUs';
 import CaseStudies from '@/components/home/CaseStudies';
 import LatestBlogs from '@/components/home/LatestBlogs';
 import FAQ from '@/components/home/FAQ';
+import ContactCTA from '@/components/home/ContactCTA';
 
 export default function Home() {
   return (
@@ -19,7 +20,9 @@ export default function Home() {
       <WhyChooseUs />
       <CaseStudies />
       <LatestBlogs />
+
       <FAQ />
+      <ContactCTA />
     </>
   );
 }

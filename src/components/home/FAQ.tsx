@@ -49,11 +49,36 @@ const FAQ = () => {
             <div className="container mx-auto px-4">
                 <h2 className={styles.faqTitle}>Have Questions? We've Got Answers.</h2>
 
-                <div className={styles.faqContainer}>
+                <motion.div
+                    className={styles.faqContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.1
+                            }
+                        }
+                    }}
+                >
                     {/* Left Side - Accordion */}
                     <div className={styles.faqLeft}>
                         {faqs.map((faq, index) => (
-                            <div key={index} className={`${styles.faqItem} ${openIndex === index ? styles.active : ''}`}>
+                            <motion.div
+                                key={index}
+                                className={`${styles.faqItem} ${openIndex === index ? styles.active : ''}`}
+                                variants={{
+                                    hidden: { y: 20, opacity: 0 },
+                                    visible: {
+                                        y: 0,
+                                        opacity: 1,
+                                        transition: { type: "spring", stiffness: 50 }
+                                    }
+                                }}
+                            >
                                 <button
                                     className={styles.faqQuestion}
                                     onClick={() => toggleFAQ(index)}
@@ -78,14 +103,24 @@ const FAQ = () => {
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
 
                     {/* Right Side - Cards */}
                     <div className={styles.faqRight}>
                         {/* Blue Card */}
-                        <div className={styles.contactCard}>
+                        <motion.div
+                            className={styles.contactCard}
+                            variants={{
+                                hidden: { x: 20, opacity: 0 },
+                                visible: {
+                                    x: 0,
+                                    opacity: 1,
+                                    transition: { duration: 0.5, delay: 0.2 }
+                                }
+                            }}
+                        >
                             <div className={styles.cardIconWrapper}>
                                 <MessageCircle size={32} className={styles.cardIcon} />
                                 <div className={styles.iconDots}>
@@ -97,10 +132,20 @@ const FAQ = () => {
                                 Our team will answer all your Questions. We Ensure a quick response
                             </p>
                             <button className={styles.contactBtn}>Contact us</button>
-                        </div>
+                        </motion.div>
 
                         {/* White Card */}
-                        <div className={styles.callCard}>
+                        <motion.div
+                            className={styles.callCard}
+                            variants={{
+                                hidden: { x: 20, opacity: 0 },
+                                visible: {
+                                    x: 0,
+                                    opacity: 1,
+                                    transition: { duration: 0.5, delay: 0.4 }
+                                }
+                            }}
+                        >
                             <div className={styles.callIconWrapper}>
                                 <Phone size={28} />
                             </div>
@@ -109,9 +154,9 @@ const FAQ = () => {
                                 <h3 className={styles.callTitle}>24/7 Services</h3>
                             </div>
                             <button className={styles.callBtn}>Call Now</button>
-                        </div>
+                        </motion.div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

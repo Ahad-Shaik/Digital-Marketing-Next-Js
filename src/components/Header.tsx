@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Rocket, Search, DollarSign, Code, ShieldCheck, Award, TrendingUp, Megaphone, Sun, Moon } from 'lucide-react';
+import { Menu, X, ChevronDown, Rocket, Search, DollarSign, Code, ShieldCheck, Award, TrendingUp, Megaphone, Sun, Moon, Users } from 'lucide-react';
 import styles from '@/styles/Header.module.css';
 import { useTheme } from '@/components/ThemeProvider';
 
@@ -18,10 +18,13 @@ const navLinks = [
     subItems: [
       { href: '/services/seo', label: 'SEO Services', icon: Search, desc: 'Rank #1 on Google' },
       { href: '/services/google-ads', label: 'Google Ads', icon: DollarSign, desc: 'High ROI Campaigns' },
-      { href: '/services/website-development', label: 'Web Development', icon: Code, desc: 'Custom Next.js Apps' },
-      { href: '/services/online-reputation-management', label: 'ORM', icon: ShieldCheck, desc: 'Build Trust' },
+      { href: '/services/social-media-marketing', label: 'Social Media Marketing', icon: Users, desc: 'Engage Your Audience' },
+      { href: '/services/website-development', label: 'Website Development', icon: Code, desc: 'Custom Next.js Apps' },
+      { href: '/services/media-buying', label: 'Media Buying', icon: Megaphone, desc: 'Strategic Ad Placement' },
+      { href: '/services/online-reputation-management', label: 'Online Reputation Management', icon: ShieldCheck, desc: 'Build & Protect Trust' },
       { href: '/services/branding', label: 'Branding', icon: Award, desc: 'Establish Your Identity' },
-      { href: '/services/performance-marketing', label: 'Performance', icon: TrendingUp, desc: 'Data-Driven Growth' },
+      { href: '/services/performance-marketing', label: 'Performance Marketing', icon: TrendingUp, desc: 'Data-Driven Growth' },
+      { href: '/services/complete-digital-marketing', label: 'Complete Digital Marketing', icon: Rocket, desc: '360° Growth Solution' },
     ]
   },
   { href: '/blogs', label: 'Blogs' },
@@ -50,8 +53,7 @@ export default function Header() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.nav}>
         <Link href="/" className={styles.logo}>
-          <Rocket className="text-gradient" size={32} style={{ color: 'var(--accent-primary)' }} />
-          <span className="text-gradient">Mera Digital</span>
+          <span className="text-gradient">Mera Digitals</span>
         </Link>
 
         {/* Desktop Nav */}

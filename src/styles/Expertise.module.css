@@ -1,5 +1,5 @@
 .section {
-    padding: var(--space-lg) 0;
+    padding: 0 0 8rem 0;
     position: relative;
     overflow: hidden;
 }
@@ -10,17 +10,29 @@
     padding: 0 2rem;
 }
 
-.heading {
+.header {
     text-align: center;
-    margin-bottom: var(--space-md);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
 }
 
-.heading h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+.header h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.heading p {
+[data-theme='light'] .header h2 {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: var(--accent-secondary);
+}
+
+.header p {
     font-size: 1.25rem;
     color: var(--text-secondary);
     max-width: 600px;
@@ -29,134 +41,132 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    perspective: 1000px;
+    position: relative;
+    z-index: 2;
 }
 
-@media (max-width: 640px) {
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-}
-
-/* Glassmorphism Card Style for 3D Cards */
-.glassCard {
+.card {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
     border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    transition: all 0.3s ease;
-}
-
-.glassCard:hover {
-    border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px -10px var(--accent-glow);
-}
-
-.cardContent {
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
+
 }
 
-.cardImage {
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 220px;
-    object-fit: cover;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.iconWrapper {
+    width: 60px;
+    height: 60px;
     border-radius: 16px;
-    margin: 1.5rem 0;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    background: rgba(249, 115, 22, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    color: var(--accent-primary);
+    transition: all 0.4s ease;
+}
+
+.card:hover .iconWrapper {
+    background: var(--accent-primary);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
 }
 
 .cardTitle {
-    font-size: 1.75rem;
-    font-weight: 800;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
     color: var(--text-primary);
-    margin-bottom: 0.75rem;
 }
 
-.cardDesc {
-    font-size: 1rem;
+.cardDescription {
     color: var(--text-secondary);
     line-height: 1.7;
+    margin-bottom: 2rem;
     flex-grow: 1;
 }
 
-.cardAction {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .learnMore {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-primary);
     font-weight: 600;
     font-size: 0.95rem;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: color 0.2s;
+    margin-top: auto;
+    width: fit-content;
+    padding: 0.5rem 0;
 }
 
-.learnMore:hover {
-    color: var(--accent-primary);
+.arrowIcon {
+    transition: transform 0.3s ease;
 }
 
-.actionBtn {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    color: white;
-    padding: 0.6rem 1.5rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 15px var(--accent-glow);
+.card:hover .arrowIcon {
+    transform: translateX(5px);
 }
 
-.actionBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px var(--accent-glow);
-}
-
-/* Background Gradients */
-.bgDecor {
+/* Background Elements */
+.bgGlow {
     position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    z-index: 1;
     pointer-events: none;
-    overflow: hidden;
+    opacity: 0.6;
 }
 
-.orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.3;
-}
+@media (max-width: 768px) {
+    .section {
+        padding: 6rem 0;
+    }
 
-.orb1 {
-    width: 500px;
-    height: 500px;
-    background: var(--accent-secondary);
-    top: -10%;
-    right: -10%;
-    opacity: 0.1;
-}
+    .header h2 {
+        font-size: 2.5rem;
+    }
 
-.orb2 {
-    width: 400px;
-    height: 400px;
-    background: #6366f1;
-    bottom: -10%;
-    left: -10%;
-    opacity: 0.1;
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 2rem;
+    }
 }

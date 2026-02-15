@@ -3,6 +3,7 @@
 import React from 'react';
 import { Zap, Cloud, Database, Rocket, Brain, Code, Layers, Activity } from 'lucide-react';
 import styles from '@/styles/Home.module.css';
+import { motion } from 'framer-motion';
 
 const brands = [
     { name: 'InnovateLabs', icon: Zap },
@@ -17,7 +18,13 @@ const brands = [
 
 export default function TrustedBy() {
     return (
-        <section className={styles.trustedSection}>
+        <motion.section
+            className={styles.trustedSection}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+        >
             <div className="container">
                 <p className={styles.trustedTitle}>Trusted By Industry Leaders</p>
 
@@ -49,6 +56,6 @@ export default function TrustedBy() {
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }

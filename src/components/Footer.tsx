@@ -40,19 +40,15 @@ export default function Footer() {
         {/* Top Section */}
         <div className={styles.topSection}>
           <div className={styles.brandColumn}>
-            <div className={styles.logo}>
-              <span style={{ fontFamily: 'serif', fontWeight: 'bold' }}>Gyr</span>
-              <span style={{ color: '#ef4444', fontSize: '2rem', verticalAlign: 'top' }}>●</span>
-            </div>
+            <Link href="/" className={styles.logo}>
+              <span className="text-gradient" style={{ fontSize: '2rem', fontWeight: 800 }}>Mera Digitals</span>
+            </Link>
             <p className={styles.brandDescription}>
-              A 360-Degree Branding Agency rooted in purpose, powered by
-              design, and led by story, your trusted Digital Marketing Agency
-              in Ahmedabad.
+              We help brands grow through data-driven marketing strategies, high-performance websites, and compelling creative design that converts visitors into customers.
             </p>
             <div className={styles.socials}>
               <Link href="#" className={styles.socialIcon}><Facebook size={20} /></Link>
               <Link href="#" className={styles.socialIcon}><Twitter size={20} /></Link>
-              {/* Using Twitter icon for Behance as placeholder, actual Behance icon not in basic Lucide set usually, or just use generic */}
               <Link href="#" className={styles.socialIcon}><Linkedin size={20} /></Link>
               <Link href="#" className={styles.socialIcon}><Instagram size={20} /></Link>
             </div>
@@ -61,12 +57,12 @@ export default function Footer() {
           <div className={styles.mascotColumn}>
             <div className="flex flex-col items-center text-center">
               <img
-                src="https://placehold.co/200x200/png?text=Elephant+Mascot"
+                src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&q=80&w=400"
                 alt="Elephant Mascot"
-                className="w-32 h-32 mb-4 object-contain"
+                className="w-32 h-32 mb-4 object-cover rounded-full shadow-lg"
               />
               <h3 className={styles.mascotText}>
-                India's Most Loved <Heart size={24} fill="#ef4444" color="#ef4444" style={{ display: 'inline', verticalAlign: 'middle' }} /> Branding Agency
+                India's Most Loved <Heart size={24} fill="#f97316" color="#f97316" style={{ display: 'inline', verticalAlign: 'middle' }} /> Digital Agency
                 <br />by US, APAC & GCC Clients
               </h3>
             </div>
@@ -100,7 +96,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className={styles.copyright}>
-          <span>© {new Date().getFullYear()} Gyr Agency. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Mera Digitals. All rights reserved.</span>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             <Link href="/privacy" className={styles.linkItem}>Privacy Policy</Link>
             <Link href="/terms" className={styles.linkItem}>Terms of Service</Link>

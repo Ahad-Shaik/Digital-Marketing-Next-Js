@@ -1,92 +1,125 @@
 'use client';
 
 import React from 'react';
-import { CardBody, CardContainer, CardItem } from '@/components/ui/ThreeDCard';
 import styles from '@/styles/Expertise.module.css';
+import { motion } from 'framer-motion';
+import {
+    ArrowRight,
+    Search,
+    Share2,
+    MousePointerClick,
+    FileText,
+    Monitor,
+    Smartphone
+} from 'lucide-react';
 
 const expertiseData = [
     {
-        title: 'Modern Web Apps',
-        description: 'We build scalable, high-performance web applications using the latest technologies like Next.js and React.',
-        image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
-        link: '/services/website-development',
+        id: 'seo',
+        title: 'SEO & Optimization',
+        description: 'Dominate search rankings with data-backed strategies that drive organic traffic and qualified leads to your business.',
+        icon: Search,
+        link: '/services/seo',
     },
     {
-        title: 'Digital Marketing',
-        description: 'Data-driven strategies to boost your online presence and drive meaningful engagement and conversions.',
-        image: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=1000&auto=format&fit=crop',
-        link: '/services/marketing',
+        id: 'social',
+        title: 'Social Media',
+        description: 'Build a loyal community and boost brand awareness with creative, high-engagement campaigns across platforms.',
+        icon: Share2,
+        link: '/services/social-media',
     },
     {
-        title: 'Brand Identity',
-        description: 'Create a memorable brand that resonates with your audience through stunning design and storytelling.',
-        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop',
-        link: '/services/branding',
+        id: 'ppc',
+        title: 'PPC & Performance',
+        description: 'Maximize your ROI with precision-targeted advertisements on Google, Meta, and LinkedIn. Pay only for results.',
+        icon: MousePointerClick,
+        link: '/services/ppc',
     },
+    {
+        id: 'content',
+        title: 'Content Strategy',
+        description: 'Engage your audience with compelling storytelling and value-driven content that establishes your authority.',
+        icon: FileText,
+        link: '/services/content',
+    },
+    {
+        id: 'web',
+        title: 'Web Experiences',
+        description: 'Create stunning, high-performance websites that not only look good but convert visitors into loyal customers.',
+        icon: Monitor,
+        link: '/services/web',
+    },
+    {
+        id: 'mobile',
+        title: 'Mobile Advertising',
+        description: 'Reach your audience on their most personal devices with optimized mobile ad campaigns and app marketing.',
+        icon: Smartphone,
+        link: '/services/mobile',
+    }
 ];
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5
+        }
+    }
+};
 
 export default function Expertise() {
     return (
         <section className={styles.section}>
-            {/* Background Decorators */}
-            <div className={styles.bgDecor}>
-                <div className={`${styles.orb} ${styles.orb1}`} />
-                <div className={`${styles.orb} ${styles.orb2}`} />
-            </div>
-
+            <div className={styles.bgGlow} />
             <div className={styles.container}>
-                <div className={styles.heading}>
-                    <h2 className="text-gradient">Our Expertise</h2>
-                    <p>Cutting-edge solutions tailored to elevate your business in the digital landscape.</p>
+                <div className={styles.header}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h2 className="text-gradient">Our Expertise</h2>
+                        <p>Strategic solutions designed to amplify your brand&apos;s voice.</p>
+                    </motion.div>
                 </div>
 
-                <div className={styles.grid}>
-                    {expertiseData.map((item, index) => (
-                        <CardContainer key={index} className="inter-var">
-                            <CardBody className={`${styles.glassCard} relative group/card w-auto sm:w-[30rem] h-auto rounded-xl p-6`}>
-                                <CardItem
-                                    translateZ="50"
-                                    className={styles.cardTitle}
-                                >
-                                    {item.title}
-                                </CardItem>
-                                <CardItem
-                                    as="p"
-                                    translateZ="60"
-                                    className={styles.cardDesc}
-                                >
-                                    {item.description}
-                                </CardItem>
-                                <CardItem translateZ="100" className="w-full mt-4">
-                                    <img
-                                        src={item.image}
-                                        height={1000}
-                                        width={1000}
-                                        className={styles.cardImage}
-                                        alt={item.title}
-                                    />
-                                </CardItem>
-                                <div className={styles.cardAction}>
-                                    <CardItem
-                                        translateZ={20}
-                                        as="a"
-                                        href={item.link}
-                                        className={styles.learnMore}
-                                    >
-                                        Learn More →
-                                    </CardItem>
-                                    <CardItem
-                                        translateZ={20}
-                                        as="button"
-                                        className={styles.actionBtn}
-                                    >
-                                        Get Started
-                                    </CardItem>
-                                </div>
-                            </CardBody>
-                        </CardContainer>
+                <motion.div
+                    className={styles.grid}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                >
+                    {expertiseData.map((item) => (
+                        <motion.div
+                            key={item.id}
+                            className={styles.card}
+                            variants={itemVariants}
+                        >
+                            <div className={styles.iconWrapper}>
+                                <item.icon size={30} strokeWidth={1.5} />
+                            </div>
+                            <h3 className={styles.cardTitle}>{item.title}</h3>
+                            <p className={styles.cardDescription}>{item.description}</p>
+                            <a href={item.link} className={styles.learnMore}>
+                                Learn More <ArrowRight className={styles.arrowIcon} size={16} />
+                            </a>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

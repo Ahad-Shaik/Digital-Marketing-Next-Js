@@ -1,140 +1,152 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
-import { Search, Volume2, Globe, TrendingUp, Sparkles, PenTool, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, Volume2, Globe, TrendingUp, Sparkles, PenTool, ArrowRight, Check } from 'lucide-react';
 import Link from 'next/link';
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/Services.module.css';
+import homeStyles from '@/styles/Home.module.css';
 
 const services = [
   {
+    id: 'seo',
     title: 'SEO Mastery',
     desc: 'Dominate search rankings with data-driven strategies that drive organic traffic and qualified leads to your business.',
+    fullDesc: 'We don’t just optimize for keywords; we optimize for revenue. Our holistic SEO approach combines technical audits, content strategy, and authoritative link building to ensure your brand dominates the SERPs.',
     icon: Search,
-    href: '/services/seo'
+    href: '/services/seo',
+    features: ['Technical SEO Audits', 'On-Page Optimization', 'Off-Page Link Building', 'Local SEO Dominance'],
+    image: 'https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&q=80&w=1000'
   },
   {
+    id: 'media',
     title: 'Media Buying',
     desc: 'Strategic ad placement and budget management for maximum ROI across Facebook, Google, and emerging channels.',
+    fullDesc: 'Stop wasting budget on ads that don\'t convert. We design high-converting ad campaigns across Meta, Google, and LinkedIn, leveraging precise targeting and A/B testing to lower your CPA and scale your ROAS.',
     icon: Volume2,
-    href: '/services/media-buying'
+    href: '/services/media-buying',
+    features: ['Meta & Google Ads', 'Audience Segmentation', 'Retargeting Campaigns', 'Creative A/B Testing'],
+    image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&q=80&w=1000'
   },
   {
+    id: 'web',
     title: 'Web Development',
     desc: 'Blazing fast, secure, and scalable Next.js applications custom-built to convert visitors into loyal customers.',
+    fullDesc: 'Your website is your 24/7 salesperson. We build lightning-fast, SEO-friendly, and visually stunning websites using Next.js and modern technologies that provide an exceptional user experience on every device.',
     icon: Globe,
-    href: '/services/website-development'
+    href: '/services/website-development',
+    features: ['Custom Next.js Development', 'E-commerce Solutions', 'Performance Optimization', 'Headless CMS Integration'],
+    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1000'
   },
   {
+    id: 'performance',
     title: 'Performance Marketing',
     desc: 'Results-oriented campaigns that scale revenue predictably through rigorous testing and optimization.',
+    fullDesc: 'Growth isn\'t a guessing game. Our performance marketing strategies focus purely on data and results. We track every click and conversion to ensure every dollar you spend contributes to your bottom line.',
     icon: TrendingUp,
-    href: '/services/performance-marketing'
+    href: '/services/performance-marketing',
+    features: ['Conversion Rate Optimization', 'Funnel Analysis', 'Data Analytics & Reporting', 'Lead Generation Systems'],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000'
   },
   {
+    id: 'branding',
     title: 'Branding & Design',
     desc: 'Crafting memorable brand identities and visual systems that resonate deeply with your target audience.',
+    fullDesc: 'A strong brand is your most valuable asset. We help you define your voice, visual identity, and story to create a lasting connection with your audience and stand out in a crowded marketplace.',
     icon: Sparkles,
-    href: '/services/branding'
-  },
-  {
-    title: 'Content Strategy',
-    desc: 'Compelling narratives and valuable content that engage users and build long-term authority in your niche.',
-    icon: PenTool,
-    href: '/blogs'
-  },
+    href: '/services/branding',
+    features: ['Logo & Identity Design', 'Brand Guidelines', 'UI/UX Design', 'Visual Storytelling'],
+    image: 'https://images.unsplash.com/photo-1626785774573-4b7993143d2d?auto=format&fit=crop&q=80&w=1000'
+  }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants: Variants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 50,
-      damping: 20
-    }
-  }
-};
-
 export default function Services() {
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { currentTarget: target, clientX, clientY } = e;
-    const { left, top } = target.getBoundingClientRect();
-    const x = clientX - left;
-    const y = clientY - top;
-    target.style.setProperty('--mouse-x', `${x}px`);
-    target.style.setProperty('--mouse-y', `${y}px`);
-  };
+  const [activeService, setActiveService] = useState(services[0]);
 
   return (
-    <section className={`${styles.section} container`} style={{ position: 'relative' }}>
-      {/* Background Decorators */}
-      <div className={styles.servicesSectionBg}>
-        <div className={`${styles.servicesOrb} ${styles.orb1}`} />
-        <div className={`${styles.servicesOrb} ${styles.orb2}`} />
-      </div>
+    <section className={styles.section} id="services">
+      <div className="container">
 
-      <motion.div
-        className={styles.sectionHeader}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className={styles.pillBadge}>
-          <Sparkles size={14} />
-          <span>Our Expertise</span>
+        {/* Header (reusing Home styles for consistency) */}
+        <div className="text-center mb-12">
+          <div className={homeStyles.pillBadge} style={{ margin: '0 auto 1rem' }}>
+            <Sparkles size={14} />
+            <span>Our Expertise</span>
+          </div>
+          <h2 className="text-gradient" style={{ fontSize: '3rem', marginBottom: '1rem', lineHeight: 1.1 }}>
+            Services We Offer
+          </h2>
+          <p className="subtitle" style={{ maxWidth: '600px', margin: '0 auto' }}>
+            We combine data-driven insights with creative excellence to deliver
+            digital experiences that transform businesses.
+          </p>
         </div>
-        <h2 className={styles.sectionTitle}>
-          <span className="text-gradient">Services We Offer</span>
-        </h2>
-        <p className={styles.sectionSubtitle}>
-          We combine data-driven insights with creative excellence to deliver
-          digital experiences that transform businesses.
-        </p>
-      </motion.div>
 
-      <motion.div
-        className={styles.servicesGrid}
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            variants={itemVariants}
-            className={styles.serviceCard}
-            onMouseMove={handleMouseMove}
-          >
-            <div className={styles.serviceCardContent}>
-              <div className={styles.serviceIconWrapper}>
-                <service.icon size={32} className={styles.serviceIcon} />
+        <div className={styles.servicesContainer}>
+          {/* Left Side: Navigation */}
+          <div className={styles.servicesList}>
+            {services.map((service) => (
+              <div
+                key={service.id}
+                className={`${styles.serviceItem} ${activeService.id === service.id ? styles.active : ''}`}
+                onClick={() => setActiveService(service)}
+              >
+                <div className={styles.serviceItemContent}>
+                  <div className={styles.serviceIconWrapper}>
+                    <service.icon size={24} />
+                  </div>
+                  <span className={styles.serviceTitle}>{service.title}</span>
+                </div>
+                <ArrowRight size={20} className={styles.activeArrow} />
               </div>
+            ))}
+          </div>
 
-              <h3 className={styles.serviceTitle}>{service.title}</h3>
-              <p className={styles.serviceDesc}>{service.desc}</p>
+          {/* Right Side: Detailed Content */}
+          <div className={styles.detailsPanel}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeService.id}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className={styles.detailsContent}
+              >
+                <div className={styles.detailsHeader}>
+                  <div className={styles.detailsIcon}>
+                    <activeService.icon size={32} />
+                  </div>
+                  <h3 className={styles.detailsTitle}>{activeService.title}</h3>
+                  <p className={styles.detailsDesc}>{activeService.fullDesc}</p>
+                </div>
 
-              <Link href={service.href} className={styles.serviceLink}>
-                <span>Learn More</span>
-                <ArrowRight size={16} className={styles.serviceLinkIcon} />
-              </Link>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+                <div className={styles.featureList}>
+                  {activeService.features.map((feature, i) => (
+                    <div key={i} className={styles.featureItem}>
+                      <div className={styles.checkIcon}>
+                        <Check size={18} />
+                      </div>
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link href={activeService.href} className="btn btn-primary w-fit">
+                  Explore {activeService.title} <ArrowRight size={18} className="ml-2" />
+                </Link>
+
+                {/* Background Image Overlay */}
+                <img
+                  src={activeService.image}
+                  alt={activeService.title}
+                  className={styles.detailsImage}
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
