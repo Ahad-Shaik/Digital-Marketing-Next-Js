@@ -1,19 +1,36 @@
+/* Main Wrapper for Uniform Background */
+.mainWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  /* Subtle, uniform gradient texturing */
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(249, 115, 22, 0.08) 0%, transparent 25%);
+}
+
+[data-theme='light'] .mainWrapper {
+  background-color: #f8fafc;
+  /* Very light slate/gray, almost white */
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(249, 115, 22, 0.05) 0%, transparent 25%);
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  /* Changed from hidden to allow flow */
   padding-top: 120px;
   /* More space for fixed header */
   padding-bottom: 6rem;
   display: flex;
   align-items: center;
-  /* Rich Background */
-  background-color: var(--bg-primary);
-  background-image:
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
+  /* Background handled by mainWrapper */
+  background: transparent;
 }
 
 /* Optional: Add a subtle grid pattern overlay */
@@ -659,7 +676,8 @@
 /* Trusted By Section */
 .trustedSection {
   padding: 3rem 0;
-  background: var(--bg-primary);
+  background: transparent;
+  /* Was var(--bg-primary) */
   border-bottom: 1px solid var(--glass-border);
   overflow: hidden;
 }
@@ -751,7 +769,8 @@
 /* FAQ Section */
 .faqSection {
   padding: 6rem 0;
-  background: var(--bg-primary);
+  background: transparent;
+  /* Was var(--bg-primary) */
   position: relative;
   overflow: hidden;
 }

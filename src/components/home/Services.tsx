@@ -56,7 +56,7 @@ const services = [
     icon: Sparkles,
     href: '/services/branding',
     features: ['Logo & Identity Design', 'Brand Guidelines', 'UI/UX Design', 'Visual Storytelling'],
-    image: 'https://images.unsplash.com/photo-1626785774573-4b7993143d2d?auto=format&fit=crop&q=80&w=1000'
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1000'
   }
 ];
 
@@ -113,35 +113,39 @@ export default function Services() {
                 transition={{ duration: 0.3 }}
                 className={styles.detailsContent}
               >
-                <div className={styles.detailsHeader}>
-                  <div className={styles.detailsIcon}>
-                    <activeService.icon size={32} />
-                  </div>
-                  <h3 className={styles.detailsTitle}>{activeService.title}</h3>
-                  <p className={styles.detailsDesc}>{activeService.fullDesc}</p>
-                </div>
-
-                <div className={styles.featureList}>
-                  {activeService.features.map((feature, i) => (
-                    <div key={i} className={styles.featureItem}>
-                      <div className={styles.checkIcon}>
-                        <Check size={18} />
-                      </div>
-                      <span>{feature}</span>
+                <div className={styles.textContent}>
+                  <div className={styles.detailsHeader}>
+                    <div className={styles.detailsIcon}>
+                      <activeService.icon size={32} />
                     </div>
-                  ))}
+                    <h3 className={styles.detailsTitle}>{activeService.title}</h3>
+                    <p className={styles.detailsDesc}>{activeService.fullDesc}</p>
+                  </div>
+
+                  <div className={styles.featureList}>
+                    {activeService.features.map((feature, i) => (
+                      <div key={i} className={styles.featureItem}>
+                        <div className={styles.checkIcon}>
+                          <Check size={18} />
+                        </div>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Link href={activeService.href} className="btn btn-primary w-fit">
+                    Explore {activeService.title} <ArrowRight size={18} className="ml-2" />
+                  </Link>
                 </div>
 
-                <Link href={activeService.href} className="btn btn-primary w-fit">
-                  Explore {activeService.title} <ArrowRight size={18} className="ml-2" />
-                </Link>
-
-                {/* Background Image Overlay */}
-                <img
-                  src={activeService.image}
-                  alt={activeService.title}
-                  className={styles.detailsImage}
-                />
+                {/* Right Side Image - Now properly contained */}
+                <div className={styles.imageContainer}>
+                  <img
+                    src={activeService.image}
+                    alt={activeService.title}
+                    className={styles.detailsImage}
+                  />
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>

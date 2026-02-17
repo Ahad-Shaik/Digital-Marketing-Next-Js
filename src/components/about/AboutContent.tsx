@@ -1,10 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  Users, Target, Lightbulb, Rocket, 
+import {
+  Users, Target, Lightbulb, Rocket,
   TrendingUp, ShieldCheck, Zap,
-  ArrowRight, CheckCircle, Award, 
+  ArrowRight, CheckCircle, Award,
   Code, Megaphone, Search, BarChart3
 } from 'lucide-react';
 import styles from '@/styles/About.module.css';
@@ -34,8 +34,8 @@ export default function AboutContent() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.abstractBg}>
-           <div className={styles.blob1}></div>
-           <div className={styles.blob2}></div>
+          <div className={styles.blob1}></div>
+          <div className={styles.blob2}></div>
         </div>
 
         <div className={styles.container}>
@@ -47,23 +47,23 @@ export default function AboutContent() {
             <motion.div variants={itemVariants} className={styles.sinceBadge}>
               Established 2018
             </motion.div>
-            
+
             <motion.h1 variants={itemVariants} className={styles.heroTitle}>
               We Are <span className="text-gradient">Mera Digital.</span> <br />
-              <span style={{fontSize: '0.6em', fontWeight: 400, display: 'block', marginTop: '10px'}}>Elevating Brands in the Digital Era.</span>
+              <span style={{ fontSize: '0.6em', fontWeight: 400, display: 'block', marginTop: '10px' }}>Elevating Brands in the Digital Era.</span>
             </motion.h1>
-            
+
             <motion.p variants={itemVariants} className={styles.heroSubtitle}>
               Mera Digital is a premier full-service digital agency dedicated to transforming businesses through innovation, strategy, and design. We turn complex challenges into digital success stories.
             </motion.p>
-            
+
             <motion.div variants={itemVariants} className={styles.buttonGroup}>
-               <a href="/services" className="btn btn-primary">
-                 Our Capabilities <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
-               </a>
-               <a href="#story" className="btn btn-outline">
-                 The Mera Story
-               </a>
+              <a href="/services" className="btn btn-primary">
+                Our Capabilities <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
+              </a>
+              <a href="#story" className="btn btn-outline">
+                The Mera Story
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -73,13 +73,13 @@ export default function AboutContent() {
       <section className={styles.statsSection}>
         <div className={styles.container}>
           <div className={styles.statsGrid}>
-            {[ 
+            {[
               { label: 'Market Experience', value: '6+ Years' },
               { label: 'Successful Campaigns', value: '500+' },
               { label: 'Client Retention', value: '96%' },
               { label: 'Ad Spend Managed', value: '$10M+' }
             ].map((stat, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -99,7 +99,7 @@ export default function AboutContent() {
       <section id="story" className={styles.storySection}>
         <div className={styles.container}>
           <div className={styles.storyGrid}>
-            <motion.div 
+            <motion.div
               className={styles.storyContent}
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -116,9 +116,9 @@ export default function AboutContent() {
               <p className={styles.storyText}>
                 Today, Mera Digital empowers brands across 15+ industries, boosting their online presence through bespoke web development, targeted performance marketing, and compelling brand storytelling.
               </p>
-              
+
               <div className={styles.checkmarkGrid}>
-                 <div className={styles.checkmarkItem}>
+                <div className={styles.checkmarkItem}>
                   <Code size={20} color="var(--accent-primary)" />
                   <span>Next-Gen Web Dev</span>
                 </div>
@@ -136,17 +136,17 @@ export default function AboutContent() {
                 </div>
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className={styles.storyImageWrapper}
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <img 
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" 
-                alt="Mera Digital Team at Work" 
+              <img
+                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop"
+                alt="Mera Digital Team at Work"
                 className={styles.storyImage}
               />
               <div className={styles.storyCaption}>
@@ -158,16 +158,24 @@ export default function AboutContent() {
       </section>
 
       {/* Service Ecosystem Section */}
-      <section className={styles.valuesSection} style={{ background: 'var(--bg-tertiary)' }}>
+      <section className={styles.ecosystemSection}>
+        <div className={styles.bgGradient}></div>
         <div className={styles.container}>
           <div className={`${styles.textCenter} ${styles.marginBottomLarge}`}>
-            <h2 className="text-gradient" style={{ marginBottom: '1.5rem' }}>The Service Ecosystem</h2>
-            <p className={styles.heroSubtitle}>
-              Mera Digital provides a holistic suite of digital solutions designed to work in synergy, ensuring every touchpoint of your brand is optimized for growth.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-gradient" style={{ marginBottom: '1.5rem', fontSize: '3rem' }}>The Service Ecosystem</h2>
+              <p className={styles.heroSubtitle}>
+                Mera Digital provides a holistic suite of digital solutions designed to work in synergy, ensuring every touchpoint of your brand is optimized for growth.
+              </p>
+            </motion.div>
           </div>
 
-          <div className={styles.valuesGrid}>
+          <div className={styles.ecosystemGrid}>
             {[
               {
                 title: 'Strategic Search Architecture',
@@ -190,26 +198,26 @@ export default function AboutContent() {
                 desc: 'Branding at Mera Digital goes beyond logos. We create comprehensive visual and narrative ecosystems that establish authority, build trust, and maintain consistency across all global digital touchpoints.'
               }
             ].map((service, i) => (
-              <motion.div 
-                key={i} 
-                className={styles.valueCard}
-                initial={{ opacity: 0, y: 30 }}
+              <motion.div
+                key={i}
+                className={styles.ecosystemCard}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.15, duration: 0.5 }}
               >
-                <div className={styles.valueIconWrapper} style={{ background: 'rgba(255, 255, 255, 0.05)', color: 'var(--accent-primary)' }}>
-                  <service.icon size={32} />
+                <div className={styles.ecosystemIconWrapper}>
+                  <service.icon size={32} strokeWidth={1.5} />
                 </div>
-                <h3 className={styles.valueTitle}>{service.title}</h3>
-                <p className={styles.valueDesc}>{service.desc}</p>
+                <h3 className={styles.ecosystemTitle}>{service.title}</h3>
+                <p className={styles.ecosystemDesc}>{service.desc}</p>
               </motion.div>
             ))}
           </div>
-          
+
           <div className={`${styles.textCenter} mt-12`}>
-            <p style={{ color: 'var(--text-muted)', fontStyle: 'italic', maxWidth: '800px', margin: '3rem auto 0' }}>
-              "In a landscape defined by rapid technical shifts, Mera Digital serves as the steady hand that translates complexity into clear, profitable outcomes for our global partners."
+            <p style={{ color: 'var(--text-muted)', fontStyle: 'italic', maxWidth: '800px', margin: '4rem auto 0', fontSize: '1.1rem' }}>
+              &quot;In a landscape defined by rapid technical shifts, Mera Digital serves as the steady hand that translates complexity into clear, profitable outcomes for our global partners.&quot;
             </p>
           </div>
         </div>
@@ -224,32 +232,32 @@ export default function AboutContent() {
               We don't just deliver services; we deliver standards. Our core values define the Mera Digital experience.
             </p>
           </div>
-          
+
           <div className={styles.valuesGrid}>
             {[
-              { 
-                title: 'Data-Backed Creativity', 
-                icon: Lightbulb, 
-                desc: 'We believe beautiful design must convert. Every creative decision at Mera Digital is supported by user data and market insights.' 
+              {
+                title: 'Data-Backed Creativity',
+                icon: Lightbulb,
+                desc: 'We believe beautiful design must convert. Every creative decision at Mera Digital is supported by user data and market insights.'
               },
-              { 
-                title: 'Radical Transparency', 
-                icon: ShieldCheck, 
-                desc: 'No hidden fees, no jargon. We provide clear, real-time reporting so you always know where your investment is going.' 
+              {
+                title: 'Radical Transparency',
+                icon: ShieldCheck,
+                desc: 'No hidden fees, no jargon. We provide clear, real-time reporting so you always know where your investment is going.'
               },
-              { 
-                title: 'Client Partnership', 
-                icon: Users, 
-                desc: 'We are not just a vendor; we are your growth partners. Your KPIs are our KPIs, and we celebrate your wins together.' 
+              {
+                title: 'Client Partnership',
+                icon: Users,
+                desc: 'We are not just a vendor; we are your growth partners. Your KPIs are our KPIs, and we celebrate your wins together.'
               },
-              { 
-                title: 'Agile Execution', 
-                icon: Zap, 
-                desc: 'The digital world waits for no one. Our agile methodologies ensure rapid deployment and continuous iteration for maximum impact.' 
+              {
+                title: 'Agile Execution',
+                icon: Zap,
+                desc: 'The digital world waits for no one. Our agile methodologies ensure rapid deployment and continuous iteration for maximum impact.'
               }
             ].map((val, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 className={styles.valueCard}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -274,19 +282,19 @@ export default function AboutContent() {
             <h2 className="text-gradient" style={{ marginBottom: '1.5rem' }}>Our Proven Process</h2>
             <p className={styles.heroSubtitle}>From concept to launch and beyond, we guide you every step of the way.</p>
           </div>
-          
+
           <div className={styles.processSteps}>
             {/* Connecting Line */}
             <div className={styles.processLine}></div>
-            
+
             {[
               { step: '01', title: 'Discovery & Audit', icon: Target, desc: 'We analyze your current digital footprint, competitor landscape, and target audience to find the gaps.' },
               { step: '02', title: 'Strategic Roadmap', icon: Lightbulb, desc: 'We craft a tailored strategy integrating SEO, Content, and Tech to hit your specific business goals.' },
               { step: '03', title: 'Creative Execution', icon: Rocket, desc: 'Our designers and developers bring the vision to life with pixel-perfect precision and clean code.' },
               { step: '04', title: 'Scale & Optimize', icon: TrendingUp, desc: 'Launch is just the beginning. We continuously monitor data to refine campaigns and maximize ROI.' }
             ].map((item, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 className={styles.processStep}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -309,12 +317,12 @@ export default function AboutContent() {
         <div className={styles.container}>
           <div className={styles.teamHeader}>
             <div className={styles.teamHeaderText}>
-               <h2 className="text-gradient" style={{ marginBottom: '1rem' }}>Meet Team Mera</h2>
-               <p style={{ color: 'var(--text-secondary)' }}>The strategists, designers, and engineers behind your success.</p>
+              <h2 className="text-gradient" style={{ marginBottom: '1rem' }}>Meet Team Mera</h2>
+              <p style={{ color: 'var(--text-secondary)' }}>The strategists, designers, and engineers behind your success.</p>
             </div>
             <a href="/careers" className="btn btn-outline">Join The Team</a>
           </div>
-          
+
           <div className={styles.teamGrid}>
             {[
               { name: 'Arjun Mehta', role: 'Founder & CEO', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500&auto=format&fit=crop' },
@@ -322,8 +330,8 @@ export default function AboutContent() {
               { name: 'Rohan Gupta', role: 'Tech Lead', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=500&auto=format&fit=crop' },
               { name: 'Sneha Patel', role: 'Creative Director', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=500&auto=format&fit=crop' }
             ].map((member, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 className={styles.teamMember}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -337,8 +345,8 @@ export default function AboutContent() {
                   <h3 className={styles.memberName}>{member.name}</h3>
                   <p className={styles.memberRole}>{member.role}</p>
                   <div className={styles.socialLinks}>
-                     <div className={styles.socialIcon}><Users size={18} /></div>
-                     <div className={styles.socialIcon}><Award size={18} /></div>
+                    <div className={styles.socialIcon}><Users size={18} /></div>
+                    <div className={styles.socialIcon}><Award size={18} /></div>
                   </div>
                 </div>
               </motion.div>
@@ -346,7 +354,7 @@ export default function AboutContent() {
           </div>
         </div>
       </section>
-      
+
       <CTA />
     </>
   );

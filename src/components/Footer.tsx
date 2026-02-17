@@ -1,10 +1,14 @@
 'use client';
+import { usePathname } from 'next/navigation';
 
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Linkedin, Heart } from 'lucide-react';
 import styles from '@/styles/Footer.module.css';
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith('/admin')) return null;
+
   const industries = [
     "AR/VR Based Solutions",
     "CA/Accounting Firms",

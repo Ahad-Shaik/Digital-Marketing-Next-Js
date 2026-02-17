@@ -27,7 +27,7 @@ const navLinks = [
       { href: '/services/complete-digital-marketing', label: 'Complete Digital Marketing', icon: Rocket, desc: '360° Growth Solution' },
     ]
   },
-  { href: '/blogs', label: 'Blogs' },
+  { href: '/blogs', label: 'Blog' },
   { href: '/careers', label: 'Careers' },
   { href: '/contact-us', label: 'Contact Us', isCta: true },
 ];
@@ -37,9 +37,11 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
-  // Prevent hydration mismatch for icon
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  // Determine if the current page should have a transparent header (e.g., Blog Details)
+  const isTransparentPage = pathname?.startsWith('/blogs/') && pathname !== '/blogs';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,8 +51,20 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [mobileOpen]);
+
+  if (pathname?.startsWith('/admin')) return null;
+
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+    <header
+      className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${isTransparentPage && !scrolled ? styles.transparentMode : ''}`}
+    >
       <div className={styles.nav}>
         <Link href="/" className={styles.logo}>
           <span className="text-gradient">Mera Digitals</span>
@@ -132,11 +146,11 @@ export default function Header() {
             className={styles.mobileMenu}
           >
             {navLinks.map((link) => (
-              <div key={link.label}>
+              <div key={link.label} className={styles.mobileNavGroup}>
                 {link.isMega ? (
-                  <div style={{ marginTop: '1rem' }}>
-                    <h3 style={{ color: 'var(--text-secondary)', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>Services</h3>
-                    <div style={{ display: 'grid', gap: '1rem', paddingLeft: '1rem' }}>
+                  <div className={styles.mobileMegaSection}>
+                    <h3 className={styles.mobileSectionTitle}>{link.label}</h3>
+                    <div className={styles.mobileSubGrid}>
                       {link.subItems?.map(sub => (
                         <Link
                           key={sub.href}
@@ -144,8 +158,10 @@ export default function Header() {
                           onClick={() => setMobileOpen(false)}
                           className={styles.mobileSubLink}
                         >
-                          <sub.icon size={18} />
-                          {sub.label}
+                          <div className={styles.mobileIconWrapper}>
+                            <sub.icon size={16} />
+                          </div>
+                          <span className={styles.mobileSubLabel}>{sub.label}</span>
                         </Link>
                       ))}
                     </div>

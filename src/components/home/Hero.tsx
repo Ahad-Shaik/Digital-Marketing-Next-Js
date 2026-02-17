@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, TrendingUp, Plus } from 'lucide-react';
+import { ArrowRight, Plus, TrendingUp } from 'lucide-react';
 import styles from '@/styles/Home.module.css';
 
 const containerVariants = {
@@ -19,7 +19,36 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-export default function Hero() {
+interface HeroProps {
+  data?: {
+    badge?: string;
+    titlePart1?: string;
+    titleGradient?: string;
+    titlePart2?: string;
+    subtitle?: string;
+    ctaText?: string;
+    ctaLink?: string;
+    secondaryCtaText?: string;
+    mainImage?: string;
+    secondaryImage?: string;
+  };
+}
+
+export default function Hero({ data }: HeroProps) {
+  // Safe defaults
+  const content = {
+    badge: data?.badge || "Premier Digital Agency Since 5 Years",
+    titlePart1: data?.titlePart1 || "Build Your Digital",
+    titleGradient: data?.titleGradient || "Presence",
+    titlePart2: data?.titlePart2 || "To Scale.",
+    subtitle: data?.subtitle || "We help brands grow through data-driven marketing strategies, high-performance websites, and compelling creative design that converts visitors into customers.",
+    ctaText: data?.ctaText || "Get Started",
+    ctaLink: data?.ctaLink || "/contact-us",
+    secondaryCtaText: data?.secondaryCtaText || "How it Works",
+    mainImage: data?.mainImage || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    secondaryImage: data?.secondaryImage || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500&auto=format&fit=crop",
+  };
+
   return (
     <section className={styles.hero}>
       <div className={`container ${styles.heroContainer}`}>
@@ -32,33 +61,33 @@ export default function Hero() {
           animate="visible"
         >
           <motion.div variants={itemVariants} className={styles.badge}>
-            Premier Digital Agency Since 5 Years
+            {content.badge}
           </motion.div>
 
           <motion.h1 variants={itemVariants} className={styles.heroTitle}>
-            Build Your <span className="text-gradient">Digital</span> <br />
-            Presence To <span style={{ color: 'var(--accent-secondary)' }}>Scale.</span>
+            {content.titlePart1} <span className="text-gradient">{content.titleGradient}</span> <br />
+            {content.titlePart2}
           </motion.h1>
 
           <motion.p variants={itemVariants} className={styles.heroSubtitle}>
-            We help brands grow through data-driven marketing strategies, high-performance websites, and compelling creative design that converts visitors into customers.
+            {content.subtitle}
           </motion.p>
 
           <motion.div variants={itemVariants} className={styles.heroButtons}>
             <motion.a
-              href="/contact-us"
+              href={content.ctaLink}
               className="btn btn-primary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get Started <ArrowRight size={18} className="ml-2" />
+              {content.ctaText} <ArrowRight size={18} className="ml-2" />
             </motion.a>
 
             <button
               className="btn btn-outline"
               style={{ borderRadius: '999px', padding: '0.75rem 1.5rem', fontWeight: 600 }}
             >
-              How it Works
+              {content.secondaryCtaText}
             </button>
           </motion.div>
         </motion.div>
@@ -76,7 +105,7 @@ export default function Hero() {
 
             {/* Main Image */}
             <img
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
+              src={content.mainImage}
               alt="Digital Marketer"
               className={styles.mainImage}
             />
@@ -89,7 +118,7 @@ export default function Hero() {
               transition={{ delay: 0.5, duration: 0.6 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500&auto=format&fit=crop"
+                src={content.secondaryImage}
                 alt="Teammate"
                 className={styles.secondaryImage}
               />

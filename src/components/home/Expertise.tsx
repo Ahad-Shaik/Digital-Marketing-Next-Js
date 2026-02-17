@@ -10,50 +10,62 @@ import {
     MousePointerClick,
     FileText,
     Monitor,
-    Smartphone
+    Smartphone,
+    LayoutGrid // Default fallback icon
 } from 'lucide-react';
 
-const expertiseData = [
+// Icon mapping for dynamic rendering
+const ICON_MAP: Record<string, React.ElementType> = {
+    'Search': Search,
+    'Share2': Share2,
+    'MousePointerClick': MousePointerClick,
+    'FileText': FileText,
+    'Monitor': Monitor,
+    'Smartphone': Smartphone,
+    'LayoutGrid': LayoutGrid
+};
+
+const defaultItems = [
     {
         id: 'seo',
         title: 'SEO & Optimization',
         description: 'Dominate search rankings with data-backed strategies that drive organic traffic and qualified leads to your business.',
-        icon: Search,
+        icon: 'Search',
         link: '/services/seo',
     },
     {
         id: 'social',
         title: 'Social Media',
         description: 'Build a loyal community and boost brand awareness with creative, high-engagement campaigns across platforms.',
-        icon: Share2,
+        icon: 'Share2',
         link: '/services/social-media',
     },
     {
         id: 'ppc',
         title: 'PPC & Performance',
         description: 'Maximize your ROI with precision-targeted advertisements on Google, Meta, and LinkedIn. Pay only for results.',
-        icon: MousePointerClick,
+        icon: 'MousePointerClick',
         link: '/services/ppc',
     },
     {
         id: 'content',
         title: 'Content Strategy',
         description: 'Engage your audience with compelling storytelling and value-driven content that establishes your authority.',
-        icon: FileText,
+        icon: 'FileText',
         link: '/services/content',
     },
     {
         id: 'web',
         title: 'Web Experiences',
         description: 'Create stunning, high-performance websites that not only look good but convert visitors into loyal customers.',
-        icon: Monitor,
+        icon: 'Monitor',
         link: '/services/web',
     },
     {
         id: 'mobile',
         title: 'Mobile Advertising',
         description: 'Reach your audience on their most personal devices with optimized mobile ad campaigns and app marketing.',
-        icon: Smartphone,
+        icon: 'Smartphone',
         link: '/services/mobile',
     }
 ];
@@ -79,7 +91,25 @@ const itemVariants = {
     }
 };
 
-export default function Expertise() {
+interface ExpertiseProps {
+    data?: {
+        title?: string;
+        subtitle?: string;
+        items?: Array<{
+            id: string;
+            title: string;
+            description: string;
+            icon: string;
+            link: string;
+        }>;
+    };
+}
+
+export default function Expertise({ data }: ExpertiseProps) {
+    const title = data?.title || "Our Expertise";
+    const subtitle = data?.subtitle || "Strategic solutions designed to amplify your brand's voice.";
+    const items = data?.items || defaultItems;
+
     return (
         <section className={styles.section}>
             <div className={styles.bgGlow} />
@@ -91,8 +121,8 @@ export default function Expertise() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-gradient">Our Expertise</h2>
-                        <p>Strategic solutions designed to amplify your brand&apos;s voice.</p>
+                        <h2 className="text-gradient">{title}</h2>
+                        <p>{subtitle}</p>
                     </motion.div>
                 </div>
 
@@ -103,22 +133,26 @@ export default function Expertise() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
                 >
-                    {expertiseData.map((item) => (
-                        <motion.div
-                            key={item.id}
-                            className={styles.card}
-                            variants={itemVariants}
-                        >
-                            <div className={styles.iconWrapper}>
-                                <item.icon size={30} strokeWidth={1.5} />
-                            </div>
-                            <h3 className={styles.cardTitle}>{item.title}</h3>
-                            <p className={styles.cardDescription}>{item.description}</p>
-                            <a href={item.link} className={styles.learnMore}>
-                                Learn More <ArrowRight className={styles.arrowIcon} size={16} />
-                            </a>
-                        </motion.div>
-                    ))}
+                    {items.map((item) => {
+                        const IconComponent = ICON_MAP[item.icon] || LayoutGrid;
+
+                        return (
+                            <motion.div
+                                key={item.id}
+                                className={styles.card}
+                                variants={itemVariants}
+                            >
+                                <div className={styles.iconWrapper}>
+                                    <IconComponent size={30} strokeWidth={1.5} />
+                                </div>
+                                <h3 className={styles.cardTitle}>{item.title}</h3>
+                                <p className={styles.cardDescription}>{item.description}</p>
+                                <a href={item.link} className={styles.learnMore}>
+                                    Learn More <ArrowRight className={styles.arrowIcon} size={16} />
+                                </a>
+                            </motion.div>
+                        );
+                    })}
                 </motion.div>
             </div>
         </section>

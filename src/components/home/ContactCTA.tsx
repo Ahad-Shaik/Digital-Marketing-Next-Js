@@ -6,10 +6,43 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import styles from '@/styles/ContactCTA.module.css';
 
 export default function ContactCTA() {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [formData, setFormData] = React.useState({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+    });
+    const [status, setStatus] = React.useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log('Form submitted');
+        setStatus('submitting');
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setStatus('error');
+        }
     };
 
     return (
@@ -87,6 +120,9 @@ export default function ContactCTA() {
                                     <div className={styles.formGroup}>
                                         <input
                                             type="text"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
                                             placeholder="Your Name"
                                             className={styles.formInput}
                                             required
@@ -95,6 +131,9 @@ export default function ContactCTA() {
                                     <div className={styles.formGroup}>
                                         <input
                                             type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
                                             placeholder="Email Address"
                                             className={styles.formInput}
                                             required
@@ -105,13 +144,22 @@ export default function ContactCTA() {
                                 <div className={styles.formGroup} style={{ marginBottom: '1rem' }}>
                                     <input
                                         type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
                                         placeholder="Phone Number"
                                         className={styles.formInput}
                                     />
                                 </div>
 
                                 <div className={styles.formGroup} style={{ marginBottom: '1.5rem' }}>
-                                    <select className={styles.formInput} style={{ appearance: 'none' }} defaultValue="">
+                                    <select
+                                        name="service"
+                                        value={formData.service}
+                                        onChange={handleChange}
+                                        className={styles.formInput}
+                                        style={{ appearance: 'none' }}
+                                    >
                                         <option value="" disabled>Select Service Interest</option>
                                         <option value="seo">SEO & Marketing</option>
                                         <option value="dev">Web Development</option>
@@ -122,6 +170,9 @@ export default function ContactCTA() {
 
                                 <div className={styles.formGroup} style={{ marginBottom: '1.5rem' }}>
                                     <textarea
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
                                         placeholder="Tell us about your project..."
                                         className={styles.formTextarea}
                                         rows={4}
@@ -134,9 +185,18 @@ export default function ContactCTA() {
                                     className="btn btn-primary w-full justify-center"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
+                                    disabled={status === 'submitting'}
                                 >
-                                    Send Message <Send size={18} className="ml-2" />
+                                    {status === 'submitting' ? 'Sending...' : 'Send Message'}
+                                    {!status && <Send size={18} className="ml-2" />}
                                 </motion.button>
+
+                                {status === 'success' && (
+                                    <p className="text-green-500 mt-2 text-center text-sm">Message sent successfully!</p>
+                                )}
+                                {status === 'error' && (
+                                    <p className="text-red-500 mt-2 text-center text-sm">Something went wrong. Please try again.</p>
+                                )}
                             </form>
                         </div>
                     </motion.div>
