@@ -51,6 +51,12 @@
   gap: 0.5rem;
 }
 
+.brandText {
+  color: var(--brand-orange);
+  background: none;
+  -webkit-text-fill-color: initial;
+}
+
 .navLinks {
   display: flex;
   gap: 2rem;
@@ -72,8 +78,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--accent-secondary);
+  background: var(--brand-orange);
   transition: width 0.3s ease;
+}
+
+.navLinkItem.active {
+  color: var(--brand-orange) !important;
 }
 
 .navItem:hover::after {
@@ -121,7 +131,7 @@
 }
 
 .megaIcon {
-  color: var(--accent-secondary);
+  color: var(--brand-orange);
 }
 
 .mobileBtn {
@@ -243,10 +253,11 @@
   width: 100%;
   text-align: center;
   padding: 1rem;
-  background: var(--accent-primary);
+  background: var(--brand-orange);
   border-radius: 8px;
   font-weight: 600;
   color: white;
+  box-shadow: 0 4px 15px var(--brand-orange-glow);
 }
 
 /* Mega Menu Item Styles */

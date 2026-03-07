@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${outfit.variable}`}>
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider>
+          <CustomCursor />
           <div style={{ position: 'fixed', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: -1 }}>
             <div className="bg-gradient-glow" style={{ top: -100, left: -100, opacity: 0.5 }}></div>
             <div className="bg-gradient-glow" style={{ bottom: -100, right: -100, opacity: 0.3, background: 'radial-gradient(circle, var(--accent-secondary) 0%, rgba(0,0,0,0) 70%)' }}></div>

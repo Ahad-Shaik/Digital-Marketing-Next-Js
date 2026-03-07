@@ -32,6 +32,7 @@
         "title": "SEO & Optimization",
         "description": "Dominate search rankings with data-backed strategies that drive organic traffic and qualified leads to your business.",
         "icon": "Search",
+        "image": "/expertise-seo.png",
         "link": "/services/seo"
       },
       {
@@ -39,6 +40,7 @@
         "title": "Social Media",
         "description": "Build a loyal community and boost brand awareness with creative, high-engagement campaigns across platforms.",
         "icon": "Share2",
+        "image": "/expertise-social.png",
         "link": "/services/social-media"
       },
       {
@@ -46,6 +48,7 @@
         "title": "PPC & Performance",
         "description": "Maximize your ROI with precision-targeted advertisements on Google, Meta, and LinkedIn. Pay only for results.",
         "icon": "MousePointerClick",
+        "image": "/expertise-ppc.png",
         "link": "/services/ppc"
       },
       {
@@ -53,6 +56,7 @@
         "title": "Content Strategy",
         "description": "Engage your audience with compelling storytelling and value-driven content that establishes your authority.",
         "icon": "FileText",
+        "image": "/expertise-content.png",
         "link": "/services/content"
       },
       {
@@ -60,6 +64,7 @@
         "title": "Web Experiences",
         "description": "Create stunning, high-performance websites that not only look good but convert visitors into loyal customers.",
         "icon": "Monitor",
+        "image": "/expertise-web.png",
         "link": "/services/web"
       },
       {
@@ -67,6 +72,7 @@
         "title": "Mobile Advertising",
         "description": "Reach your audience on their most personal devices with optimized mobile ad campaigns and app marketing.",
         "icon": "Smartphone",
+        "image": "/expertise-mobile.png",
         "link": "/services/mobile"
       }
     ]

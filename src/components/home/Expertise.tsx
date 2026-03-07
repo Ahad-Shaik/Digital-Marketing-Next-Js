@@ -11,6 +11,7 @@ import {
     FileText,
     Monitor,
     Smartphone,
+    Rocket,
     LayoutGrid // Default fallback icon
 } from 'lucide-react';
 
@@ -22,74 +23,52 @@ const ICON_MAP: Record<string, React.ElementType> = {
     'FileText': FileText,
     'Monitor': Monitor,
     'Smartphone': Smartphone,
+    'Rocket': Rocket,
     'LayoutGrid': LayoutGrid
 };
 
 const defaultItems = [
     {
-        id: 'seo',
-        title: 'SEO & Optimization',
-        description: 'Dominate search rankings with data-backed strategies that drive organic traffic and qualified leads to your business.',
-        icon: 'Search',
-        link: '/services/seo',
-    },
-    {
-        id: 'social',
-        title: 'Social Media',
-        description: 'Build a loyal community and boost brand awareness with creative, high-engagement campaigns across platforms.',
-        icon: 'Share2',
-        link: '/services/social-media',
-    },
-    {
-        id: 'ppc',
-        title: 'PPC & Performance',
-        description: 'Maximize your ROI with precision-targeted advertisements on Google, Meta, and LinkedIn. Pay only for results.',
-        icon: 'MousePointerClick',
+        id: 'performance',
+        title: 'PERFORMANCE MARKETING',
+        description: 'Drive measurable results with ROI-focused campaigns, utilizing Google Ads, Facebook Ads, and programmatic advertising.',
+        icon: 'Rocket',
+        image: '/expertise-performance.png',
         link: '/services/ppc',
     },
     {
-        id: 'content',
-        title: 'Content Strategy',
-        description: 'Engage your audience with compelling storytelling and value-driven content that establishes your authority.',
-        icon: 'FileText',
-        link: '/services/content',
+        id: 'social',
+        title: 'SOCIAL MEDIA MARKETING',
+        description: 'Build and engage your audience across platforms like Instagram, Facebook, LinkedIn, and Twitter with strategic content.',
+        icon: 'Share2',
+        image: '/expertise-social.png',
+        link: '/services/social-media',
+    },
+    {
+        id: 'seo',
+        title: 'SEO & CONTENT MARKETING',
+        description: 'Improve search rankings and organic visibility with expert keyword optimization, technical SEO, and high-quality content.',
+        icon: 'Search',
+        image: '/expertise-seo.png',
+        link: '/services/seo',
+    },
+    {
+        id: 'ppc',
+        title: 'PAY-PER-CLICK ADVERTISING',
+        description: 'Generate immediate traffic and leads with precisely optimized Google Ads, Bing Ads, and display campaigns.',
+        icon: 'MousePointerClick',
+        image: '/expertise-ppc.png',
+        link: '/services/ppc',
     },
     {
         id: 'web',
-        title: 'Web Experiences',
-        description: 'Create stunning, high-performance websites that not only look good but convert visitors into loyal customers.',
+        title: 'WEB & LANDING PAGE',
+        description: 'Create high-converting landing pages and modern websites that turn visitors into loyal customers through expert design.',
         icon: 'Monitor',
+        image: '/expertise-web.png',
         link: '/services/web',
-    },
-    {
-        id: 'mobile',
-        title: 'Mobile Advertising',
-        description: 'Reach your audience on their most personal devices with optimized mobile ad campaigns and app marketing.',
-        icon: 'Smartphone',
-        link: '/services/mobile',
     }
 ];
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1
-        }
-    }
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.5
-        }
-    }
-};
 
 interface ExpertiseProps {
     data?: {
@@ -100,6 +79,7 @@ interface ExpertiseProps {
             title: string;
             description: string;
             icon: string;
+            image: string;
             link: string;
         }>;
     };
@@ -109,6 +89,7 @@ export default function Expertise({ data }: ExpertiseProps) {
     const title = data?.title || "Our Expertise";
     const subtitle = data?.subtitle || "Strategic solutions designed to amplify your brand's voice.";
     const items = data?.items || defaultItems;
+    const [activeIndex, setActiveIndex] = React.useState(2); // Start with SEO expanded
 
     return (
         <section className={styles.section}>
@@ -126,34 +107,61 @@ export default function Expertise({ data }: ExpertiseProps) {
                     </motion.div>
                 </div>
 
-                <motion.div
-                    className={styles.grid}
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
-                    {items.map((item) => {
+                <div className={styles.accordionContainer}>
+                    {items.map((item, index) => {
                         const IconComponent = ICON_MAP[item.icon] || LayoutGrid;
+                        const isActive = activeIndex === index;
 
                         return (
                             <motion.div
                                 key={item.id}
-                                className={styles.card}
-                                variants={itemVariants}
+                                className={`${styles.accordionItem} ${isActive ? styles.active : ''}`}
+                                onMouseEnter={() => setActiveIndex(index)}
+                                onClick={() => setActiveIndex(index)}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-                                <div className={styles.iconWrapper}>
-                                    <IconComponent size={30} strokeWidth={1.5} />
+                                {/* Background Image with Overlay */}
+                                <div
+                                    className={styles.itemBg}
+                                    style={{ backgroundImage: `url(${item.image})` }}
+                                >
+                                    <div className={styles.overlay} />
                                 </div>
-                                <h3 className={styles.cardTitle}>{item.title}</h3>
-                                <p className={styles.cardDescription}>{item.description}</p>
-                                <a href={item.link} className={styles.learnMore}>
-                                    Learn More <ArrowRight className={styles.arrowIcon} size={16} />
-                                </a>
+
+                                <div className={styles.itemContent}>
+                                    <div className={styles.iconWrapper}>
+                                        <IconComponent size={32} strokeWidth={1.5} />
+                                    </div>
+
+                                    <div className={styles.textContent}>
+                                        <h3 className={styles.itemTitle}>{item.title}</h3>
+                                        <div className={styles.descriptionWrapper}>
+                                            <p className={styles.itemDescription}>{item.description}</p>
+                                            <motion.div
+                                                className={styles.viewMore}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: isActive ? 1 : 0 }}
+                                            >
+                                                <span>Learn More</span>
+                                                <ArrowRight size={18} />
+                                            </motion.div>
+                                        </div>
+                                    </div>
+
+                                    {/* Vertical Title for Collapsed State */}
+                                    {!isActive && (
+                                        <div className={styles.verticalTitle}>
+                                            {item.title}
+                                        </div>
+                                    )}
+                                </div>
                             </motion.div>
                         );
                     })}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

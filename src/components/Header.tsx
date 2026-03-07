@@ -67,7 +67,7 @@ export default function Header() {
     >
       <div className={styles.nav}>
         <Link href="/" className={styles.logo}>
-          <span className="text-gradient">Mera Digitals</span>
+          <span className={styles.brandText}>Mera Digitals</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -97,7 +97,7 @@ export default function Header() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`${link.isCta ? 'btn btn-primary' : ''} ${pathname === link.href ? 'text-gradient' : ''}`}
+                  className={`${link.isCta ? styles.ctaButton : styles.navLinkItem} ${pathname === link.href ? styles.active : ''}`}
                 >
                   {link.label}
                 </Link>

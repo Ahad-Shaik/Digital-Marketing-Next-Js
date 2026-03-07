@@ -9,6 +9,7 @@ import CaseStudies from '@/components/home/CaseStudies';
 import LatestBlogs from '@/components/home/LatestBlogs';
 import FAQ from '@/components/home/FAQ';
 import ContactCTA from '@/components/home/ContactCTA';
+import VisionCTA from '@/components/home/VisionCTA';
 import styles from '@/styles/Home.module.css';
 import Script from 'next/script';
 
@@ -111,6 +112,7 @@ export default async function Home() {
       <TrustedBy />
       <Expertise data={data?.expertise} />
       <Services />
+      <VisionCTA />
       <WhyChooseUs />
       <CaseStudies />
       <LatestBlogs />

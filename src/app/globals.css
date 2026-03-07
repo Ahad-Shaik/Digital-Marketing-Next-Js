@@ -4,11 +4,15 @@
   --bg-secondary: #12121a;
   --bg-tertiary: #1a1a24;
 
-  --accent-primary: #f97316;
-  /* Brand Orange */
-  --accent-secondary: #ea580c;
-  /* Darker Orange */
-  --accent-glow: rgba(249, 115, 22, 0.4);
+  --brand-orange: #f97316;
+  --brand-orange-secondary: #ea580c;
+  --brand-orange-glow: rgba(249, 115, 22, 0.4);
+
+  --accent-primary: #ffffff;
+  /* Premium White/Silver */
+  --accent-secondary: #e2e8f0;
+  /* Light Slate */
+  --accent-glow: rgba(255, 255, 255, 0.15);
 
   --text-primary: #ffffff;
   --text-secondary: #94a3b8;
@@ -37,16 +41,18 @@
 }
 
 [data-theme='light'] {
-  /* Premium Light Mode Palette - Brand Colors */
+  /* Premium Light Mode Palette */
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb;
   --bg-tertiary: #f3f4f6;
 
-  --accent-primary: #f97316;
-  /* Brand Orange */
-  --accent-secondary: #1f2937;
-  /* Brand Dark Grey */
-  --accent-glow: rgba(249, 115, 22, 0.2);
+  --brand-orange: #f97316;
+  --brand-orange-glow: rgba(249, 115, 22, 0.2);
+
+  --accent-primary: #1f2937;
+  /* Dark Grey/Black Accent */
+  --accent-secondary: #4b5563;
+  --accent-glow: rgba(0, 0, 0, 0.05);
 
   --text-primary: #1f2937;
   /* Dark Grey */
@@ -216,13 +222,16 @@ p {
 
 .btn-primary {
   background: var(--accent-primary);
-  color: white;
+  color: var(--bg-primary);
+  /* Dark text on white bg */
   box-shadow: 0 4px 15px var(--accent-glow);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px var(--accent-glow);
+  background: white;
+  filter: brightness(1.1);
 }
 
 .btn-outline {
