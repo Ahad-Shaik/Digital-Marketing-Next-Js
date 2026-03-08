@@ -13,8 +13,8 @@
   --brand-orange-secondary: #ea580c;
   --brand-orange-glow: rgba(249, 115, 22, 0.4);
 
-  --accent-primary: var(--brand-green-dark);
-  --accent-secondary: var(--brand-green-lime);
+  --accent-primary: var(--brand-green-lime);
+  --accent-secondary: var(--brand-green-dark);
   --accent-glow: rgba(163, 230, 53, 0.15);
 
   --text-primary: #ffffff;
@@ -112,17 +112,14 @@
 }
 
 .text-reveal {
-  background: linear-gradient(
-    to right,
-    #fff 20%,
-    #64748b 40%,
-    #64748b 60%,
-    #fff 80%
-  );
+  background: linear-gradient(to right,
+      #fff 20%,
+      #64748b 40%,
+      #64748b 60%,
+      #fff 80%);
   background-size: 200% auto;
   color: #000;
   background-clip: text;
-  text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shine 5s linear infinite;
@@ -259,11 +256,9 @@ p {
   position: absolute;
   width: 500px;
   height: 500px;
-  background: radial-gradient(
-    circle,
-    var(--accent-glow) 0%,
-    rgba(0, 0, 0, 0) 70%
-  );
+  background: radial-gradient(circle,
+      var(--accent-glow) 0%,
+      rgba(0, 0, 0, 0) 70%);
   border-radius: 50%;
   z-index: -1;
   pointer-events: none;
