@@ -52,9 +52,37 @@
 }
 
 .brandText {
-  color: var(--brand-orange);
-  background: none;
-  -webkit-text-fill-color: initial;
+  color: #122a20;
+  /* Dark green text */
+  font-weight: 700;
+}
+
+.logoIcon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconCircle {
+  width: 24px;
+  height: 24px;
+  background-color: var(--brand-green-lime);
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+}
+
+.iconLine {
+  width: 8px;
+  height: 24px;
+  background-color: #122a20;
+  border-radius: 4px;
+  position: absolute;
+  right: 4px;
+  z-index: 2;
 }
 
 .navLinks {
@@ -78,12 +106,13 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--brand-orange);
+  background: #1a3a2a;
   transition: width 0.3s ease;
 }
 
 .navLinkItem.active {
-  color: var(--brand-orange) !important;
+  color: inherit !important;
+  border-bottom: 2px solid #1a3a2a;
 }
 
 .navItem:hover::after {
@@ -94,44 +123,78 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  background: var(--menu-bg);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  box-shadow: var(--glass-shadow);
+  transform: translateX(-50%) translateY(10px);
+  width: 900px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
 }
 
 .navItem:hover .megaMenu {
   opacity: 1;
   visibility: visible;
-  margin-top: 0;
+  transform: translateX(-50%) translateY(0);
 }
 
-.megaLink {
+.megaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.megaItem {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
   padding: 1rem;
-  border-radius: 8px;
-  transition: background 0.2s;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+  text-decoration: none;
 }
 
-.megaLink:hover {
-  background: var(--glass-border);
+.megaItem:hover {
+  background: #f8fafc;
 }
 
-.megaIcon {
-  color: var(--brand-orange);
+.megaIconWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a3a2a;
+  flex-shrink: 0;
+}
+
+.megaContent h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a3a2a;
+  margin: 0 0 0.15rem 0;
+}
+
+.megaContent span {
+  font-size: 0.8rem;
+  color: #64748b;
+  display: block;
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+  color: var(--text-secondary);
+}
+
+.navItem:hover .chevron {
+  transform: rotate(180deg);
+  color: #1a3a2a;
 }
 
 .mobileBtn {
@@ -249,15 +312,22 @@
 }
 
 .ctaButton {
-  margin-top: 2rem;
-  width: 100%;
-  text-align: center;
-  padding: 1rem;
-  background: var(--brand-orange);
-  border-radius: 8px;
+  margin-left: 1rem;
+  padding: 0.75rem 1.75rem;
+  background: #1a3a2a;
+  /* Dark green from image */
+  border-radius: 100px;
   font-weight: 600;
   color: white;
-  box-shadow: 0 4px 15px var(--brand-orange-glow);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.ctaButton:hover {
+  background: #0d1e16;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(26, 58, 42, 0.3);
 }
 
 /* Mega Menu Item Styles */

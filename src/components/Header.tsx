@@ -8,28 +8,70 @@ import { Menu, X, ChevronDown, Rocket, Search, DollarSign, Code, ShieldCheck, Aw
 import styles from '@/styles/Header.module.css';
 import { useTheme } from '@/components/ThemeProvider';
 
+const serviceItems = [
+  {
+    title: 'SEO Services',
+    subtitle: 'Rank #1 on Google',
+    icon: Search,
+    href: '/services/seo',
+  },
+  {
+    title: 'Google Ads',
+    subtitle: 'High ROI Campaigns',
+    icon: DollarSign,
+    href: '/services/media-buying',
+  },
+  {
+    title: 'Social Media Marketing',
+    subtitle: 'Engage Your Audience',
+    icon: Users,
+    href: '/services/social-media-marketing',
+  },
+  {
+    title: 'Website Development',
+    subtitle: 'Custom Next.js Apps',
+    icon: Code,
+    href: '/services/website-development',
+  },
+  {
+    title: 'Media Buying',
+    subtitle: 'Strategic Ad Placement',
+    icon: Megaphone,
+    href: '/services/media-buying',
+  },
+  {
+    title: 'Online Reputation Management',
+    subtitle: 'Build & Protect Trust',
+    icon: ShieldCheck,
+    href: '/services/orm',
+  },
+  {
+    title: 'Branding',
+    subtitle: 'Establish Your Identity',
+    icon: Award,
+    href: '/services/branding',
+  },
+  {
+    title: 'Performance Marketing',
+    subtitle: 'Data-Driven Growth',
+    icon: TrendingUp,
+    href: '/services/performance-marketing',
+  },
+  {
+    title: 'Complete Digital Marketing',
+    subtitle: '360° Growth Solution',
+    icon: Rocket,
+    href: '/services/complete-marketing',
+  },
+];
+
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '#', label: 'Services', hasMega: true },
+  { href: '/blogs', label: 'Blogs' },
   { href: '/about-us', label: 'About Us' },
-  {
-    href: '#',
-    label: 'Services',
-    isMega: true,
-    subItems: [
-      { href: '/services/seo', label: 'SEO Services', icon: Search, desc: 'Rank #1 on Google' },
-      { href: '/services/google-ads', label: 'Google Ads', icon: DollarSign, desc: 'High ROI Campaigns' },
-      { href: '/services/social-media-marketing', label: 'Social Media Marketing', icon: Users, desc: 'Engage Your Audience' },
-      { href: '/services/website-development', label: 'Website Development', icon: Code, desc: 'Custom Next.js Apps' },
-      { href: '/services/media-buying', label: 'Media Buying', icon: Megaphone, desc: 'Strategic Ad Placement' },
-      { href: '/services/online-reputation-management', label: 'Online Reputation Management', icon: ShieldCheck, desc: 'Build & Protect Trust' },
-      { href: '/services/branding', label: 'Branding', icon: Award, desc: 'Establish Your Identity' },
-      { href: '/services/performance-marketing', label: 'Performance Marketing', icon: TrendingUp, desc: 'Data-Driven Growth' },
-      { href: '/services/complete-digital-marketing', label: 'Complete Digital Marketing', icon: Rocket, desc: '360° Growth Solution' },
-    ]
-  },
-  { href: '/blogs', label: 'Blog' },
-  { href: '/careers', label: 'Careers' },
-  { href: '/contact-us', label: 'Contact Us', isCta: true },
+  { href: '#', label: 'Pricing' },
+  { href: '/contact-us', label: 'Get A Quote', isCta: true },
 ];
 
 export default function Header() {
@@ -67,31 +109,40 @@ export default function Header() {
     >
       <div className={styles.nav}>
         <Link href="/" className={styles.logo}>
-          <span className={styles.brandText}>Mera Digitals</span>
+          <div className={styles.logoIcon}>
+            <div className={styles.iconCircle} />
+            <div className={styles.iconLine} />
+          </div>
+          <span className={styles.brandText}>Digital Marketing.</span>
         </Link>
 
         {/* Desktop Nav */}
         <nav className={styles.navLinks}>
           {navLinks.map((link) => (
-            <div key={link.label} className={`${styles.navItem} ${styles.group}`}>
-              {link.isMega ? (
+            <div key={link.label} className={styles.navItem}>
+              {link.hasMega ? (
                 <>
-                  <span className={styles.flexCenter} style={{ cursor: 'pointer' }}>
-                    {link.label} <ChevronDown size={14} />
-                  </span>
-
+                  <div className={styles.flexCenter}>
+                    <span className={styles.navLinkItem}>{link.label}</span>
+                    <ChevronDown size={14} className={styles.chevron} />
+                  </div>
                   <div className={styles.megaMenu}>
-                    {link.subItems?.map((sub) => (
-                      <Link key={sub.href} href={sub.href} className={styles.megaLink}>
-                        <div className={styles.iconWrapper}>
-                          <sub.icon size={20} className={styles.megaIcon} />
-                        </div>
-                        <div className={styles.itemText}>
-                          <h4>{sub.label}</h4>
-                          <p>{sub.desc}</p>
-                        </div>
-                      </Link>
-                    ))}
+                    <div className={styles.megaGrid}>
+                      {serviceItems.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <Link key={item.title} href={item.href} className={styles.megaItem}>
+                            <div className={styles.megaIconWrapper}>
+                              <Icon size={20} />
+                            </div>
+                            <div className={styles.megaContent}>
+                              <h4>{item.title}</h4>
+                              <span>{item.subtitle}</span>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
                 </>
               ) : (
@@ -147,33 +198,31 @@ export default function Header() {
           >
             {navLinks.map((link) => (
               <div key={link.label} className={styles.mobileNavGroup}>
-                {link.isMega ? (
-                  <div className={styles.mobileMegaSection}>
-                    <h3 className={styles.mobileSectionTitle}>{link.label}</h3>
-                    <div className={styles.mobileSubGrid}>
-                      {link.subItems?.map(sub => (
-                        <Link
-                          key={sub.href}
-                          href={sub.href}
-                          onClick={() => setMobileOpen(false)}
-                          className={styles.mobileSubLink}
-                        >
-                          <div className={styles.mobileIconWrapper}>
-                            <sub.icon size={16} />
-                          </div>
-                          <span className={styles.mobileSubLabel}>{sub.label}</span>
-                        </Link>
-                      ))}
-                    </div>
+                <Link
+                  href={link.href}
+                  onClick={() => !link.hasMega && setMobileOpen(false)}
+                  className={`${styles.mobileLink} ${link.isCta ? styles.ctaButton : ''}`}
+                >
+                  {link.label}
+                  {link.hasMega && <ChevronDown size={18} />}
+                </Link>
+
+                {link.hasMega && (
+                  <div className={styles.mobileSubGrid}>
+                    {serviceItems.map((item) => (
+                      <Link
+                        key={item.title}
+                        href={item.href}
+                        onClick={() => setMobileOpen(false)}
+                        className={styles.mobileSubLink}
+                      >
+                        <div className={styles.mobileIconWrapper}>
+                          <item.icon size={16} />
+                        </div>
+                        <span className={styles.mobileSubLabel}>{item.title}</span>
+                      </Link>
+                    ))}
                   </div>
-                ) : (
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={`${styles.mobileLink} ${link.isCta ? styles.ctaButton : ''}`}
-                  >
-                    {link.label}
-                  </Link>
                 )}
               </div>
             ))}

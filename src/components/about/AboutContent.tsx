@@ -8,8 +8,6 @@ import {
   Code, Megaphone, Search, BarChart3
 } from 'lucide-react';
 import styles from '@/styles/About.module.css';
-import CTA from '@/components/home/CTA';
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -355,7 +353,6 @@ export default function AboutContent() {
         </div>
       </section>
 
-      <CTA />
     </>
   );
 }

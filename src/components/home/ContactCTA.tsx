@@ -46,161 +46,113 @@ export default function ContactCTA() {
     };
 
     return (
-        <section className={styles.ctaSection} id="contact-us">
-            {/* Background Decorators */}
-            <div className={styles.bgDecor}>
-                <div className={`${styles.orb} ${styles.orb1}`} />
-                <div className={`${styles.orb} ${styles.orb2}`} />
-            </div>
+        <section className={styles.section} id="contact-us">
+            <div className="container">
+                <div className={styles.header}>
+                    <div className={styles.badge}>
+                        <div className={styles.badgeIcon}>
+                            <div className={styles.badgeCircle} />
+                            <div className={styles.badgeLine} />
+                        </div>
+                        <span>Contact Us</span>
+                    </div>
+                    <h2 className={styles.title}>Get Your Free Quote Today!</h2>
+                </div>
 
-            <div className="container relative z-10">
-                <div className={styles.ctaContainer}>
-
-                    {/* Left Side: Content */}
+                <div className={styles.contentGrid}>
+                    {/* Form Side */}
                     <motion.div
-                        className={styles.ctaLeft}
+                        className={styles.formSide}
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-gradient" style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem' }}>
-                            Ready to Scale <br /> Your Business?
-                        </h2>
-                        <p className={styles.ctaText}>
-                            Let's build something extraordinary together. Whether you need a
-                            complete digital overhaul or a targeted campaign, we are here to help.
-                        </p>
-
-                        <div className={styles.contactInfo}>
-                            <div className={styles.infoItem}>
-                                <div className={styles.infoIcon}>
-                                    <Mail size={24} />
+                        <form onSubmit={handleSubmit} className={styles.form}>
+                            <div className={styles.inputGrid}>
+                                <div className={styles.inputGroup}>
+                                    <label>Your Name *</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        placeholder="Ex. John Doe"
+                                        required
+                                    />
                                 </div>
-                                <div className={styles.infoText}>
-                                    <h4>Email Us</h4>
-                                    <p>hello@meradigitals.com</p>
+                                <div className={styles.inputGroup}>
+                                    <label>Email *</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="example@gmail.com"
+                                        required
+                                    />
                                 </div>
-                            </div>
-
-                            <div className={styles.infoItem}>
-                                <div className={styles.infoIcon}>
-                                    <Phone size={24} />
-                                </div>
-                                <div className={styles.infoText}>
-                                    <h4>Call Us</h4>
-                                    <p>+91 98765 43210</p>
-                                </div>
-                            </div>
-
-                            <div className={styles.infoItem}>
-                                <div className={styles.infoIcon}>
-                                    <MapPin size={24} />
-                                </div>
-                                <div className={styles.infoText}>
-                                    <h4>Visit Us</h4>
-                                    <p>Ahmedabad, Gujarat, India</p>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Right Side: Form */}
-                    <motion.div
-                        className={styles.formRight}
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                        <div className={styles.formCard}>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: 700 }}>Get in Touch</h3>
-                            <form onSubmit={handleSubmit}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                    <div className={styles.formGroup}>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value={formData.name}
-                                            onChange={handleChange}
-                                            placeholder="Your Name"
-                                            className={styles.formInput}
-                                            required
-                                        />
-                                    </div>
-                                    <div className={styles.formGroup}>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            placeholder="Email Address"
-                                            className={styles.formInput}
-                                            required
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className={styles.formGroup} style={{ marginBottom: '1rem' }}>
+                                <div className={styles.inputGroup}>
+                                    <label>Phone *</label>
                                     <input
                                         type="tel"
                                         name="phone"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        placeholder="Phone Number"
-                                        className={styles.formInput}
+                                        placeholder="Enter Phone Number"
                                     />
                                 </div>
-
-                                <div className={styles.formGroup} style={{ marginBottom: '1.5rem' }}>
+                                <div className={styles.inputGroup}>
+                                    <label>Service Interested In *</label>
                                     <select
                                         name="service"
                                         value={formData.service}
                                         onChange={handleChange}
-                                        className={styles.formInput}
-                                        style={{ appearance: 'none' }}
+                                        required
                                     >
-                                        <option value="" disabled>Select Service Interest</option>
-                                        <option value="seo">SEO & Marketing</option>
-                                        <option value="dev">Web Development</option>
-                                        <option value="branding">Branding & Design</option>
-                                        <option value="other">Other</option>
+                                        <option value="" disabled>Select Service</option>
+                                        <option value="seo">SEO Mastery</option>
+                                        <option value="ads">Google Ads</option>
+                                        <option value="social">Social Media Marketing</option>
+                                        <option value="dev">Website Development</option>
                                     </select>
                                 </div>
+                            </div>
 
-                                <div className={styles.formGroup} style={{ marginBottom: '1.5rem' }}>
-                                    <textarea
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        placeholder="Tell us about your project..."
-                                        className={styles.formTextarea}
-                                        rows={4}
-                                        required
-                                    ></textarea>
-                                </div>
+                            <div className={styles.inputGroup}>
+                                <label>Your Message *</label>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    placeholder="Enter here.."
+                                    rows={8}
+                                    required
+                                />
+                            </div>
 
-                                <motion.button
-                                    type="submit"
-                                    className="btn btn-primary w-full justify-center"
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    disabled={status === 'submitting'}
-                                >
-                                    {status === 'submitting' ? 'Sending...' : 'Send Message'}
-                                    {!status && <Send size={18} className="ml-2" />}
-                                </motion.button>
-
-                                {status === 'success' && (
-                                    <p className="text-green-500 mt-2 text-center text-sm">Message sent successfully!</p>
-                                )}
-                                {status === 'error' && (
-                                    <p className="text-red-500 mt-2 text-center text-sm">Something went wrong. Please try again.</p>
-                                )}
-                            </form>
-                        </div>
+                            <button type="submit" className={styles.submitBtn} disabled={status === 'submitting'}>
+                                {status === 'submitting' ? 'Sending...' : 'Send Message'}
+                            </button>
+                        </form>
                     </motion.div>
 
+                    {/* Image Side */}
+                    <div className={styles.imageSide}>
+                        <motion.div
+                            className={styles.imageWrapper}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
+                                alt="Team Working"
+                                className={styles.mainImage}
+                            />
+                            <div className={styles.sparkle1} />
+                            <div className={styles.sparkle2} />
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

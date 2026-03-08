@@ -1,154 +1,125 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Calendar, User, Clock } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { useRef } from 'react';
 import styles from '@/styles/LatestBlogs.module.css';
 
-const blogs = [
+interface BlogPost {
+  title: string;
+  category: string;
+  image: string;
+  slug: string;
+  desc: string;
+}
+
+const blogs: BlogPost[] = [
   {
-    title: 'The Future of AI in Digital Marketing: 2026 and Beyond',
-    date: 'Oct 12, 2025',
-    category: 'Trends',
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200',
-    slug: 'future-of-ai-marketing',
-    desc: 'Artificial Intelligence is not just a buzzword; it’s reshaping how brands connect with consumers. From hyper-personalization to predictive analytics, discover the key trends that will define the next decade of marketing.',
-    readTime: '8 min read',
-    author: 'Sarah Jenkins'
+    title: "A Beginner's Guide to Running Profitable Ad Campaigns",
+    category: 'Paid Advertising',
+    image:
+      'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=700&auto=format&fit=crop',
+    slug: 'beginners-guide-profitable-ad-campaigns',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
   },
   {
-    title: 'SEO Strategies for 2026: What Changed?',
-    date: 'Sep 28, 2025',
+    title: 'Top 10 SEO Strategies That Still Work in 2025',
     category: 'SEO',
-    image: 'https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&q=80&w=800',
-    slug: 'seo-strategies-2026',
-    readTime: '5 min read',
-    author: 'Mike Ross'
+    image:
+      'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=700&auto=format&fit=crop',
+    slug: 'top-10-seo-strategies-2025',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
   },
   {
-    title: 'Why Minimalist Design Converts Better',
-    date: 'Sep 15, 2025',
-    category: 'Design',
-    image: 'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&q=80&w=800',
-    slug: 'minimalist-design-converts',
-    readTime: '6 min read',
-    author: 'Elena Fisher'
-  }
+    title: 'Why Long-Form Content Still Dominates in 2025',
+    category: 'Content Marketing',
+    image:
+      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=700&auto=format&fit=crop',
+    slug: 'long-form-content-dominates-2025',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+  },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+};
+
 export default function LatestBlogs() {
-  const featuredBlog = blogs[0];
-  const sidebarBlogs = blogs.slice(1);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   return (
-    <section className={styles.section} id="blogs">
-      {/* Background Decorators */}
-      <div className={styles.bgDecor}>
-        <div className={`${styles.orb} ${styles.orb1}`} />
-        <div className={`${styles.orb} ${styles.orb2}`} />
-      </div>
+    <section className={styles.section} id="blogs" ref={sectionRef}>
+      <div className="container">
 
-      <div className="container relative z-10">
+        {/* Section Header */}
         <motion.div
           className={styles.sectionHeader}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <div className={styles.pillBadge}>
-            <Calendar size={14} />
-            <span>Latest Insights</span>
+          <div className={styles.headerLeft}>
+            <div className={styles.badge}>
+              <div className={styles.badgeIcon}>
+                <div className={styles.badgeCircle} />
+                <div className={styles.badgeLine} />
+              </div>
+              <span>News &amp; Blogs</span>
+            </div>
+            <h2 className={styles.heading}>
+              Our Latest<br />News &amp; Blogs
+            </h2>
           </div>
-          <h2 className={styles.sectionTitle}>
-            <span className="text-gradient">Trends & Analysis</span>
-          </h2>
-          <p className={styles.sectionSubtitle}>
-            Stay ahead of the curve with our expert analysis on digital marketing, design, and technology.
-          </p>
+
+          <Link href="/blogs" className={styles.viewAllBtn}>
+            View All Blogs <ArrowRight size={16} />
+          </Link>
         </motion.div>
 
-        <div className={styles.magazineGrid}>
-          {/* Main Featured Article */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className={styles.featuredCard}>
-              <div className={styles.featuredImageWrapper}>
-                <img
-                  src={featuredBlog.image}
-                  alt={featuredBlog.title}
-                  className={styles.featuredImage}
-                />
-              </div>
-              <div className={styles.featuredOverlay}>
-                <div className={styles.featuredMeta}>
-                  <span className={styles.featuredCategory}>{featuredBlog.category}</span>
-                  <span>{featuredBlog.readTime}</span>
-                  <span>•</span>
-                  <span>{featuredBlog.date}</span>
-                </div>
-                <h3 className={styles.featuredTitle}>{featuredBlog.title}</h3>
-                <p className={styles.featuredDesc}>{featuredBlog.desc}</p>
-                <div className={styles.readMoreBtn}>
-                  Read Full Story <ArrowRight size={20} />
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Sidebar Articles */}
-          <div className={styles.sidebar}>
-            {sidebarBlogs.map((blog, i) => (
-              <motion.div
-                key={i}
-                className="h-full"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.2 }}
-              >
-                <div className={styles.sidebarCard}>
-                  <div className={styles.sidebarImageWrapper}>
-                    <img
-                      src={blog.image}
-                      alt={blog.title}
-                      className={styles.sidebarImage}
-                    />
-                    <span className={styles.sidebarBadges}>{blog.category}</span>
-                  </div>
-                  <div className={styles.sidebarContent}>
-                    <div className={styles.sidebarMeta}>
-                      <Clock size={14} />
-                      <span>{blog.readTime}</span>
-                      <span className="mx-1">•</span>
-                      <span>{blog.date}</span>
-                    </div>
-                    <h4 className={styles.sidebarTitle}>{blog.title}</h4>
-                    <div className={styles.sidebarLink}>
-                      Read Article <ArrowRight size={16} />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-
+        {/* Blog Cards Grid */}
+        <motion.div
+          className={styles.cardsGrid}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
+          {blogs.map((blog) => (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              style={{ marginTop: 'auto' }}
+              key={blog.slug}
+              className={styles.blogCard}
+              variants={cardVariants}
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.25 }}
             >
-              <div className="btn btn-outline w-full justify-center">
-                View All Articles <ArrowRight size={18} className="ml-2" />
-              </div>
+              <Link href={`/blogs/${blog.slug}`} className={styles.cardInner}>
+                <div className={styles.imageWrapper}>
+                  <img
+                    src={blog.image}
+                    alt={blog.title}
+                    className={styles.cardImage}
+                  />
+                </div>
+
+                <div className={styles.cardBody}>
+                  <span className={styles.categoryPill}>{blog.category}</span>
+                  <h3 className={styles.cardTitle}>{blog.title}</h3>
+                  <p className={styles.cardDesc}>{blog.desc}</p>
+                  <div className={styles.readMore}>
+                    Read More <ArrowRight size={15} />
+                  </div>
+                </div>
+              </Link>
             </motion.div>
-          </div>
-        </div>
+          ))}
+        </motion.div>
 
       </div>
     </section>

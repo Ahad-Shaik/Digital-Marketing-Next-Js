@@ -1,185 +1,202 @@
-/* CTA / Contact Form Section */
-.ctaSection {
-    background: var(--bg-secondary);
+.section {
+    padding: 80px 0;
+    background-color: #fff;
     position: relative;
     overflow: hidden;
-    padding: var(--space-lg) 0;
-    margin-top: var(--space-md);
 }
 
-.ctaContainer {
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1.25rem 0.5rem 0.5rem;
+    background: #f1f5f9;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #122a20;
+    margin-bottom: 1.5rem;
+}
+
+.badgeIcon {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badgeCircle {
+    width: 20px;
+    height: 20px;
+    background-color: var(--brand-green-lime);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+}
+
+.badgeLine {
+    width: 6px;
+    height: 20px;
+    background-color: #122a20;
+    border-radius: 4px;
+    position: absolute;
+    right: 6px;
+    z-index: 2;
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: #122a20;
+}
+
+.contentGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.ctaLeft {
-    position: relative;
-    z-index: 2;
+.formSide {
+    max-width: 100%;
 }
 
-.ctaTitle {
-    font-size: 3rem;
-    line-height: 1.1;
+.inputGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
-.ctaText {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-    max-width: 500px;
+@media (max-width: 640px) {
+    .inputGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.contactInfo {
-    margin-top: 3rem;
+.inputGroup {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-}
-
-.infoItem {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.infoIcon {
-    width: 48px;
-    height: 48px;
-    background: rgba(249, 115, 22, 0.1);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-primary);
-}
-
-.infoText h4 {
-    font-size: 1rem;
-    margin: 0;
-    color: var(--text-primary);
-}
-
-.infoText p {
-    font-size: 0.9rem;
-    margin: 0;
-    color: var(--text-secondary);
-}
-
-
-/* Form Styles */
-.formCard {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 3rem;
-    position: relative;
-    z-index: 2;
-    box-shadow: var(--glass-shadow);
-}
-
-.formGroup {
+    gap: 0.75rem;
     margin-bottom: 1.5rem;
 }
 
-.formLabel {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-primary);
+.inputGroup label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #122a20;
 }
 
-.formInput,
-.formTextarea {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
     padding: 1rem 1.25rem;
-    color: var(--text-primary);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #122a20;
+    transition: all 0.2s ease;
+    width: 100%;
 }
 
-.formInput:focus,
-.formTextarea:focus {
+.inputGroup input::placeholder,
+.inputGroup textarea::placeholder {
+    color: #94a3b8;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
     outline: none;
-    border-color: var(--accent-primary);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 0 4px var(--accent-glow);
-}
-
-.formTextarea {
-    min-height: 120px;
-    resize: vertical;
+    border-color: var(--brand-green-lime);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(163, 230, 53, 0.1);
 }
 
 .submitBtn {
+    padding: 1rem 2.5rem;
+    background: #122a20;
+    color: #fff;
+    border-radius: 100px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.submitBtn:hover {
+    background: #0d1e16;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(18, 42, 32, 0.2);
+}
+
+.imageSide {
+    position: relative;
     width: 100%;
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    padding-top: 1rem;
 }
 
-/* Background Decorators */
-.bgDecor {
+.imageWrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.mainImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+.imageWrapper:hover .mainImage {
+    filter: grayscale(0%);
+}
+
+.sparkle1,
+.sparkle2 {
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
+    width: 60px;
+    height: 60px;
+    background: var(--brand-green-lime);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    z-index: 5;
 }
 
-.orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
+.sparkle1 {
+    bottom: 10%;
+    right: -20px;
 }
 
-.orb1 {
-    top: -10%;
-    right: -10%;
-    width: 400px;
-    height: 400px;
-    background: var(--accent-primary);
-    opacity: 0.15;
+.sparkle2 {
+    bottom: 30%;
+    right: -10px;
+    width: 30px;
+    height: 30px;
 }
 
-.orb2 {
-    bottom: -10%;
-    left: -10%;
-    width: 300px;
-    height: 300px;
-    background: var(--accent-secondary);
-    opacity: 0.1;
-}
-
-@media (max-width: 900px) {
-    .ctaContainer {
+@media (max-width: 1024px) {
+    .contentGrid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
 
-    .ctaTitle {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .ctaTitle {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .formCard {
-        padding: 1.5rem;
+    .imageSide {
+        max-width: 600px;
+        margin: 0 auto;
     }
 }

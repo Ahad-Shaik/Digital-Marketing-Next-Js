@@ -1,238 +1,320 @@
+/* ============================================================
+   Why Choose Us Section
+   ============================================================ */
 .section {
-    padding: 8rem 0;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(249, 115, 22, 0.02) 100%);
+  padding: 100px 0 100px;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 2rem;
+/* Section Header */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
-    align-items: center;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  background: #f1f5f9;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #122a20;
 }
 
-/* Left Content Styles */
-.leftContent {
-    display: flex;
-    flex-direction: column;
+.badgeIcon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.eyebrow {
-    color: var(--accent-primary);
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
-    display: block;
+.badgeCircle {
+  width: 20px;
+  height: 20px;
+  background-color: #a3e635;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
 }
 
-.title {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 800;
-    margin-bottom: 2rem;
-    line-height: 1.1;
-    color: var(--text-primary);
-    max-width: 600px;
+.badgeLine {
+  width: 6px;
+  height: 20px;
+  background-color: #122a20;
+  border-radius: 4px;
+  position: absolute;
+  right: 6px;
+  z-index: 2;
 }
 
-.highlight {
-    color: var(--accent-primary);
+.heading {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  color: #122a20;
+  line-height: 1.2;
+  margin: 0;
 }
 
-.description {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 3.5rem;
-    max-width: 550px;
+/* Main Two-Column Grid */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 3.5rem;
+  align-items: center;
 }
 
-.featuresList {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
+/* ============================================================
+   Left — Image Collage
+   ============================================================ */
+.imagePanel {
+  width: 100%;
 }
 
-.featureItem {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
+.imageCollage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 0.75rem;
+  height: 460px;
 }
 
-.iconContainer {
-    flex-shrink: 0;
-    width: 64px;
-    height: 64px;
-    background: rgba(249, 115, 22, 0.05);
-    border: 1px solid rgba(249, 115, 22, 0.1);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-primary);
-    transition: all 0.3s ease;
+/* Left tall image */
+.imgLeft {
+  grid-row: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+  height: 100%;
 }
 
-.featureItem:hover .iconContainer {
-    background: var(--accent-primary);
-    color: white;
-    transform: translateY(-5px);
+.imgLeft:hover {
+  filter: grayscale(0%);
 }
 
-.featureText h3 {
-    font-size: 1.25rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
+.imgLeft img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.featureText p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0;
+/* Right column — stacked image + squiggle card */
+.imgRightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
 }
 
-/* Right Content Styles */
-.rightContent {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+.imgRight {
+  flex: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+  min-height: 0;
 }
 
-.imageWrapper {
-    position: relative;
-    margin-bottom: 3rem;
-    width: 100%;
-    max-width: 500px;
+.imgRight:hover {
+  filter: grayscale(0%);
 }
 
-.blob {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: 0;
-    opacity: 0.5;
+.imgRight img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.manImage {
-    width: 100%;
-    height: auto;
-    position: relative;
-    z-index: 1;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+/* Lime-green squiggle decorative card */
+.squiggleCard {
+  background: #a3e635;
+  border-radius: 20px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  flex-shrink: 0;
 }
 
-.ctaBox {
-    width: 100%;
-    max-width: 500px;
+.squiggleSvg {
+  width: 100%;
+  height: auto;
 }
 
-.ctaTitle {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+/* Sparkle shapes */
+.sparkle,
+.sparkleSm {
+  position: absolute;
+  background: #122a20;
+  clip-path: polygon(
+    50% 0%, 54% 46%, 100% 50%,
+    54% 54%, 50% 100%, 46% 54%,
+    0% 50%, 46% 46%
+  );
+  z-index: 10;
 }
 
-.ctaDesc {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 2.5rem;
+.sparkle {
+  width: 30px;
+  height: 30px;
+  bottom: 14%;
+  left: -4px;
 }
 
-.ctaButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    background: transparent;
-    border: 2px solid var(--text-primary);
-    border-radius: 16px;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
+.sparkleSm {
+  width: 18px;
+  height: 18px;
+  bottom: 8%;
+  left: 28px;
 }
 
-.ctaButton:hover {
-    background: var(--text-primary);
-    color: var(--bg-primary);
-    box-shadow: 0 10px 30px var(--accent-glow);
+/* ============================================================
+   Right — 2×2 Feature Cards
+   ============================================================ */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-.dot {
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 10px;
-    height: 10px;
-    background: var(--accent-primary);
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--accent-primary);
+.featureCard {
+  background: #122a20;
+  border-radius: 18px;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: default;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Responsive Styles */
+.featureCard:hover {
+  box-shadow: 0 16px 40px rgba(18, 42, 32, 0.2);
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  background: #a3e635;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #122a20;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cardDesc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 @media (max-width: 1100px) {
-    .grid {
-        gap: 2rem;
-    }
+  .mainGrid {
+    gap: 2.5rem;
+  }
 }
 
-@media (max-width: 1024px) {
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 6rem;
-    }
+@media (max-width: 900px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 
-    .leftContent {
-        text-align: center;
-        align-items: center;
-    }
+  .imageCollage {
+    height: 380px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
 
-    .description {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .featureItem {
-        text-align: left;
-    }
+  .cardsGrid {
+    max-width: 560px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 
 @media (max-width: 640px) {
-    .section {
-        padding: 5rem 0;
-    }
+  .section {
+    padding: 70px 0 70px;
+  }
 
-    .title {
-        font-size: 2.25rem;
-    }
+  .imageCollage {
+    height: 320px;
+    grid-template-columns: 1fr 0.75fr;
+    max-width: 100%;
+  }
 
-    .ctaTitle {
-        font-size: 2rem;
-    }
+  .squiggleCard {
+    height: 100px;
+    padding: 1rem;
+  }
 
-    .featureItem {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+  .cardsGrid {
+    max-width: 100%;
+  }
+
+  .featureCard {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageCollage {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 0.75rem;
+  }
+
+  .imgLeft {
+    height: 220px;
+  }
+
+  .imgRightCol {
+    flex-direction: row;
+  }
+
+  .imgRight {
+    height: 160px;
+  }
+
+  .squiggleCard {
+    height: 160px;
+    flex: 1;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heading {
+    font-size: 1.9rem;
+  }
 }

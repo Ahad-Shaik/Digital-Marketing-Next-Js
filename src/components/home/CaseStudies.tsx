@@ -8,29 +8,25 @@ import styles from '@/styles/CaseStudies.module.css';
 const projects = [
   {
     title: 'Fintech Revolution',
-    client: 'NeoBank',
-    category: 'App Development',
+    category: 'APP DEVELOPMENT',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000',
     gridArea: 'large',
   },
   {
-    title: 'Sustainable E-Commerce',
-    client: 'GreenLife',
-    category: 'SEO & CRO',
+    title: 'Strategy & Growth',
+    category: 'WORKFLOW STRATEGY',
     image: 'https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&q=80&w=1000',
     gridArea: 'tall',
   },
   {
-    title: 'AI Dashboard',
-    client: 'DataFlow',
-    category: 'Product Design',
+    title: 'Data Insights',
+    category: 'ANALYTICS & BI',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000',
     gridArea: 'wide',
   },
   {
-    title: 'Healthcare App',
-    client: 'MediCare',
-    category: 'Mobile App',
+    title: 'Future Tech',
+    category: 'INNOVATION',
     image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000',
     gridArea: 'small',
   }
@@ -76,10 +72,9 @@ export default function CaseStudies() {
             transition={{ duration: 0.8 }}
           >
             <div className={styles.eyebrow}>
-              <Zap size={14} className="mr-2" />
               <span>PORTFOLIO</span>
             </div>
-            <h2 className="text-gradient">Featured Work</h2>
+            <h2 className={styles.title}>Featured Work</h2>
             <p className={styles.subtitle}>Transforming ideas into digital reality.</p>
           </motion.div>
 
@@ -118,17 +113,8 @@ export default function CaseStudies() {
               </div>
 
               <div className={styles.content}>
-                <div className={styles.meta}>
-                  <span className={styles.category}>{project.category}</span>
-                  <h3 className={styles.title}>{project.title}</h3>
-                </div>
-
-                <div className={styles.footer}>
-                  <span className={styles.client}>{project.client}</span>
-                  <div className={styles.arrowCircle}>
-                    <ArrowUpRight size={20} />
-                  </div>
-                </div>
+                <span className={styles.category}>{project.category}</span>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
               </div>
             </motion.div>
           ))}

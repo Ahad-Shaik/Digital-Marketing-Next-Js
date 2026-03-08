@@ -1,15 +1,18 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import Hero from '@/components/home/Hero';
+import AboutUs from '@/components/home/AboutUs';
 import TrustedBy from '@/components/home/TrustedBy';
 import Expertise from '@/components/home/Expertise';
 import Services from '@/components/home/Services';
 import WhyChooseUs from '@/components/home/WhyChooseUs';
+import Testimonials from '@/components/home/Testimonials';
 import CaseStudies from '@/components/home/CaseStudies';
 import LatestBlogs from '@/components/home/LatestBlogs';
 import FAQ from '@/components/home/FAQ';
 import ContactCTA from '@/components/home/ContactCTA';
 import VisionCTA from '@/components/home/VisionCTA';
+import ElephantMascot from '@/components/common/ElephantMascot';
 import styles from '@/styles/Home.module.css';
 import Script from 'next/script';
 
@@ -109,15 +112,18 @@ export default async function Home() {
       />
 
       <Hero data={data?.hero} />
+      <AboutUs />
       <TrustedBy />
       <Expertise data={data?.expertise} />
       <Services />
       <VisionCTA />
       <WhyChooseUs />
+      <Testimonials />
       <CaseStudies />
       <LatestBlogs />
       <FAQ />
       <ContactCTA />
+      <ElephantMascot />
     </main>
   );
 }

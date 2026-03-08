@@ -1,126 +1,104 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Calendar, User, ArrowRight, Tag } from 'lucide-react';
-import styles from '@/styles/BlogListing.module.css';
+import { Search, ArrowRight } from 'lucide-react';
 import { blogsData } from '@/data/blogs';
+import styles from '@/styles/BlogListing.module.css';
+
+const POPULAR_TAGS = [
+  'SEO',
+  'Email Marketing',
+  'Social Media Marketing',
+  'PPC',
+  'Affiliate Marketing',
+  'Local SEO',
+  'Influencer Marketing',
+];
 
 export default function BlogList() {
-  const featuredBlog = blogsData[0];
-  const otherBlogs = blogsData.slice(1);
+  const recentPosts = blogsData.slice(0, 3);
 
   return (
     <div className={styles.wrapper}>
-      <div className="container">
+      <div className={styles.container}>
 
-        {/* Header Section */}
         <div className={styles.header}>
           <span className={styles.label}>
-            Mera Insights
+            <span className={styles.labelDots}>
+              <span className={styles.dot} />
+              <span className={styles.dotGreen} />
+            </span>
+            News &amp; Blogs
           </span>
-          <h1 className={styles.title}>
-            Strategic Thoughts <br /> & Digital Perspectives
-          </h1>
-          <p className={styles.subtitle}>
-            Explore expert analysis on SEO, performance marketing, and the future of digital ecosystems.
-          </p>
+          <h1 className={styles.title}>Our Latest News &amp; Blogs</h1>
         </div>
 
-        {/* Featured Blog */}
-        <div className={styles.featuredSection}>
-          <Link href={`/blogs/${featuredBlog.slug}`} className={styles.featuredCard}>
-            <div className={styles.featuredImageWrapper}>
-              <img src={featuredBlog.image} alt={featuredBlog.title} className={styles.featuredImage} />
-            </div>
-            <div className={styles.featuredContent}>
-              <div className={styles.featuredMeta}>
-                <span className={styles.featuredCategory}>{featuredBlog.category}</span>
-                <span>•</span>
-                <span className={styles.featuredDate}>{featuredBlog.date}</span>
-              </div>
-              <h2 className={styles.featuredTitle}>{featuredBlog.title}</h2>
-              <p className={styles.featuredExcerpt}>{featuredBlog.excerpt}</p>
-              <div className={styles.readMoreBtn}>
-                Read Full Article <ArrowRight size={20} />
-              </div>
-            </div>
-          </Link>
-        </div>
+        <div className={styles.layout}>
 
-        {/* Blog Grid */}
-        <div className={styles.grid}>
-          {otherBlogs.map((blog, index) => (
-            <motion.div
-              key={blog.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Link href={`/blogs/${blog.slug}`} className={styles.card}>
+          <div className={styles.posts}>
+            {blogsData.map((blog) => (
+              <Link key={blog.slug} href={`/blogs/${blog.slug}`} className={styles.card}>
                 <div className={styles.cardImageWrapper}>
                   <img src={blog.image} alt={blog.title} className={styles.cardImage} />
-                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/10 uppercase tracking-widest">
-                    {blog.category}
-                  </div>
                 </div>
-
-                <div className={styles.cardContent}>
-                  <div className={styles.cardMeta}>
-                    <div className={styles.cardDate}>
-                      <Calendar size={14} /> {blog.date}
-                    </div>
-                    <div className={styles.cardDate}>
-                      <Tag size={14} /> {blog.tags[0]}
-                    </div>
+                <div className={styles.cardBody}>
+                  <div className={styles.badgeRow}>
+                    <span className={styles.badge}>{blog.category}</span>
+                    <span className={styles.badge}>{blog.date}</span>
                   </div>
-
-                  <h3 className={styles.cardTitle}>{blog.title}</h3>
+                  <h2 className={styles.cardTitle}>{blog.title}</h2>
                   <p className={styles.cardExcerpt}>{blog.excerpt}</p>
-
-                  <div className={styles.cardFooter}>
-                    <div className={styles.author}>
-                      <div className={styles.authorAvatar}>
-                        {blog.author.charAt(0)}
-                      </div>
-                      <span className={styles.authorName}>{blog.author}</span>
-                    </div>
-                    <div className={styles.cardAction}>
-                      <ArrowRight size={20} />
-                    </div>
+                  <div className={styles.readMore}>
+                    Read More <ArrowRight size={15} />
                   </div>
                 </div>
               </Link>
-            </motion.div>
-          ))}
-        </div>
-
-      </div>
-
-      {/* Newsletter Section */}
-      <section className={styles.newsletterSection}>
-        <div className="container">
-          <div className={styles.newsletterCard}>
-            <div className={styles.newsletterGlow} />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Stay Ahead of the Curve</h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
-              Join 5,000+ industry leaders receiving our weekly strategic briefings on digital growth and AI.
-            </p>
-
-            <div className={styles.inputGroup}>
-              <input
-                type="email"
-                placeholder="Enter your business email"
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-orange-500 transition-colors"
-              />
-              <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-orange-500/20">
-                Subscribe
-              </button>
-            </div>
+            ))}
           </div>
+
+          <aside className={styles.sidebar}>
+
+            <div className={styles.sidebarCard}>
+              <h3 className={styles.sidebarHeading}>Search</h3>
+              <div className={styles.searchBox}>
+                <input type="text" placeholder="Search" className={styles.searchInput} />
+                <Search size={18} className={styles.searchIcon} />
+              </div>
+            </div>
+
+            <div className={styles.sidebarCard}>
+              <h3 className={styles.sidebarHeading}>Popular Tags</h3>
+              <div className={styles.tagCloud}>
+                {POPULAR_TAGS.map((tag) => (
+                  <span key={tag} className={styles.tag}>{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.sidebarCard}>
+              <h3 className={styles.sidebarHeading}>Recent Post</h3>
+              <div className={styles.recentList}>
+                {recentPosts.map((post) => (
+                  <Link key={post.slug} href={`/blogs/${post.slug}`} className={styles.recentItem}>
+                    <img src={post.image} alt={post.title} className={styles.recentThumb} />
+                    <div className={styles.recentInfo}>
+                      <p className={styles.recentTitle}>{post.title}</p>
+                      <span className={styles.recentDate}>{post.date}</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.ctaCard}>
+              <span className={styles.ctaLabel}>Hire Us</span>
+              <h3 className={styles.ctaTitle}>Looking to Elevate Your Digital Presence?</h3>
+              <Link href="/contact" className={styles.ctaButton}>Hire Me Now</Link>
+            </div>
+
+          </aside>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

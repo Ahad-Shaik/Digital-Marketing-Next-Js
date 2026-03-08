@@ -8,8 +8,8 @@
     "ctaText": "Get Started",
     "ctaLink": "/contact-us",
     "secondaryCtaText": "How it Works",
-    "mainImage": "https://www.shutterstock.com/shutterstock/videos/3943668659/thumb/1.jpg?ip=x480",
-    "secondaryImage": "https://engeniusweb.com/wp-content/uploads/2023/08/1121-scaled.jpg"
+    "mainImage": "/hero-elephant.png",
+    "secondaryImage": ""
   },
   "seo": {
     "title": "Premium Digital Marketing Agency",
