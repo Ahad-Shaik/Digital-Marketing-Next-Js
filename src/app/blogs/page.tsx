@@ -1,3 +1,4 @@
+import BlogHero from '@/components/blog/BlogHero';
 import BlogList from '@/components/blog/BlogList';
 
 export const metadata = {
@@ -6,5 +7,10 @@ export const metadata = {
 };
 
 export default function BlogListingPage() {
-  return <BlogList />;
+  return (
+    <>
+      <BlogHero />
+      <BlogList />
+    </>
+  );
 }

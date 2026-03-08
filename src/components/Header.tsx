@@ -109,11 +109,7 @@ export default function Header() {
     >
       <div className={styles.nav}>
         <Link href="/" className={styles.logo}>
-          <div className={styles.logoIcon}>
-            <div className={styles.iconCircle} />
-            <div className={styles.iconLine} />
-          </div>
-          <span className={styles.brandText}>Digital Marketing.</span>
+          <span className={`text-gradient ${styles.brandText}`}>Mera Digitals</span>
         </Link>
 
         {/* Desktop Nav */}

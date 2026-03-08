@@ -159,12 +159,6 @@
     width: 100%;
     height: auto;
     display: block;
-    filter: grayscale(100%);
-    transition: filter 0.5s ease;
-}
-
-.imageWrapper:hover .mainImage {
-    filter: grayscale(0%);
 }
 
 .sparkle1,
