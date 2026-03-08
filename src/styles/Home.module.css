@@ -20,7 +20,7 @@
 
 /* Hero Section */
 .heroSection {
-  padding: 120px 0 80px;
+  padding: 60px 0 30px;
   background-color: #fff;
   position: relative;
   overflow: hidden;
@@ -390,7 +390,7 @@
 /* Services Header */
 .sectionHeader {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   position: relative;
   z-index: 10;
   display: flex;
@@ -432,7 +432,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 2.5rem;
   position: relative;
   z-index: 2;
 }
@@ -779,7 +779,7 @@
 
 /* FAQ Section */
 .faqSection {
-  padding: 6rem 0;
+  padding: var(--space-xl) 0;
   background: transparent;
   /* Was var(--bg-primary) */
   position: relative;
@@ -790,7 +790,7 @@
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   color: var(--text-primary);
   letter-spacing: -0.02em;
 }
@@ -1256,7 +1256,7 @@
    About Us Section
    ============================================================ */
 .aboutSection {
-  padding: 100px 0 0;
+  padding: var(--space-xl) 0 0;
   background-color: #fff;
   position: relative;
   overflow: hidden;

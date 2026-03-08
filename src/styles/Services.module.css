@@ -2,7 +2,7 @@
    Services Section
    ============================================================ */
 .section {
-  padding: 8rem 0 6rem;
+  padding: var(--space-xl) 0 4rem;
   position: relative;
   overflow: hidden;
 }

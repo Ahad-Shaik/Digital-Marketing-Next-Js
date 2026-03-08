@@ -2,7 +2,7 @@
    Testimonials Section
    ============================================================ */
 .section {
-  padding: 100px 0;
+  padding: var(--space-xl) 0;
   background-color: #f1f5f9;
   position: relative;
   overflow: hidden;

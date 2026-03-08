@@ -1,5 +1,5 @@
 .section {
-    padding: 8rem 0;
+    padding: var(--space-xl) 0;
     position: relative;
     overflow: hidden;
     background-color: var(--bg-primary);
@@ -13,7 +13,7 @@
 
 .header {
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
     position: relative;
     z-index: 2;
 }

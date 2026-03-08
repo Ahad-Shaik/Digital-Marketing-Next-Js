@@ -2,7 +2,7 @@
    Why Choose Us Section
    ============================================================ */
 .section {
-  padding: 100px 0 100px;
+  padding: var(--space-xl) 0;
   background-color: #fff;
   position: relative;
   overflow: hidden;

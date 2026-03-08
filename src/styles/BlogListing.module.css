@@ -1,7 +1,7 @@
 /* ── Blog Hero (Redesign) ────────────────────────── */
 
 .heroSection {
-  padding: 160px 0 100px;
+  padding: 100px 0 60px;
   background-color: var(--bg-primary);
   position: relative;
   overflow: hidden;

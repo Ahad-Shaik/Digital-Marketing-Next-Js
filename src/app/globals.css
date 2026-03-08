@@ -30,11 +30,11 @@
   --glass-backdrop: blur(16px);
 
   /* Spacing System */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 2rem;
-  --space-lg: 4rem;
-  --space-xl: 8rem;
+  --space-xs: 0.3rem;
+  --space-sm: 0.6rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
 
   /* Container Max Width */
   --container-width: 1280px;
@@ -43,7 +43,7 @@
   --menu-bg: rgba(18, 18, 26, 0.95);
 }
 
-[data-theme='light'] {
+[data-theme="light"] {
   /* Premium Light Mode Palette */
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb;
@@ -71,7 +71,7 @@
   --menu-bg: rgba(255, 255, 255, 0.98);
 }
 
-[data-theme='light'] .text-gradient {
+[data-theme="light"] .text-gradient {
   color: var(--accent-primary);
   background: none;
   -webkit-text-fill-color: initial;
@@ -103,7 +103,7 @@
     radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
 }
 
-[data-theme='light'] .mesh-gradient {
+[data-theme="light"] .mesh-gradient {
   background-color: #f8fafc;
   background-image:
     radial-gradient(at 0% 0%, hsla(210, 40%, 98%, 1) 0, transparent 50%),
@@ -112,7 +112,13 @@
 }
 
 .text-reveal {
-  background: linear-gradient(to right, #fff 20%, #64748b 40%, #64748b 60%, #fff 80%);
+  background: linear-gradient(
+    to right,
+    #fff 20%,
+    #64748b 40%,
+    #64748b 60%,
+    #fff 80%
+  );
   background-size: 200% auto;
   color: #000;
   background-clip: text;
@@ -130,7 +136,9 @@
 
 /* Ensure body uses the variables */
 body {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 * {
@@ -145,7 +153,11 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family:
+    var(--font-inter),
+    system-ui,
+    -apple-system,
+    sans-serif;
   line-height: 1.6;
   scroll-behavior: smooth;
 }
@@ -225,7 +237,9 @@ p {
   border-radius: 16px;
   box-shadow: var(--glass-shadow);
   padding: var(--space-md);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .glass-card:hover {
@@ -245,7 +259,11 @@ p {
   position: absolute;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(
+    circle,
+    var(--accent-glow) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
   border-radius: 50%;
   z-index: -1;
   pointer-events: none;

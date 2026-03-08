@@ -2,7 +2,7 @@
    Latest Blogs / News Section
    ============================================================ */
 .section {
-  padding: 100px 0;
+  padding: var(--space-xl) 0;
   background-color: #122a20;
   position: relative;
   overflow: hidden;
