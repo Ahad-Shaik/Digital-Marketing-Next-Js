@@ -6,7 +6,13 @@ import path from 'path';
 // To send real emails, you can use services like Resend, Nodemailer, or SendGrid.
 // Start by installing the Resend SDK: npm install resend
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend lazily or handle missing key
+const getResend = () => {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) return null;
+    return new Resend(apiKey);
+};
+
 
 export async function POST(request: Request) {
     try {
@@ -66,8 +72,8 @@ export async function POST(request: Request) {
         // EMAIL SENDING IMPLEMENTATION (Uncomment and configure to use)
         // ----------------------------------------------------------------------
 
-        // Example using Resend:
-        if (!process.env.RESEND_API_KEY) {
+        const resend = getResend();
+        if (!resend) {
             console.error('Missing RESEND_API_KEY');
             // Don't crash in dev if key is missing, just log
             return NextResponse.json(

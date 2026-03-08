@@ -88,30 +88,21 @@ export default function Hero({ data }: HeroProps) {
           <div className={styles.collageGrid}>
             {/* Image Collage Shapes */}
             <motion.div
-              className={`${styles.collageItem} ${styles.itemSmall}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=400&auto=format&fit=crop" alt="Digital Marketing 1" />
-            </motion.div>
-
-            <motion.div
               className={`${styles.collageItem} ${styles.itemMedium}`}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             >
-              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=400&auto=format&fit=crop" alt="Digital Marketing 2" />
+              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop" alt="Digital Strategy" />
             </motion.div>
 
             <motion.div
-              className={`${styles.collageItem} ${styles.itemLarge}`}
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
+              className={`${styles.collageItem} ${styles.itemSmall}`}
+              initial={{ opacity: 0, x: -30, y: 30 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
             >
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" alt="Digital Marketing 3" />
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=400&auto=format&fit=crop" alt="Data Analytics" />
             </motion.div>
 
             {/* HIRE US Stamp */}

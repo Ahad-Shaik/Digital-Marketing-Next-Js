@@ -88,6 +88,7 @@ export default function Services() {
                   key={service.id}
                   className={`${styles.serviceItem} ${activeService.id === service.id ? styles.active : ''}`}
                   onClick={() => setActiveService(service)}
+                  onMouseEnter={() => setActiveService(service)}
                 >
                   <div className={styles.serviceItemContent}>
                     <div className={styles.serviceIconWrapper}>
