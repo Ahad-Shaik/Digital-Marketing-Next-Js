@@ -306,7 +306,7 @@
 .stampText {
   font-size: 10px;
   font-weight: 800;
-  fill: #122a20;
+  fill: var(--brand-coffee);
   letter-spacing: 1px;
 }
 
@@ -317,7 +317,7 @@
   transform: translate(-50%, -50%);
   width: 40px;
   height: 40px;
-  background: #a3e635;
+  background: var(--brand-orange);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -326,13 +326,13 @@
 }
 
 .stampArrow {
-  color: #122a20;
+  color: var(--brand-coffee);
 }
 
 .sparkle1,
 .sparkle2 {
   position: absolute;
-  background: #a3e635;
+  background: var(--brand-orange);
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   z-index: 25;
 }
@@ -466,11 +466,11 @@
   background: #374151;
 }
 
-.dotGreen {
+.dotOrange {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #84cc16;
+  background: var(--brand-orange);
 }
 
 .title {
@@ -542,7 +542,7 @@
 }
 
 .badge {
-  background: #a3e635;
+  background: var(--brand-orange);
   color: #1a2e05;
   font-size: 0.75rem;
   font-weight: 700;
@@ -609,7 +609,7 @@
   color: #111827;
   margin: 0 0 1rem;
   padding-left: 0.75rem;
-  border-left: 3px solid #a3e635;
+  border-left: 3px solid var(--brand-orange);
 }
 
 /* Search */
@@ -663,9 +663,9 @@
 }
 
 .tag:hover {
-  background: #a3e635;
-  border-color: #a3e635;
-  color: #1a2e05;
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: var(--brand-coffee);
 }
 
 /* Recent Posts */
@@ -760,7 +760,7 @@
 .ctaButton {
   position: relative;
   display: inline-block;
-  background: #a3e635;
+  background: var(--brand-orange);
   color: #1a2e05;
   font-size: 0.875rem;
   font-weight: 700;
@@ -771,7 +771,8 @@
 }
 
 .ctaButton:hover {
-  background: #84cc16;
+  background: var(--brand-orange);
+  opacity: 0.9;
   transform: scale(1.03);
 }
 

@@ -21,7 +21,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #1a3a2a 0%, #a3e635 50%, #1a3a2a 100%);
+  background: linear-gradient(90deg, var(--brand-coffee) 0%, var(--brand-orange) 50%, var(--brand-coffee) 100%);
   z-index: 2;
 }
 
@@ -33,7 +33,7 @@
   left: -120px;
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, rgba(26, 58, 42, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(51, 45, 43, 0.18) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -45,7 +45,7 @@
   right: -80px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(163, 230, 53, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(244, 129, 32, 0.07) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -54,14 +54,25 @@
 .logoText {
   font-size: 2rem;
   font-weight: 800;
-  color: #a3e635;
+  color: var(--brand-orange);
   line-height: 1;
   display: block;
   transition: color 0.2s ease;
 }
 
+.logoImage {
+  height: 48px;
+  width: auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.logoImage:hover {
+  transform: scale(1.05);
+}
+
 :global([data-theme="light"]) .logoText {
-  color: #1a3a2a;
+  color: var(--brand-coffee);
 }
 
 /* ─── Container ─────────────────────────────────────────────────── */
@@ -81,15 +92,15 @@
   gap: 2rem;
   padding: 1.25rem 2rem;
   margin: var(--space-md) 0;
-  background: linear-gradient(135deg, rgba(26, 58, 42, 0.18) 0%, rgba(163, 230, 53, 0.06) 100%);
-  border: 1px solid rgba(163, 230, 53, 0.18);
+  background: linear-gradient(135deg, rgba(51, 45, 43, 0.18) 0%, rgba(244, 129, 32, 0.06) 100%);
+  border: 1px solid rgba(244, 129, 32, 0.18);
   border-radius: 1.25rem;
   backdrop-filter: blur(8px);
 }
 
 :global([data-theme="light"]) .ctaStrip {
-  background: linear-gradient(135deg, rgba(26, 58, 42, 0.06) 0%, rgba(163, 230, 53, 0.04) 100%);
-  border: 1px solid rgba(26, 58, 42, 0.2);
+  background: linear-gradient(135deg, rgba(51, 45, 43, 0.06) 0%, rgba(244, 129, 32, 0.04) 100%);
+  border: 1px solid rgba(51, 45, 43, 0.2);
 }
 
 .ctaText h3 {
@@ -146,14 +157,14 @@
 }
 
 .ctaInput:focus {
-  border-color: rgba(163, 230, 53, 0.55);
+  border-color: rgba(244, 129, 32, 0.55);
 }
 
 .ctaButton {
   padding: 0.65rem 1.5rem;
   border-radius: 0.625rem;
   border: none;
-  background: #1a3a2a;
+  background: var(--brand-coffee);
   color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
@@ -236,16 +247,16 @@
 }
 
 .socialIcon:hover {
-  background: rgba(163, 230, 53, 0.12);
-  border-color: rgba(163, 230, 53, 0.35);
-  color: #a3e635;
+  background: rgba(244, 129, 32, 0.12);
+  border-color: rgba(244, 129, 32, 0.35);
+  color: var(--brand-orange);
   transform: translateY(-3px);
 }
 
 :global([data-theme="light"]) .socialIcon:hover {
-  background: rgba(26, 58, 42, 0.08);
-  border-color: rgba(26, 58, 42, 0.3);
-  color: #1a3a2a;
+  background: rgba(51, 45, 43, 0.08);
+  border-color: rgba(51, 45, 43, 0.3);
+  color: var(--brand-coffee);
 }
 
 /* ─── Mascot / Award Column ─────────────────────────────────────── */
@@ -277,11 +288,11 @@
 }
 
 .mascotCard:hover {
-  border-color: rgba(163, 230, 53, 0.3);
+  border-color: rgba(244, 129, 32, 0.3);
 }
 
 :global([data-theme="light"]) .mascotCard:hover {
-  border-color: rgba(26, 58, 42, 0.25);
+  border-color: rgba(51, 45, 43, 0.25);
 }
 
 .mascotImageWrap {
@@ -295,7 +306,7 @@
   position: absolute;
   inset: -3px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1a3a2a, #a3e635);
+  background: linear-gradient(135deg, var(--brand-coffee), var(--brand-orange));
   z-index: 0;
 }
 
@@ -330,20 +341,20 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.9rem;
-  background: rgba(163, 230, 53, 0.1);
-  border: 1px solid rgba(163, 230, 53, 0.25);
+  background: rgba(244, 129, 32, 0.1);
+  border: 1px solid rgba(244, 129, 32, 0.25);
   border-radius: 2rem;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #a3e635;
+  color: var(--brand-orange);
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 :global([data-theme="light"]) .mascotBadge {
-  background: rgba(26, 58, 42, 0.08);
-  border: 1px solid rgba(26, 58, 42, 0.2);
-  color: #1a3a2a;
+  background: rgba(51, 45, 43, 0.08);
+  border: 1px solid rgba(51, 45, 43, 0.2);
+  color: var(--brand-coffee);
 }
 
 /* ─── Bottom Section ────────────────────────────────────────────── */
@@ -363,15 +374,15 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #a3e635;
+  color: var(--brand-orange);
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(163, 230, 53, 0.2);
+  border-bottom: 1px solid rgba(244, 129, 32, 0.2);
 }
 
 :global([data-theme="light"]) .sectionTitle {
-  color: #1a3a2a;
-  border-bottom: 1px solid rgba(26, 58, 42, 0.2);
+  color: var(--brand-coffee);
+  border-bottom: 1px solid rgba(51, 45, 43, 0.2);
 }
 
 .linkList {
@@ -404,12 +415,12 @@
 }
 
 .linkItem:hover {
-  color: #a3e635;
+  color: var(--brand-orange);
   gap: 0.6rem;
 }
 
 :global([data-theme="light"]) .linkItem:hover {
-  color: #1a3a2a;
+  color: var(--brand-coffee);
 }
 
 .linkItem:hover::before {
@@ -449,15 +460,15 @@
 }
 
 .industryTag:hover {
-  background: rgba(163, 230, 53, 0.08);
-  border-color: rgba(163, 230, 53, 0.3);
-  color: #a3e635;
+  background: rgba(244, 129, 32, 0.08);
+  border-color: rgba(244, 129, 32, 0.3);
+  color: var(--brand-orange);
 }
 
 :global([data-theme="light"]) .industryTag:hover {
-  background: rgba(26, 58, 42, 0.06);
-  border-color: rgba(26, 58, 42, 0.25);
-  color: #1a3a2a;
+  background: rgba(51, 45, 43, 0.06);
+  border-color: rgba(51, 45, 43, 0.25);
+  color: var(--brand-coffee);
 }
 
 /* ─── Copyright ──────────────────────────────────────────────────── */
@@ -496,11 +507,11 @@
 }
 
 .copyrightLinks a:hover {
-  color: #a3e635;
+  color: var(--brand-orange);
 }
 
 :global([data-theme="light"]) .copyrightLinks a:hover {
-  color: #1a3a2a;
+  color: var(--brand-coffee);
 }
 
 /* ─── Responsive ─────────────────────────────────────────────────── */

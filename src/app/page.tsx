@@ -6,6 +6,7 @@ import TrustedBy from '@/components/home/TrustedBy';
 import Expertise from '@/components/home/Expertise';
 import Services from '@/components/home/Services';
 import WhyChooseUs from '@/components/home/WhyChooseUs';
+import TeamSection from '@/components/common/TeamSection';
 import Testimonials from '@/components/home/Testimonials';
 import CaseStudies from '@/components/home/CaseStudies';
 import LatestBlogs from '@/components/home/LatestBlogs';
@@ -118,6 +119,7 @@ export default async function Home() {
       <Services />
       <VisionCTA />
       <WhyChooseUs />
+      <TeamSection />
       <Testimonials />
       <CaseStudies />
       <LatestBlogs />

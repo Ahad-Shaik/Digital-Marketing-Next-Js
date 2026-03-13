@@ -16,21 +16,21 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     rating: 5.0,
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    text: "Mera Digitals transformed our organic presence. Their SEO strategy didn't just boost our rankings; it significantly increased our lead quality and overall revenue within months.",
     name: 'Dianne Russell',
-    position: 'Owner, Architecture Studio',
+    position: 'Marketing Director, ArchStudio',
   },
   {
     rating: 5.0,
-    text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.',
+    text: "The team's expertise in performance marketing is unparalleled. They managed our ad spend with surgical precision, lowering our CPA while scaling our ROAS to record heights.",
     name: 'James Carter',
     position: 'CEO, TechVision Co.',
   },
   {
     rating: 4.9,
-    text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident similique sunt in culpa qui officia deserunt mollitia.',
+    text: "From website development to branding, Mera Digitals has been an essential partner in our growth. Their creative designs and technical proficiency have truly given our vision a voice.",
     name: 'Sarah Mitchell',
-    position: 'Marketing Director, BrandForce',
+    position: 'Head of Growth, BrandForce',
   },
 ];
 
@@ -45,7 +45,7 @@ function StarRow({ count = 5 }: { count?: number }) {
   return (
     <div className={styles.stars}>
       {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} size={18} fill="#a3e635" color="#a3e635" />
+        <Star key={i} size={18} fill="#f48120" color="#f48120" />
       ))}
     </div>
   );
@@ -89,8 +89,8 @@ export default function Testimonials() {
 
           <div className={styles.headerRight}>
             <p className={styles.subText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore.
+              See how we've helped businesses across various industries achieve
+              remarkable growth and dominate their digital space.
             </p>
             <Link href="/about-us" className={styles.allBtn}>
               All Testimonials <ArrowRight size={16} />

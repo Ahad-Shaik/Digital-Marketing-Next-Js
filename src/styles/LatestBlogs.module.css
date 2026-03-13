@@ -3,7 +3,7 @@
    ============================================================ */
 .section {
   padding: var(--space-xl) 0;
-  background-color: #122a20;
+  background-color: var(--brand-coffee);
   position: relative;
   overflow: hidden;
 }
@@ -50,7 +50,7 @@
 .badgeCircle {
   width: 20px;
   height: 20px;
-  background-color: #a3e635;
+  background-color: var(--brand-orange);
   border-radius: 50%;
   position: absolute;
   left: 0;
@@ -154,8 +154,8 @@
   display: inline-flex;
   align-items: center;
   padding: 0.4rem 1rem;
-  background: #a3e635;
-  color: #122a20;
+  background: var(--brand-orange);
+  color: var(--brand-coffee);
   border-radius: 100px;
   font-size: 0.8rem;
   font-weight: 700;
@@ -192,7 +192,7 @@
   gap: 0.4rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #a3e635;
+  color: var(--brand-orange);
   margin-top: auto;
   transition: gap 0.25s ease;
   text-decoration: underline;
@@ -202,7 +202,7 @@
 
 .blogCard:hover .readMore {
   gap: 0.65rem;
-  text-decoration-color: #a3e635;
+  text-decoration-color: var(--brand-orange);
 }
 
 /* ── Responsive ──────────────────────────────────────────── */

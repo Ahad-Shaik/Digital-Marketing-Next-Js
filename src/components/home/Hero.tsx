@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import styles from '@/styles/Home.module.css';
 
@@ -20,6 +21,25 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+const TITLES = [
+  "Empowering Your Success with Digital Expertise",
+  "Elevating Your Brand with Creative Excellence",
+  "Scaling Your Business with Proven Strategies",
+];
+
+// Word-by-word reveal: each word slides up from a mask clip
+const titleContainerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
+  exit:   { transition: { staggerChildren: 0.04, staggerDirection: -1 as const } },
+};
+
+const wordVariants = {
+  hidden:  { y: '115%' },
+  visible: { y: 0,      transition: { duration: 0.65, ease: [0.33, 1, 0.68, 1] as const } },
+  exit:    { y: '-115%', opacity: 0, transition: { duration: 0.22, ease: [0.32, 0, 0.67, 0] as const } },
+};
+
 interface HeroProps {
   data?: {
     badge?: string;
@@ -36,11 +56,18 @@ interface HeroProps {
 }
 
 export default function Hero({ data }: HeroProps) {
-  // Safe defaults
+  const [titleIndex, setTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTitleIndex((prev) => (prev + 1) % TITLES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
   const content = {
     badge: "Elevate Your Brand With Us",
-    title: "Empowering Your Success with Digital Expertise",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    subtitle: "We blend data-driven strategies with creative excellence to scale your brand and dominate your market.",
     ctaText: "Explore More",
     secondaryCtaText: "View All Services",
   };
@@ -66,9 +93,31 @@ export default function Hero({ data }: HeroProps) {
             <span>{content.badge}</span>
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className={styles.heroMainTitle}>
-            {content.title}
-          </motion.h1>
+          {/* Cycling animated title — independent of parent stagger */}
+          <div className={styles.titleCycler}>
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={titleIndex}
+                className={styles.heroMainTitle}
+                variants={titleContainerVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                {TITLES[titleIndex].split(' ').map((word, i, arr) => (
+                  <span key={i} className={styles.wordWrapper}>
+                    <motion.span
+                      variants={wordVariants}
+                      className={styles.wordInner}
+                      style={i >= arr.length - 2 ? { color: 'var(--brand-orange)' } : undefined}
+                    >
+                      {word}
+                    </motion.span>
+                  </span>
+                ))}
+              </motion.h1>
+            </AnimatePresence>
+          </div>
 
           <motion.p variants={itemVariants} className={styles.heroSubText}>
             {content.subtitle}
@@ -127,6 +176,16 @@ export default function Hero({ data }: HeroProps) {
             {/* Sparkles */}
             <div className={styles.sparkle1} />
             <div className={styles.sparkle2} />
+
+            {/* Floating Brand Logo */}
+            <motion.div
+              className={styles.floatingLogo}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
+            >
+              <img src="/MER_DIGITALS_LOGO.png" alt="Mera Digitals Logo" />
+            </motion.div>
           </div>
         </div>
       </div>

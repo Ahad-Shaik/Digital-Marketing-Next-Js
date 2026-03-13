@@ -48,7 +48,13 @@ export default function ContactCTA() {
     return (
         <section className={styles.section} id="contact-us">
             <div className="container">
-                <div className={styles.header}>
+                <motion.div
+                    className={styles.header}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
                     <div className={styles.badge}>
                         <div className={styles.badgeIcon}>
                             <div className={styles.badgeCircle} />
@@ -57,7 +63,7 @@ export default function ContactCTA() {
                         <span>Contact Us</span>
                     </div>
                     <h2 className={styles.title}>Get Your Free Quote Today!</h2>
-                </div>
+                </motion.div>
 
                 <div className={styles.contentGrid}>
                     {/* Form Side */}

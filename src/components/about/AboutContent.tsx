@@ -1,18 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Users, Target, Lightbulb, Rocket,
   TrendingUp, ShieldCheck, Zap,
-  ArrowRight, Check, Award,
-  Search, Volume2, Globe, Sparkles,
-  Linkedin,
-  Twitter,
-  Instagram
+  ArrowRight, Check,
+  Search, Volume2, Globe,
+  MapPin,
+  Phone,
+  Mail
 } from 'lucide-react';
 import Link from 'next/link';
 import styles from '@/styles/About.module.css';
+import TeamSection from '@/components/common/TeamSection';
 
 // Reuse container variants from Hero
 const containerVariants = {
@@ -28,6 +29,24 @@ const containerVariants = {
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const ABOUT_TITLES = [
+  "Give Your Vision a Voice with Mera Digital",
+  "Transform Your Brand with Digital Excellence",
+  "Grow Your Business with Proven Strategies",
+];
+
+const titleContainerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
+  exit:   { transition: { staggerChildren: 0.04, staggerDirection: -1 as const } },
+};
+
+const wordVariants = {
+  hidden:  { y: '115%' },
+  visible: { y: 0,       transition: { duration: 0.65, ease: [0.33, 1, 0.68, 1] as const } },
+  exit:    { y: '-115%', opacity: 0, transition: { duration: 0.22, ease: [0.32, 0, 0.67, 0] as const } },
 };
 
 const services = [
@@ -67,6 +86,14 @@ const services = [
 
 export default function AboutContent() {
   const [activeService, setActiveService] = useState(services[0]);
+  const [titleIndex, setTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTitleIndex((prev) => (prev + 1) % ABOUT_TITLES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <main style={{ backgroundColor: 'var(--bg-primary)' }}>
@@ -93,9 +120,31 @@ export default function AboutContent() {
                 <span>Established 2018</span>
               </motion.div>
 
-              <motion.h1 variants={itemVariants} className={styles.heroTitle}>
-                Give your vision a voice with <span className="text-gradient">Mera Digital.</span>
-              </motion.h1>
+              {/* Cycling animated hero title */}
+              <div className={styles.titleCycler}>
+                <AnimatePresence mode="wait">
+                  <motion.h1
+                    key={titleIndex}
+                    className={styles.heroTitle}
+                    variants={titleContainerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                  >
+                    {ABOUT_TITLES[titleIndex].split(' ').map((word, i, arr) => (
+                      <span key={i} className={styles.wordWrapper}>
+                        <motion.span
+                          variants={wordVariants}
+                          className={styles.wordInner}
+                          style={i >= arr.length - 2 ? { color: 'var(--brand-orange)' } : undefined}
+                        >
+                          {word}
+                        </motion.span>
+                      </span>
+                    ))}
+                  </motion.h1>
+                </AnimatePresence>
+              </div>
 
               <motion.p variants={itemVariants} className={styles.heroSubtitle}>
                 We are a premium digital marketing agency dedicated to transforming businesses through innovation, strategy, and data-driven design.
@@ -133,29 +182,34 @@ export default function AboutContent() {
 
             <div className={styles.heroRight}>
               <div className={styles.collageGrid}>
+                {/* Back image — small */}
                 <motion.div
                   className={`${styles.collageItem} ${styles.itemSmall}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=400" alt="Collage 1" />
+                  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=400" alt="Team at work" />
                 </motion.div>
+
+                {/* Back image — medium */}
                 <motion.div
                   className={`${styles.collageItem} ${styles.itemMedium}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=400" alt="Collage 2" />
+                  <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=400" alt="Strategy session" />
                 </motion.div>
+
+                {/* Main front image */}
                 <motion.div
                   className={`${styles.collageItem} ${styles.itemLarge}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8 }}
                 >
-                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400" alt="Collage 3" />
+                  <img src="/524326562_18074041616480823_7518439028329965734_n.jpg" alt="Mera Digitals" style={{ objectPosition: 'center' }} />
                 </motion.div>
 
                 {/* HIRE US Stamp */}
@@ -379,49 +433,70 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* 6. Team Section */}
-      <section className={styles.section}>
+      {/* 6. Team Section — shared component */}
+      <TeamSection />
+
+      {/* 7. Contact & Address Section */}
+      <section className={styles.section} style={{ background: 'var(--bg-secondary)' }}>
         <div className={styles.container}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '60px', flexWrap: 'wrap', gap: '30px' }}>
-            <div style={{ maxWidth: '600px' }}>
-              <div className={styles.sectionBadge}>The Humans</div>
-              <h2 className={styles.heroTitle} style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '0px' }}>
-                Meet <span className="text-gradient">Team Mera.</span>
-              </h2>
-            </div>
-            <Link href="/careers" className="btn btn-outline">Join our scaling team</Link>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <div className={styles.sectionBadge}>Find Us</div>
+            <h2 className={styles.heroTitle} style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
+              Our <span className="text-gradient">Office</span>
+            </h2>
           </div>
 
-          <div className={styles.teamGrid}>
-            {[
-              { name: 'Arjun Mehta', role: 'Founder & CEO', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500' },
-              { name: 'Priya Sharma', role: 'Head of Marketing', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=500' },
-              { name: 'Rohan Gupta', role: 'Tech Lead', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=500' },
-              { name: 'Sneha Patel', role: 'Creative Director', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=500' }
-            ].map((m, i) => (
-              <motion.div
-                key={m.name}
-                className={styles.teamCard}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <img src={m.img} alt={m.name} className={styles.teamImage} />
-                <div className={styles.teamOverlay}>
-                  <h3 className={styles.memberName}>{m.name}</h3>
-                  <span className={styles.memberRole}>{m.role}</span>
-                  <div className={styles.memberSocials}>
-                    <Link href="https://instagram.com" target="_blank" className={styles.socialIcon}>
-                      <Instagram size={18} />
-                    </Link>
-                    <Link href="https://twitter.com" target="_blank" className={styles.socialIcon}>
-                      <Twitter size={18} />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          {/* Contact Info Cards */}
+          <div className={styles.contactInfoGrid}>
+            <motion.div
+              className={styles.contactInfoCard}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className={styles.contactIconCircle}>
+                <MapPin size={24} />
+              </div>
+              <div>
+                <p className={styles.contactInfoLabel}>Address</p>
+                <p className={styles.contactInfoValue}>
+                  1st floor, Laxmi Devi Apartments, D12, opp. Telanga Co Op Bank, near Vellanki Foods, Vamika Arcade, Madhura Nagar, Hyderabad, Telangana 500038
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className={styles.contactInfoCard}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className={styles.contactIconCircle}>
+                <Phone size={24} />
+              </div>
+              <div>
+                <p className={styles.contactInfoLabel}>Phone</p>
+                <a href="tel:+919959965998" className={styles.contactInfoLink}>099599 65998</a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className={styles.contactInfoCard}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className={styles.contactIconCircle}>
+                <Mail size={24} />
+              </div>
+              <div>
+                <p className={styles.contactInfoLabel}>Email</p>
+                <a href="mailto:info@meradigitals.com" className={styles.contactInfoLink}>info@meradigitals.com</a>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

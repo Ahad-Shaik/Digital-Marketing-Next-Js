@@ -26,7 +26,7 @@ export default function BlogList() {
           <span className={styles.label}>
             <span className={styles.labelDots}>
               <span className={styles.dot} />
-              <span className={styles.dotGreen} />
+              <span className={styles.dotOrange} />
             </span>
             News &amp; Blogs
           </span>

@@ -163,9 +163,7 @@ export default function AboutUs() {
             </motion.h2>
 
             <motion.p variants={itemVariants} className={styles.heroSubText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              At Mera Digitals, we treat every client’s business as if it were our own. Our philosophy of deep ownership means we don’t just deliver projects; we deliver measurable growth and long-term success.
             </motion.p>
 
             <motion.div variants={itemVariants} className={styles.skillBarsContainer}>

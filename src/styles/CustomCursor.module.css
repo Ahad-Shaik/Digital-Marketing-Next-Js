@@ -31,7 +31,7 @@
   position: fixed;
   width: 6px;
   height: 6px;
-  background: #122a20;
+  background: var(--cursor-color);
   border-radius: 50%;
   /* Centre on cursor */
   margin-left: -3px;
@@ -45,7 +45,7 @@
   position: fixed;
   width: 28px;
   height: 28px;
-  border: 1.5px solid rgba(18, 42, 32, 0.4);
+  border: 1.5px solid var(--accent-glow);
   border-radius: 50%;
   /* Centre on cursor */
   margin-left: -14px;

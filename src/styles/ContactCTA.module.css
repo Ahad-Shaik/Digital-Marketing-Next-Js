@@ -22,7 +22,7 @@
     border-radius: 100px;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #122a20;
+    color: var(--brand-coffee);
     margin-bottom: 1.5rem;
 }
 
@@ -38,7 +38,7 @@
 .badgeCircle {
     width: 20px;
     height: 20px;
-    background-color: var(--brand-green-lime);
+    background-color: var(--brand-orange);
     border-radius: 50%;
     position: absolute;
     left: 0;
@@ -47,7 +47,7 @@
 .badgeLine {
     width: 6px;
     height: 20px;
-    background-color: #122a20;
+    background-color: var(--brand-coffee);
     border-radius: 4px;
     position: absolute;
     right: 6px;
@@ -57,7 +57,7 @@
 .title {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 800;
-    color: #122a20;
+    color: var(--brand-coffee);
 }
 
 .contentGrid {
@@ -94,7 +94,7 @@
 .inputGroup label {
     font-weight: 600;
     font-size: 0.95rem;
-    color: #122a20;
+    color: var(--brand-coffee);
 }
 
 .inputGroup input,
@@ -105,7 +105,7 @@
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     font-size: 0.95rem;
-    color: #122a20;
+    color: var(--brand-coffee);
     transition: all 0.2s ease;
     width: 100%;
 }
@@ -119,14 +119,14 @@
 .inputGroup select:focus,
 .inputGroup textarea:focus {
     outline: none;
-    border-color: var(--brand-green-lime);
+    border-color: var(--brand-orange);
     background-color: #fff;
     box-shadow: 0 0 0 4px rgba(163, 230, 53, 0.1);
 }
 
 .submitBtn {
     padding: 1rem 2.5rem;
-    background: #122a20;
+    background: var(--brand-coffee);
     color: #fff;
     border-radius: 100px;
     font-weight: 600;
@@ -166,7 +166,7 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    background: var(--brand-green-lime);
+    background: var(--brand-orange);
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     z-index: 5;
 }

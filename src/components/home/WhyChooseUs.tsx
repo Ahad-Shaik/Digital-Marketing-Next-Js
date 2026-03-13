@@ -15,25 +15,25 @@ const features: Feature[] = [
   {
     title: 'Certified Experts',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
+      'Our team consists of Google and Meta certified professionals dedicated to staying ahead of industry trends.',
     icon: Users,
   },
   {
     title: 'Proven Results',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
+      'We focus on measurable outcomes like ROAS, lead quality, and organic traffic growth that impacts your revenue.',
     icon: ClipboardList,
   },
   {
     title: 'Award Winning',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
+      'Recognized for our creative excellence and strategic thinking across multiple digital disciplines.',
     icon: Award,
   },
   {
     title: 'Transparent Reporting',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
+      'Real-time dashboards and detailed monthly reports ensure you always know exactly how your campaigns perform.',
     icon: BarChart3,
   },
 ];
@@ -101,7 +101,7 @@ export default function WhyChooseUs() {
                   />
                 </div>
 
-                {/* Lime-green squiggle decorative card */}
+                {/* Orange squiggle decorative card */}
                 <div className={styles.squiggleCard}>
                   <svg
                     viewBox="0 0 140 70"
@@ -111,7 +111,7 @@ export default function WhyChooseUs() {
                   >
                     <path
                       d="M10 55 C25 15, 42 15, 55 38 C68 60, 82 60, 95 35 C108 10, 122 10, 135 30"
-                      stroke="#122a20"
+                      stroke="#332d2b"
                       strokeWidth="4.5"
                       strokeLinecap="round"
                       fill="none"

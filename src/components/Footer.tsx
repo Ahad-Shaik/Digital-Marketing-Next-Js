@@ -63,7 +63,7 @@ export default function Footer() {
         <div className={styles.topSection}>
           <div className={styles.brandColumn}>
             <Link href="/" className={styles.logo}>
-              <span className={styles.logoText}>Mera Digitals</span>
+              <img src="/MER_DIGITALS_LOGO.png" alt="Mera Digitals Logo" className={styles.logoImage} />
             </Link>
             <p className={styles.brandDescription}>
               We help brands grow through data-driven marketing strategies, high-performance
@@ -100,7 +100,7 @@ export default function Footer() {
                 </h3>
                 <div style={{ marginTop: '0.85rem' }}>
                   <span className={styles.mascotBadge}>
-                    <Heart size={12} fill="#a3e635" color="#a3e635" />
+                    <Heart size={12} fill="#f48120" color="#f48120" />
                     Trusted Globally
                   </span>
                 </div>

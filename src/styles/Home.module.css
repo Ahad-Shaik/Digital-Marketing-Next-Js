@@ -51,7 +51,7 @@
   border-radius: 100px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #122a20;
+  color: var(--brand-coffee);
   margin-bottom: 2rem;
 }
 
@@ -67,7 +67,7 @@
 .badgeCircle {
   width: 20px;
   height: 20px;
-  background-color: var(--brand-green-lime);
+  background-color: var(--brand-orange);
   border-radius: 50%;
   position: absolute;
   left: 0;
@@ -76,7 +76,7 @@
 .badgeLine {
   width: 6px;
   height: 20px;
-  background-color: #122a20;
+  background-color: var(--brand-coffee);
   border-radius: 4px;
   position: absolute;
   right: 6px;
@@ -87,8 +87,33 @@
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.1;
   font-weight: 800;
-  color: #122a20;
+  color: var(--brand-coffee);
   margin-bottom: 1.5rem;
+}
+
+/* Cycling title container — fixed height prevents layout shift during transitions */
+.titleCycler {
+  position: relative;
+  min-height: 5rem;
+  margin-bottom: 1.5rem;
+}
+
+.titleCycler .heroMainTitle {
+  margin-bottom: 0;
+}
+
+/* Word-reveal animation wrappers */
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1.2;
+  margin-right: 0.28em;
+  padding-bottom: 0.06em;
+}
+
+.wordInner {
+  display: inline-block;
 }
 
 .heroSubText {
@@ -109,22 +134,28 @@
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
-  background: #122a20;
+  background: var(--brand-coffee);
   color: white;
   border-radius: 100px;
   font-weight: 600;
   transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+[data-theme='light'] .primaryBtn {
+  background: var(--brand-coffee);
 }
 
 .primaryBtn:hover {
-  background: #0d1e16;
+  background: var(--accent-primary);
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(18, 42, 32, 0.2);
+  box-shadow: 0 10px 20px var(--accent-glow);
 }
 
 .secondaryBtn {
   font-weight: 600;
-  color: #122a20;
+  color: var(--text-primary);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
@@ -132,8 +163,8 @@
 }
 
 .secondaryBtn:hover {
-  color: #0d1e16;
-  opacity: 0.8;
+  color: var(--accent-primary);
+  opacity: 1;
 }
 
 .heroRight {
@@ -203,7 +234,7 @@
 .stampText {
   font-size: 10px;
   font-weight: 800;
-  fill: #122a20;
+  fill: var(--brand-coffee);
   letter-spacing: 1px;
 }
 
@@ -214,7 +245,7 @@
   transform: translate(-50%, -50%);
   width: 40px;
   height: 40px;
-  background: var(--brand-green-lime);
+  background: var(--brand-orange);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -223,7 +254,7 @@
 }
 
 .stampArrow {
-  color: #122a20;
+  color: var(--brand-coffee);
   transform: rotate(-45deg);
 }
 
@@ -232,7 +263,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  background: var(--brand-green-lime);
+  background: var(--brand-orange);
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   z-index: 25;
 }
@@ -249,6 +280,29 @@
   height: 30px;
 }
 
+.floatingLogo {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  background: white;
+  border-radius: 50%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 30;
+  border: 4px solid var(--brand-orange);
+}
+
+.floatingLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .dotsTop,
 .dotsBottom {
   position: absolute;
@@ -261,14 +315,14 @@
 .dotsTop {
   top: 5%;
   left: 40%;
-  background-image: radial-gradient(#122a20 2px, transparent 2px);
+  background-image: radial-gradient(var(--brand-coffee) 2px, transparent 2px);
   background-size: 20px 20px;
 }
 
 .dotsBottom {
   bottom: 0;
   left: 20%;
-  background-image: radial-gradient(#122a20 2px, transparent 2px);
+  background-image: radial-gradient(var(--brand-coffee) 2px, transparent 2px);
   background-size: 20px 20px;
 }
 
@@ -306,11 +360,11 @@
 /* Hero — Mobile ≤640px */
 @media (max-width: 640px) {
   .heroSection {
-    padding: 80px 0 60px;
+    padding: 110px 0 60px;
   }
 
   .heroContainer {
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .heroMainTitle {
@@ -324,44 +378,47 @@
   }
 
   .heroRight {
-    margin-top: 2rem;
+    margin-top: 1rem;
     overflow: visible;
-    /* Ensure shadows aren't clipped */
   }
 
+  /* Single-image layout on mobile — hide the overlapping small card */
   .collageGrid {
-    max-width: 380px;
+    max-width: 340px;
     margin: 0 auto;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
+    aspect-ratio: 4 / 3;
   }
 
   .itemSmall {
-    grid-column: 2 / 7;
-    /* Moved in slightly from edge */
-    grid-row: 6 / 12;
-    border-radius: 30px;
+    display: none;
   }
 
   .itemMedium {
-    grid-column: 5 / 12;
-    /* Centered more */
-    grid-row: 1 / 10;
-    border-radius: 40px;
+    grid-column: 1 / 13;
+    grid-row: 1 / 13;
+    border-radius: 32px;
+    z-index: 1;
   }
 
   .stampWrapper {
-    right: 0;
-    bottom: -10px;
-    width: 100px;
-    height: 100px;
+    right: -8px;
+    bottom: -8px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .floatingLogo {
+    top: -10px;
+    right: -10px;
+    width: 80px;
+    height: 80px;
   }
 }
 
 /* Hero — Small Mobile ≤420px */
 @media (max-width: 420px) {
   .heroSection {
-    padding: 70px 0 40px;
+    padding: 100px 0 40px;
   }
 
   .heroMainTitle {
@@ -374,24 +431,21 @@
   }
 
   .collageGrid {
-    max-width: 300px;
-  }
-
-  .itemSmall {
-    grid-column: 1 / 7;
-    border-radius: 20px;
-  }
-
-  .itemMedium {
-    grid-column: 4 / 13;
-    border-radius: 30px;
+    max-width: 280px;
   }
 
   .stampWrapper {
-    width: 80px;
-    height: 80px;
-    right: -5%;
-    bottom: -5px;
+    width: 76px;
+    height: 76px;
+    right: -6px;
+    bottom: -6px;
+  }
+
+  .floatingLogo {
+    width: 70px;
+    height: 70px;
+    top: -8px;
+    right: -8px;
   }
 
   .sparkle1 {
@@ -424,7 +478,7 @@
 }
 
 .star {
-  color: #22c55e;
+  color: var(--brand-orange);
 }
 
 
@@ -1324,13 +1378,6 @@
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
-  filter: grayscale(100%);
-  transition: filter 0.5s ease;
-}
-
-.aboutImgTop:hover,
-.aboutImgBottom:hover {
-  filter: grayscale(0%);
 }
 
 .aboutImgTop {
@@ -1370,7 +1417,7 @@
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   line-height: 1.2;
   font-weight: 800;
-  color: #122a20;
+  color: var(--brand-coffee);
   margin: 0;
 }
 
@@ -1396,13 +1443,13 @@
 .skillBarLabel {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #122a20;
+  color: var(--brand-coffee);
 }
 
 .skillBarPercent {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #122a20;
+  color: var(--brand-coffee);
 }
 
 .skillBarTrack {
@@ -1415,7 +1462,7 @@
 
 .skillBarFill {
   height: 100%;
-  background-color: #122a20;
+  background-color: var(--brand-coffee);
   border-radius: 100px;
   position: relative;
 }
@@ -1427,10 +1474,10 @@
   transform: translateY(-50%);
   width: 22px;
   height: 22px;
-  background: #a3e635;
+  background: var(--brand-orange);
   border-radius: 50%;
   border: 3px solid #fff;
-  outline: 2.5px solid #122a20;
+  outline: 2.5px solid var(--brand-coffee);
 }
 
 /* Stats Bar */
@@ -1463,7 +1510,7 @@
 .aboutStatValue {
   font-size: clamp(2rem, 3.5vw, 2.75rem);
   font-weight: 800;
-  color: #122a20;
+  color: var(--brand-coffee);
   line-height: 1;
   display: block;
 }

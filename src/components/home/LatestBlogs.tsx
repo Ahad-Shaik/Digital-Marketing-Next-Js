@@ -21,7 +21,7 @@ const blogs: BlogPost[] = [
     image:
       'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=700&auto=format&fit=crop',
     slug: 'beginners-guide-profitable-ad-campaigns',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+    desc: 'Master the art of paid ads with our comprehensive guide to budget management and creative testing.',
   },
   {
     title: 'Top 10 SEO Strategies That Still Work in 2025',
@@ -29,7 +29,7 @@ const blogs: BlogPost[] = [
     image:
       'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=700&auto=format&fit=crop',
     slug: 'top-10-seo-strategies-2025',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+    desc: 'Analytics-driven SEO tactics that ignore vanity metrics and focus on bottom-line business growth.',
   },
   {
     title: 'Why Long-Form Content Still Dominates in 2025',
@@ -37,7 +37,7 @@ const blogs: BlogPost[] = [
     image:
       'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=700&auto=format&fit=crop',
     slug: 'long-form-content-dominates-2025',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+    desc: 'Discover why high-value content continues to outperform short-form snippets in search rankings.',
   },
 ];
 

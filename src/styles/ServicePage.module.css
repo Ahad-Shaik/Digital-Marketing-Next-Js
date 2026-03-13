@@ -40,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #122a20;
+  color: var(--brand-coffee);
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
@@ -82,7 +82,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #122a20;
+  background: var(--brand-coffee);
   color: #fff;
   font-weight: 700;
   font-size: 0.9rem;
@@ -139,7 +139,7 @@
 }
 
 .checkIcon {
-  color: #122a20;
+  color: var(--brand-coffee);
   flex-shrink: 0;
 }
 
@@ -184,7 +184,7 @@
 .expertiseNum {
   width: 40px;
   height: 40px;
-  background: #122a20;
+  background: var(--brand-coffee);
   border-radius: 50%;
   color: #fff;
   font-weight: 700;
@@ -242,7 +242,7 @@
 .benefitCircle {
   width: 20px;
   height: 20px;
-  background-color: #a3e635;
+  background-color: var(--brand-orange);
   border-radius: 50%;
   position: absolute;
   left: 0;
@@ -251,7 +251,7 @@
 .benefitLine {
   width: 6px;
   height: 14px;
-  background-color: #122a20;
+  background-color: var(--brand-coffee);
   border-radius: 4px;
   position: absolute;
   right: 0;

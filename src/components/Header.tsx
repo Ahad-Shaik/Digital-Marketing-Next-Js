@@ -109,7 +109,11 @@ export default function Header() {
     >
       <div className={styles.nav}>
         <Link href="/" className={styles.logo}>
-          <span className={`text-gradient ${styles.brandText}`}>Mera Digitals</span>
+          <img
+            src="/MER_DIGITALS_LOGO.png"
+            alt="Mera Digitals Logo"
+            className={styles.logoImage}
+          />
         </Link>
 
         {/* Desktop Nav */}

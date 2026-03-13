@@ -33,7 +33,7 @@
   border-radius: 100px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #122a20;
+  color: var(--brand-coffee);
   width: fit-content;
 }
 
@@ -49,7 +49,7 @@
 .badgeCircle {
   width: 20px;
   height: 20px;
-  background-color: #a3e635;
+  background-color: var(--brand-orange);
   border-radius: 50%;
   position: absolute;
   left: 0;
@@ -58,7 +58,7 @@
 .badgeLine {
   width: 6px;
   height: 20px;
-  background-color: #122a20;
+  background-color: var(--brand-coffee);
   border-radius: 4px;
   position: absolute;
   right: 6px;
@@ -68,7 +68,7 @@
 .heading {
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 800;
-  color: #122a20;
+  color: var(--brand-coffee);
   line-height: 1.2;
   margin: 0;
 }
@@ -93,7 +93,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.8rem 1.6rem;
-  background: #122a20;
+  background: var(--brand-coffee);
   color: #fff;
   border-radius: 100px;
   font-weight: 600;
@@ -117,7 +117,7 @@
 
 /* ── Left — Rating Summary Card ─────────────────────────── */
 .ratingCard {
-  background: #122a20;
+  background: var(--brand-coffee);
   border-radius: 20px;
   padding: 2.75rem 2rem;
   display: flex;
@@ -179,7 +179,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2.5px solid #122a20;
+  border: 2.5px solid var(--brand-coffee);
   object-fit: cover;
   margin-left: -12px;
   transition: transform 0.2s ease;
@@ -198,15 +198,15 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #a3e635;
-  color: #122a20;
+  background: var(--brand-orange);
+  color: var(--brand-coffee);
   font-weight: 700;
   font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: -12px;
-  border: 2.5px solid #122a20;
+  border: 2.5px solid var(--brand-coffee);
   flex-shrink: 0;
 }
 
@@ -232,7 +232,7 @@
 .reviewScore {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #122a20;
+  color: var(--brand-coffee);
 }
 
 .reviewBody {
@@ -267,7 +267,7 @@
 .reviewerName {
   font-size: 1rem;
   font-weight: 700;
-  color: #122a20;
+  color: var(--brand-coffee);
   display: block;
 }
 
@@ -298,8 +298,8 @@
 }
 
 .navBtnPrev {
-  background: #a3e635;
-  color: #122a20;
+  background: var(--brand-orange);
+  color: var(--brand-coffee);
 }
 
 .navBtnPrev:hover {
@@ -308,7 +308,7 @@
 }
 
 .navBtnNext {
-  background: #122a20;
+  background: var(--brand-coffee);
   color: #fff;
 }
 
@@ -337,7 +337,7 @@
 }
 
 .dotActive {
-  background: #122a20;
+  background: var(--brand-coffee);
   width: 24px;
   border-radius: 100px;
 }

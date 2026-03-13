@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Search, Volume2, Globe, TrendingUp, Sparkles, ArrowRight, Check } from 'lucide-react';
 import Link from 'next/link';
 import styles from '@/styles/Services.module.css';
@@ -61,34 +61,41 @@ const services = [
 
 export default function Services() {
   const [activeService, setActiveService] = useState(services[0]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   return (
-    <section className={styles.section} id="services">
+    <section className={styles.section} id="services" ref={sectionRef}>
       <div className="container">
 
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '1rem', lineHeight: 1.15 }}>
-            Services We Offer
+        <motion.div
+          style={{ maxWidth: '700px' }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <div className={styles.sectionBadge}>Our Services</div>
+          <h2 className={styles.sectionHeading}>
+            The <span className="text-gradient">Capability</span> Stack
           </h2>
-          <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.65 }}>
-            We combine data-driven insights with creative excellence to deliver
-            digital experiences that transform businesses.
-          </p>
-        </div>
+        </motion.div>
 
         <div className={styles.servicesContainer}>
 
           {/* Left — Service Navigation */}
           <div className={styles.servicesList}>
-            {services.map((service) => {
+            {services.map((service, i) => {
               const Icon = service.icon;
               return (
-                <div
+                <motion.div
                   key={service.id}
                   className={`${styles.serviceItem} ${activeService.id === service.id ? styles.active : ''}`}
                   onClick={() => setActiveService(service)}
                   onMouseEnter={() => setActiveService(service)}
+                  initial={{ opacity: 0, x: -24 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
                 >
                   <div className={styles.serviceItemContent}>
                     <div className={styles.serviceIconWrapper}>
@@ -97,13 +104,18 @@ export default function Services() {
                     <span className={styles.serviceTitle}>{service.title}</span>
                   </div>
                   <ArrowRight size={18} className={styles.activeArrow} />
-                </div>
+                </motion.div>
               );
             })}
           </div>
 
           {/* Right — Detail Panel */}
-          <div className={styles.detailsPanel}>
+          <motion.div
+            className={styles.detailsPanel}
+            initial={{ opacity: 0, x: 24 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeService.id}
@@ -149,7 +161,7 @@ export default function Services() {
                 </div>
               </motion.div>
             </AnimatePresence>
-          </div>
+          </motion.div>
 
         </div>
       </div>

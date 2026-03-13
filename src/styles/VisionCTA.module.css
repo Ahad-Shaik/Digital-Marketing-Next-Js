@@ -64,7 +64,7 @@
 .iconCircle {
     width: 48px;
     height: 48px;
-    background: #0f172a;
+    background: var(--brand-coffee);
     border-radius: 50%;
     display: flex;
     align-items: center;

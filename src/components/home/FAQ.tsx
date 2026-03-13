@@ -47,7 +47,15 @@ const FAQ = () => {
     return (
         <section className={styles.faqSection}>
             <div className="container mx-auto px-4">
-                <h2 className={styles.faqTitle}>Have Questions? We've Got Answers.</h2>
+                <motion.h2
+          className={styles.faqTitle}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Have Questions? We&apos;ve Got Answers.
+        </motion.h2>
 
                 <motion.div
                     className={styles.faqContainer}
