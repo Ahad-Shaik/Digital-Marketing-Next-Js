@@ -40,13 +40,13 @@ const ABOUT_TITLES = [
 const titleContainerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
-  exit:   { transition: { staggerChildren: 0.04, staggerDirection: -1 as const } },
+  exit: { transition: { staggerChildren: 0.04, staggerDirection: -1 as const } },
 };
 
 const wordVariants = {
-  hidden:  { y: '115%' },
-  visible: { y: 0,       transition: { duration: 0.65, ease: [0.33, 1, 0.68, 1] as const } },
-  exit:    { y: '-115%', opacity: 0, transition: { duration: 0.22, ease: [0.32, 0, 0.67, 0] as const } },
+  hidden: { y: '115%' },
+  visible: { y: 0, transition: { duration: 0.65, ease: [0.33, 1, 0.68, 1] as const } },
+  exit: { y: '-115%', opacity: 0, transition: { duration: 0.22, ease: [0.32, 0, 0.67, 0] as const } },
 };
 
 const services = [
@@ -56,7 +56,7 @@ const services = [
     desc: "We don't just optimize for keywords; we optimize for revenue. Our holistic SEO approach ensures your brand dominates the SERPs.",
     icon: Search,
     features: ['Technical SEO Audits', 'On-Page Optimization', 'Off-Page Link Building', 'Local SEO Dominance'],
-    image: 'https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/generated/tech-setup.png',
   },
   {
     id: 'media',
@@ -64,7 +64,7 @@ const services = [
     desc: "Stop wasting budget on ads that don't convert. We design high-converting ad campaigns across Meta, Google, and LinkedIn.",
     icon: Volume2,
     features: ['Meta & Google Ads', 'Audience Segmentation', 'Retargeting Campaigns', 'Creative A/B Testing'],
-    image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/generated/team-collaboration.png',
   },
   {
     id: 'web',
@@ -72,7 +72,7 @@ const services = [
     desc: 'Built for speed and SEO. We build lightning-fast, visually stunning websites using Next.js and modern technologies.',
     icon: Globe,
     features: ['Custom Next.js Development', 'E-commerce Solutions', 'Performance Optimization', 'Headless CMS Integration'],
-    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/generated/female-developer.png',
   },
   {
     id: 'performance',
@@ -80,7 +80,7 @@ const services = [
     desc: "Growth isn't a guessing game. Our performance marketing strategies focus purely on data and measurable results.",
     icon: TrendingUp,
     features: ['Conversion Rate Optimization', 'Funnel Analysis', 'Data Analytics', 'Lead Gen Systems'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/generated/male-professional.png',
   },
 ];
 
@@ -162,20 +162,20 @@ export default function AboutContent() {
               {/* Stats Strip */}
               <motion.div variants={itemVariants} className={styles.heroStats}>
                 <div className={styles.statItem}>
-                  <span className={styles.statValue}>6+ Years</span>
+                  <span className={styles.statValue}>10+ Years</span>
                   <span className={styles.statLabel}>Market Presence</span>
                 </div>
                 <div className={styles.statItem}>
-                  <span className={styles.statValue}>500+</span>
+                  <span className={styles.statValue}>120+</span>
                   <span className={styles.statLabel}>Projects Delivered</span>
                 </div>
                 <div className={styles.statItem}>
-                  <span className={styles.statValue}>96%</span>
-                  <span className={styles.statLabel}>Client Retention</span>
+                  <span className={styles.statValue}>250+</span>
+                  <span className={styles.statLabel}>Happy Customers</span>
                 </div>
                 <div className={styles.statItem}>
-                  <span className={styles.statValue}>$10M+</span>
-                  <span className={styles.statLabel}>Ad Spend Managed</span>
+                  <span className={styles.statValue}>20+</span>
+                  <span className={styles.statLabel}>Expert Team</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -189,7 +189,7 @@ export default function AboutContent() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=400" alt="Team at work" />
+                  <img src="/assets/generated/team-collaboration.png" alt="Team at work" />
                 </motion.div>
 
                 {/* Back image — medium */}
@@ -199,7 +199,7 @@ export default function AboutContent() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=400" alt="Strategy session" />
+                  <img src="/assets/generated/female-developer.png" alt="Strategy session" />
                 </motion.div>
 
                 {/* Main front image */}
@@ -254,14 +254,14 @@ export default function AboutContent() {
                 Founded on the principle of treating every client's business as if it were our own. "Mera" — meaning "Mine" — reflects our philosophy of deep ownership and passion.
               </p>
               <p className={styles.heroSubtitle}>
-                What began as a boutique studio has evolved into a full-scale digital powerhouse, helping brands across 15+ industries scale their presence effectively.
+                What began as a boutique studio has evolved into a full-scale digital powerhouse. We are recognized experts in the healthcare field, partnering with numerous hospitals and clinics to scale their digital presence effectively across 15+ industries.
               </p>
 
               <div className={styles.checkPills}>
+                <div className={styles.checkPill}><Check size={16} color="var(--accent-secondary)" /> <span>Healthcare Specialists</span></div>
+                <div className={styles.checkPill}><Check size={16} color="var(--accent-secondary)" /> <span>Hospital & Clinic ROI</span></div>
                 <div className={styles.checkPill}><Check size={16} color="var(--accent-secondary)" /> <span>Data-Driven Strategy</span></div>
-                <div className={styles.checkPill}><Check size={16} color="var(--accent-secondary)" /> <span>Creative Excellence</span></div>
                 <div className={styles.checkPill}><Check size={16} color="var(--accent-secondary)" /> <span>Result Oriented</span></div>
-                <div className={styles.checkPill}><Check size={16} color="var(--accent-secondary)" /> <span>Agile Process</span></div>
               </div>
             </motion.div>
 
@@ -274,7 +274,7 @@ export default function AboutContent() {
             >
               <div style={{ position: 'relative', borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800"
+                  src="/assets/generated/office-building.png"
                   alt="Mera Digital Story"
                   style={{ width: '100%', height: '500px', objectFit: 'cover' }}
                 />

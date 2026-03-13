@@ -15,7 +15,7 @@ const services = [
     icon: Search,
     href: '/services/seo',
     features: ['Technical SEO Audits', 'On-Page Optimization', 'Off-Page Link Building', 'Local SEO Dominance'],
-    image: 'https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/generated/tech-setup.png',
   },
   {
     id: 'media',
@@ -25,7 +25,7 @@ const services = [
     icon: Volume2,
     href: '/services/media-buying',
     features: ['Meta & Google Ads', 'Audience Segmentation', 'Retargeting Campaigns', 'Creative A/B Testing'],
-    image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/generated/team-collaboration.png',
   },
   {
     id: 'web',
@@ -35,7 +35,7 @@ const services = [
     icon: Globe,
     href: '/services/website-development',
     features: ['Custom Next.js Development', 'E-commerce Solutions', 'Performance Optimization', 'Headless CMS Integration'],
-    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/generated/female-developer.png',
   },
   {
     id: 'performance',
@@ -45,7 +45,7 @@ const services = [
     icon: TrendingUp,
     href: '/services/performance-marketing',
     features: ['Conversion Rate Optimization', 'Funnel Analysis', 'Data Analytics & Reporting', 'Lead Generation Systems'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/generated/male-professional.png',
   },
   {
     id: 'branding',
@@ -55,7 +55,7 @@ const services = [
     icon: Sparkles,
     href: '/services/branding',
     features: ['Logo & Identity Design', 'Brand Guidelines', 'UI/UX Design', 'Visual Storytelling'],
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/generated/office-building.png',
   },
 ];
 

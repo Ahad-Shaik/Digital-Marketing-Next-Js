@@ -48,14 +48,14 @@ const FAQ = () => {
         <section className={styles.faqSection}>
             <div className="container mx-auto px-4">
                 <motion.h2
-          className={styles.faqTitle}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Have Questions? We&apos;ve Got Answers.
-        </motion.h2>
+                    className={styles.faqTitle}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    Have Questions? We&apos;ve Got Answers.
+                </motion.h2>
 
                 <motion.div
                     className={styles.faqContainer}
@@ -119,7 +119,7 @@ const FAQ = () => {
                     <div className={styles.faqRight}>
                         {/* Blue Card */}
                         <motion.div
-                            className={styles.contactCard}
+                            className={styles.faqContactCard}
                             variants={{
                                 hidden: { x: 20, opacity: 0 },
                                 visible: {
@@ -129,22 +129,22 @@ const FAQ = () => {
                                 }
                             }}
                         >
-                            <div className={styles.cardIconWrapper}>
-                                <MessageCircle size={32} className={styles.cardIcon} />
+                            <div className={styles.faqCardIconWrapper}>
+                                <MessageCircle size={32} className={styles.faqCardIcon} />
                                 <div className={styles.iconDots}>
                                     <span></span><span></span><span></span>
                                 </div>
                             </div>
-                            <h3 className={styles.cardTitle}>You Have Different Question?</h3>
-                            <p className={styles.cardText}>
+                            <h3 className={styles.faqCardTitle}>You Have Different Question?</h3>
+                            <p className={styles.faqCardText}>
                                 Our team will answer all your Questions. We Ensure a quick response
                             </p>
-                            <button className={styles.contactBtn}>Contact us</button>
+                            <button className={styles.faqContactBtn}>Contact us</button>
                         </motion.div>
 
                         {/* White Card */}
                         <motion.div
-                            className={styles.callCard}
+                            className={styles.faqCallCard}
                             variants={{
                                 hidden: { x: 20, opacity: 0 },
                                 visible: {
@@ -154,14 +154,14 @@ const FAQ = () => {
                                 }
                             }}
                         >
-                            <div className={styles.callIconWrapper}>
+                            <div className={styles.faqCallIconWrapper}>
                                 <Phone size={28} />
                             </div>
-                            <div className={styles.callContent}>
-                                <p className={styles.callLabel}>Your Comfort, Your Priority</p>
-                                <h3 className={styles.callTitle}>24/7 Services</h3>
+                            <div className={styles.faqCallContent}>
+                                <p className={styles.faqCallLabel}>Your Comfort, Your Priority</p>
+                                <h3 className={styles.faqCallTitle}>24/7 Services</h3>
                             </div>
-                            <button className={styles.callBtn}>Call Now</button>
+                            <button className={styles.faqCallBtn}>Call Now</button>
                         </motion.div>
                     </div>
                 </motion.div>

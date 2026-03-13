@@ -88,7 +88,7 @@ export default function WhyChooseUs() {
             <div className={styles.imageCollage}>
               <div className={styles.imgLeft}>
                 <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=700&auto=format&fit=crop"
+                  src="/assets/generated/team-collaboration.png"
                   alt="Team at work"
                 />
               </div>
@@ -96,7 +96,7 @@ export default function WhyChooseUs() {
               <div className={styles.imgRightCol}>
                 <div className={styles.imgRight}>
                   <img
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=500&auto=format&fit=crop"
+                    src="/assets/generated/male-professional.png"
                     alt="Team discussion"
                   />
                 </div>

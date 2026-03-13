@@ -73,15 +73,15 @@ function StatDivider() {
 
 const SKILL_BARS = [
   { label: 'Marketing & Business Growth', percent: 85 },
-  { label: 'Creativity & Innovation', percent: 80 },
+  { label: 'Healthcare Marketing Expertise', percent: 90 },
   { label: 'Business & Financial Management', percent: 95 },
 ];
 
 const STATS = [
-  { value: '3k+', label: 'Successful Projects' },
-  { value: '200+', label: 'Expert Team' },
-  { value: '350+', label: 'Happy Customers' },
-  { value: '16+', label: 'Years of Experience' },
+  { value: '120+', label: 'Successful Projects' },
+  { value: '20+', label: 'Expert Team' },
+  { value: '250+', label: 'Happy Customers' },
+  { value: '10+', label: 'Years of Experience' },
 ];
 
 export default function AboutUs() {
@@ -102,8 +102,8 @@ export default function AboutUs() {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=700&auto=format&fit=crop"
-                alt="Team collaboration"
+                src="/assets/generated/female-developer.png"
+                alt="Professional team"
               />
             </motion.div>
 
@@ -114,8 +114,8 @@ export default function AboutUs() {
               transition={{ duration: 0.7, delay: 0.4 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=700&auto=format&fit=crop"
-                alt="Team meeting"
+                src="/assets/generated/team-collaboration.png"
+                alt="Office collaboration"
               />
             </motion.div>
 
@@ -163,7 +163,7 @@ export default function AboutUs() {
             </motion.h2>
 
             <motion.p variants={itemVariants} className={styles.heroSubText}>
-              At Mera Digitals, we treat every client’s business as if it were our own. Our philosophy of deep ownership means we don’t just deliver projects; we deliver measurable growth and long-term success.
+              At Mera Digitals, we treat every client’s business as if it were our own. We specialize in Healthcare Marketing, serving a vast network of hospitals and clinics with deep domain expertise to deliver measurable growth and long-term success.
             </motion.p>
 
             <motion.div variants={itemVariants} className={styles.skillBarsContainer}>

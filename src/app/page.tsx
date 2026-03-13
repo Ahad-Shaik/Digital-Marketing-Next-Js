@@ -114,7 +114,7 @@ export default async function Home() {
 
       <Hero data={data?.hero} />
       <AboutUs />
-      <TrustedBy />
+      {/* <TrustedBy /> */}
       <Expertise data={data?.expertise} />
       <Services />
       <VisionCTA />

@@ -89,19 +89,19 @@ export default function Footer() {
             <div className={styles.mascotCard}>
               <div className={styles.mascotImageWrap}>
                 <img
-                  src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&q=80&w=200"
+                  src="/assets/generated/male-professional.png"
                   alt="Mera Digitals Mascot"
                 />
               </div>
               <div>
                 <h3 className={styles.mascotText}>
-                  India&rsquo;s Most Loved Digital Agency
-                  <br />by US, APAC &amp; GCC Clients
+                  Your Vision, Our Expertise.
+                  <br />Scaling Brands with Passion.
                 </h3>
                 <div style={{ marginTop: '0.85rem' }}>
                   <span className={styles.mascotBadge}>
                     <Heart size={12} fill="#f48120" color="#f48120" />
-                    Trusted Globally
+                    Global Reach
                   </span>
                 </div>
               </div>

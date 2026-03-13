@@ -967,7 +967,7 @@
 }
 
 /* Theme Colored Card */
-.contactCard {
+.faqContactCard {
   background: var(--accent-primary);
   border-radius: 20px;
   padding: 2.5rem;
@@ -976,9 +976,15 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 40px -10px var(--accent-glow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cardIconWrapper {
+.faqContactCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px -12px var(--accent-glow);
+}
+
+.faqCardIconWrapper {
   background: rgba(255, 255, 255, 0.15);
   width: 64px;
   height: 64px;
@@ -991,7 +997,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.cardIcon {
+.faqCardIcon {
   color: white;
 }
 
@@ -1005,7 +1011,7 @@
   display: none;
 }
 
-.cardTitle {
+.faqCardTitle {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -1013,7 +1019,7 @@
   color: white;
 }
 
-.cardText {
+.faqCardText {
   font-size: 0.95rem;
   margin-bottom: 2rem;
   opacity: 0.95;
@@ -1021,7 +1027,7 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-.contactBtn {
+.faqContactBtn {
   background: white;
   color: var(--accent-primary);
   border: none;
@@ -1030,16 +1036,17 @@
   font-weight: 700;
   width: 100%;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-.contactBtn:hover {
+.faqContactBtn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background: #f8f9fa;
 }
 
 /* White Card - Call Now */
-.callCard {
+.faqCallCard {
   background: var(--bg-secondary);
   border-radius: 20px;
   padding: 2rem;
@@ -1049,13 +1056,19 @@
   text-align: center;
   box-shadow: var(--glass-shadow);
   border: 1px solid var(--glass-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-[data-theme='light'] .callCard {
+.faqCallCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+[data-theme='light'] .faqCallCard {
   background: #ffffff;
 }
 
-.callIconWrapper {
+.faqCallIconWrapper {
   width: 50px;
   height: 50px;
   background: rgba(249, 115, 22, 0.1);
@@ -1067,23 +1080,23 @@
   color: var(--accent-primary);
 }
 
-.callContent {
+.faqCallContent {
   margin-bottom: 1.5rem;
 }
 
-.callLabel {
+.faqCallLabel {
   font-size: 0.85rem;
   color: var(--text-secondary);
   margin-bottom: 0.25rem;
 }
 
-.callTitle {
+.faqCallTitle {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
-.callBtn {
+.faqCallBtn {
   background: var(--accent-primary);
   color: white;
   border: none;
@@ -1092,11 +1105,12 @@
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 
-.callBtn:hover {
+.faqCallBtn:hover {
   background: var(--accent-secondary);
+  transform: translateY(-2px);
 }
 
 /* Responsive */
@@ -1111,8 +1125,8 @@
     flex-wrap: wrap;
   }
 
-  .contactCard,
-  .callCard {
+  .faqContactCard,
+  .faqCallCard {
     flex: 1;
     min-width: 280px;
   }

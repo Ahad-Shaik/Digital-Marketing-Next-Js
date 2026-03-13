@@ -31,13 +31,13 @@ const TITLES = [
 const titleContainerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
-  exit:   { transition: { staggerChildren: 0.04, staggerDirection: -1 as const } },
+  exit: { transition: { staggerChildren: 0.04, staggerDirection: -1 as const } },
 };
 
 const wordVariants = {
-  hidden:  { y: '115%' },
-  visible: { y: 0,      transition: { duration: 0.65, ease: [0.33, 1, 0.68, 1] as const } },
-  exit:    { y: '-115%', opacity: 0, transition: { duration: 0.22, ease: [0.32, 0, 0.67, 0] as const } },
+  hidden: { y: '115%' },
+  visible: { y: 0, transition: { duration: 0.65, ease: [0.33, 1, 0.68, 1] as const } },
+  exit: { y: '-115%', opacity: 0, transition: { duration: 0.22, ease: [0.32, 0, 0.67, 0] as const } },
 };
 
 interface HeroProps {
@@ -142,7 +142,7 @@ export default function Hero({ data }: HeroProps) {
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             >
-              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop" alt="Digital Strategy" />
+              <img src="/assets/generated/team-collaboration.png" alt="Digital Strategy" />
             </motion.div>
 
             <motion.div
@@ -151,7 +151,7 @@ export default function Hero({ data }: HeroProps) {
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
             >
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=400&auto=format&fit=crop" alt="Data Analytics" />
+              <img src="/assets/generated/tech-setup.png" alt="Data Analytics" />
             </motion.div>
 
             {/* HIRE US Stamp */}

@@ -32,7 +32,7 @@
         "title": "SEO & Optimization",
         "description": "Dominate search rankings with data-backed strategies that drive organic traffic and qualified leads to your business.",
         "icon": "Search",
-        "image": "/expertise-seo-new.png",
+        "image": "/assets/generated/tech-setup.png",
         "link": "/services/seo"
       },
       {
@@ -40,7 +40,7 @@
         "title": "Social Media",
         "description": "Build a loyal community and boost brand awareness with creative, high-engagement campaigns across platforms.",
         "icon": "Share2",
-        "image": "/expertise-social-new.png",
+        "image": "/assets/generated/team-collaboration.png",
         "link": "/services/social-media"
       },
       {
@@ -48,7 +48,7 @@
         "title": "PPC & Performance",
         "description": "Maximize your ROI with precision-targeted advertisements on Google, Meta, and LinkedIn. Pay only for results.",
         "icon": "MousePointerClick",
-        "image": "/expertise-ppc-new.png",
+        "image": "/assets/generated/male-professional.png",
         "link": "/services/ppc"
       },
       {
@@ -56,7 +56,7 @@
         "title": "Content Strategy",
         "description": "Engage your audience with compelling storytelling and value-driven content that establishes your authority.",
         "icon": "FileText",
-        "image": "/expertise-content-new.png",
+        "image": "/assets/generated/female-developer.png",
         "link": "/services/content"
       },
       {
@@ -64,7 +64,7 @@
         "title": "Web Experiences",
         "description": "Create stunning, high-performance websites that not only look good but convert visitors into loyal customers.",
         "icon": "Monitor",
-        "image": "/expertise-web-new.png",
+        "image": "/assets/generated/team-collaboration.png",
         "link": "/services/web"
       },
       {
@@ -72,7 +72,7 @@
         "title": "Mobile Advertising",
         "description": "Reach your audience on their most personal devices with optimized mobile ad campaigns and app marketing.",
         "icon": "Smartphone",
-        "image": "/expertise-mobile-new.png",
+        "image": "/assets/generated/office-building.png",
         "link": "/services/mobile"
       }
     ]
