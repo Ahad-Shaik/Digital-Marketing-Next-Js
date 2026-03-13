@@ -273,12 +273,25 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem 1.75rem;
+  padding: 1.75rem 1.5rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.25rem;
-  gap: 1rem;
+  gap: 1.25rem;
   transition: border-color 0.3s, background 0.3s;
+}
+
+.mascotTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--brand-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: -0.25rem;
+}
+
+:global([data-theme="light"]) .mascotTitle {
+  color: var(--brand-coffee);
 }
 
 :global([data-theme="light"]) .mascotCard {

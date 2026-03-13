@@ -87,9 +87,10 @@ export default function Footer() {
 
           <div className={styles.mascotColumn}>
             <div className={styles.mascotCard}>
+              <div className={styles.mascotTitle}>Mera Digitals Mascot</div>
               <div className={styles.mascotImageWrap}>
                 <img
-                  src="/assets/generated/male-professional.png"
+                  src="/assets/generated/mascot-elephant.png"
                   alt="Mera Digitals Mascot"
                 />
               </div>
