@@ -74,7 +74,7 @@ function StatDivider() {
 const SKILL_BARS = [
   { label: 'Marketing & Business Growth', percent: 85 },
   { label: 'Healthcare Marketing Expertise', percent: 90 },
-  { label: 'Business & Financial Management', percent: 95 },
+  { label: 'Media management', percent: 95 },
 ];
 
 const STATS = [

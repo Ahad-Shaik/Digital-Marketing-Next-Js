@@ -147,10 +147,10 @@
 }
 
 .primaryBtn:hover {
-  background: var(--accent-primary);
+  background: var(--brand-orange);
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px var(--accent-glow);
+  box-shadow: 0 10px 20px var(--brand-orange-glow);
 }
 
 .secondaryBtn {
@@ -670,7 +670,7 @@
 }
 
 .serviceCard:hover .serviceLink {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--brand-orange);
   padding-right: 2rem;
   color: white;
 }
@@ -1041,8 +1041,9 @@
 
 .faqContactBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  background: #f8f9fa;
+  box-shadow: 0 10px 20px var(--brand-orange-glow);
+  background: var(--brand-orange);
+  color: white;
 }
 
 /* White Card - Call Now */
@@ -1345,9 +1346,10 @@
 }
 
 .listButton:hover {
-  background: var(--accent-primary);
+  background: var(--brand-orange);
   color: white;
-  border-color: var(--accent-primary);
+  border-color: var(--brand-orange);
+  transform: translateY(-2px);
 }
 
 /* Reduced Spacing Classes */

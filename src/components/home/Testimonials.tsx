@@ -34,13 +34,6 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const AVATARS = [
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=80&auto=format&fit=crop',
-];
-
 function StarRow({ count = 5 }: { count?: number }) {
   return (
     <div className={styles.stars}>
@@ -114,18 +107,6 @@ export default function Testimonials() {
             <p className={styles.ratingTagline}>
               Customer experiences that speak for them selves
             </p>
-            <div className={styles.avatarStack}>
-              {AVATARS.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`Client ${i + 1}`}
-                  className={styles.avatar}
-                  style={{ zIndex: AVATARS.length - i }}
-                />
-              ))}
-              <div className={styles.avatarMore}>+</div>
-            </div>
           </motion.div>
 
           {/* Right — Testimonial Slider */}

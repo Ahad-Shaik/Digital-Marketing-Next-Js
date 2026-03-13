@@ -44,7 +44,7 @@ export const servicesData: Record<string, IServiceData> = {
         'On-Page Optimization',
         'Off-Page Link Building',
         'Local SEO Dominance',
-        'Content Strategy',
+        'Google business management',
         'Keyword Research',
       ],
     },
@@ -78,7 +78,7 @@ export const servicesData: Record<string, IServiceData> = {
         },
         {
           number: '05',
-          title: 'Content Strategy',
+          title: 'Google business management',
           desc: 'Creating valuable content that resonates with users and satisfies search intent.',
         },
         {
@@ -579,7 +579,7 @@ export const servicesData: Record<string, IServiceData> = {
         },
         {
           number: '02',
-          title: 'Authority Content Strategy',
+          title: 'Authority Google business management',
           desc: 'Flooding search results with high-quality, positive content that you control.',
         },
         {

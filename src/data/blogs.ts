@@ -91,7 +91,7 @@ export const blogsData = [
   },
   {
     slug: 'content-strategy-2026',
-    title: 'Next-Gen Content Strategy: Creating Meaningful Narratives',
+    title: 'Next-Gen Google business management: Creating Meaningful Narratives',
     date: 'Jan 10, 2026',
     category: 'Strategy',
     image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=1200',

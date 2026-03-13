@@ -11,7 +11,7 @@ const services = [
     id: 'seo',
     title: 'SEO Mastery',
     fullDesc:
-      "We don't just optimize for keywords; we optimize for revenue. Our holistic SEO approach combines technical audits, content strategy, and authoritative link building to ensure your brand dominates the SERPs.",
+      "We don't just optimize for keywords; we optimize for revenue. Our holistic SEO approach combines technical audits, Google business management, and authoritative link building to ensure your brand dominates the SERPs.",
     icon: Search,
     href: '/services/seo',
     features: ['Technical SEO Audits', 'On-Page Optimization', 'Off-Page Link Building', 'Local SEO Dominance'],

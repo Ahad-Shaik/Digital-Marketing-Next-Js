@@ -168,47 +168,7 @@
   max-width: 200px;
 }
 
-/* Avatar Stack */
-.avatarStack {
-  display: flex;
-  align-items: center;
-  margin-top: 0.5rem;
-}
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2.5px solid var(--brand-coffee);
-  object-fit: cover;
-  margin-left: -12px;
-  transition: transform 0.2s ease;
-}
-
-.avatar:first-child {
-  margin-left: 0;
-}
-
-.avatar:hover {
-  transform: scale(1.1);
-  z-index: 10 !important;
-}
-
-.avatarMore {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--brand-orange);
-  color: var(--brand-coffee);
-  font-weight: 700;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: -12px;
-  border: 2.5px solid var(--brand-coffee);
-  flex-shrink: 0;
-}
 
 /* ── Right — Testimonial Slider ─────────────────────────── */
 .testimonialCard {
