@@ -1376,7 +1376,7 @@
 .aboutGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  gap: 3rem;
   align-items: center;
   margin-bottom: 4rem;
 }
@@ -1387,24 +1387,28 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  max-width: 480px;
 }
 
 .aboutImgTop,
 .aboutImgBottom {
   width: 100%;
+  height: 280px;
   border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: #f8fafc;
 }
 
-.aboutImgTop {
-  height: 230px;
+.aboutImgTop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  /* Ensures head isn't cut off */
+  display: block;
 }
 
-.aboutImgBottom {
-  height: 230px;
-}
-
-.aboutImgTop img,
 .aboutImgBottom img {
   width: 100%;
   height: 100%;
