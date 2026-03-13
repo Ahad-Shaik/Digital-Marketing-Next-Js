@@ -102,9 +102,11 @@
 }
 
 .allBtn:hover {
-  background: #0d1e16;
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(18, 42, 32, 0.2);
+  box-shadow: 0 8px 20px var(--brand-orange-glow);
 }
 
 /* ── Cards Row ───────────────────────────────────────────── */
@@ -263,7 +265,8 @@
 }
 
 .navBtnPrev:hover {
-  background: #8fcf1e;
+  background: var(--brand-coffee);
+  color: #fff;
   transform: translateY(-2px);
 }
 
@@ -273,7 +276,8 @@
 }
 
 .navBtnNext:hover {
-  background: #0d1e16;
+  background: var(--brand-orange);
+  color: var(--brand-coffee);
   transform: translateY(-2px);
 }
 

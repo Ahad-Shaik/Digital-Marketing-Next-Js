@@ -174,8 +174,10 @@
 }
 
 .ctaButton:hover {
-  background: #0d1e16;
+  background: var(--brand-orange);
+  color: #fff;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--brand-orange-glow);
 }
 
 /* ─── Top Section ───────────────────────────────────────────────── */
@@ -247,16 +249,17 @@
 }
 
 .socialIcon:hover {
-  background: rgba(244, 129, 32, 0.12);
-  border-color: rgba(244, 129, 32, 0.35);
-  color: var(--brand-orange);
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #fff;
   transform: translateY(-3px);
+  box-shadow: 0 6px 15px var(--brand-orange-glow);
 }
 
 :global([data-theme="light"]) .socialIcon:hover {
-  background: rgba(51, 45, 43, 0.08);
-  border-color: rgba(51, 45, 43, 0.3);
-  color: var(--brand-coffee);
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #fff;
 }
 
 /* ─── Mascot / Award Column ─────────────────────────────────────── */
